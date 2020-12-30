@@ -2,6 +2,7 @@
 #encoding=utf-8
 
 import rospy
+import math
 from geometry_msgs.msg import Twist
 from bot import amigobot
 
@@ -12,16 +13,21 @@ def main():
     bot_2 = amigobot(name='amigobot_2')
     rate = rospy.Rate(25)	# 5Hz
 
-    rospy.sleep(1)
+    rospy.sleep(3)
 
+    bot_1.turn_90_ccw()
+    bot_2.turn_90_cw()
+    #bot_1.set_vel(0, math.pi / 2)
+    '''
     for j in range(0, 8):
 	    for i in range(0, 75):
-		bot_1.single_forward()
-		rate.sleep()
+            bot_1.single_forward()
+            rate.sleep()
 
 	    for i in range(0, 25):
-		bot_1.single_turn()
-		rate.sleep()
+            bot_1.single_turn()
+            rate.sleep()
+    '''
 
     while not rospy.is_shutdown():
         #bot_1.set_vel(0, 0.2)
