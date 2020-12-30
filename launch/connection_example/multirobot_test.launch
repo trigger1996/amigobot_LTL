@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <arg name="robot_ip_1" default="10.0.126.36" />
+    <arg name="robot_ip_2" default="10.0.126.32" />
+
+    <!-- Robot_1 -->
+    <node pkg="rosaria" 
+          type="RosAria" 
+          name="amigobot_1" 
+          args="_port:=$(arg robot_ip_1):8101"
+          output="screen">
+    </node>
+    <node pkg="rostopic" 
+          type="rostopic" 
+          name="amigo_move_1" 
+          args="pub -r 5 /amigobot_1/cmd_vel geometry_msgs/Twist '[0.1, 0.0, 0.0]' '[0.0, 0.0, -0.2]'"
+          output="screen">
+    </node>
+
+    <!-- Robot_2 -->
+    <node pkg="rosaria" 
+          type="RosAria" 
+          name="amigobot_2" 
+          args="_port:=$(arg robot_ip_2):8101"
+          output="screen">
+    </node>
+=
+    <node pkg="rostopic" 
+          type="rostopic" 
+          name="amigo_move_2" 
+          args="pub -r 5 /amigobot_2/cmd_vel geometry_msgs/Twist '[0.1, 0.0, 0.0]' '[0.0, 0.0, 0.2]'"
+          output="screen">
+    </node>
+
+</launch>
