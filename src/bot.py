@@ -22,8 +22,10 @@ class amigobot:
         self.y = 0
         self.yaw = 0
 
-        self.x_desired = 0
-        self.y_desired = 0
+        self.x_start = self.x
+        self.y_start = self.y
+        self.dist_desired = 0
+        self.dist_curr = 0
         self.yaw_desired = 0
 
         self.basic_motion = ['wait', 'forward', 'back', 'left_turn', 'right_turn']
@@ -54,13 +56,27 @@ class amigobot:
                 self.current_motion = 'wait'
         
         elif self.current_motion == 'forward':
-            self.set_vel(0.5, 0)
-            if self.x >= self.x_desired:
+            self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
+            
+            self.set_vel(0.48, 0)
+            if self.dist_curr >= self.dist_desired:
+                self.x_start = self.x
+                self.y_start = self.y
+                self.dist_curr = 0
+                self.dist_desired = 0
+
                 self.current_motion = 'wait'
 
         elif self.current_motion == 'back':
-            self.set_vel(-0.5, 0)
-            if self.x <= self.x_desired:
+            self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
+
+            self.set_vel(-0.48, 0)
+            if self.dist_curr >= self.dist_desired:
+                self.x_start = self.x
+                self.y_start = self.y
+                self.dist_curr = 0
+                self.dist_desired = 0
+
                 self.current_motion = 'wait'
 
         self.update_target_vel()                
@@ -92,6 +108,27 @@ class amigobot:
     def turn_90_ccw(self):
         self.yaw_desired = self.yaw + 90.
         self.current_motion = 'left_turn'
+
+    def turn_cw(self, target_yaw):
+        # in degree
+        self.yaw_desired = self.yaw - target_yaw
+        self.current_motion = 'right_turn'
+
+    def turn_ccw(self, target_yaw):
+        self.yaw_desired = self.yaw + target_yaw
+        self.current_motion = 'left_turn'        
+
+    def forward(self, dist):
+        self.x_start = self.x
+        self.y_start = self.y
+        self.dist_desired = math.fabs(dist)
+        self.current_motion = 'forward'
+
+    def back(self, dist):
+        self.x_start = self.x
+        self.y_start = self.y
+        self.dist_desired = math.fabs(dist)
+        self.current_motion = 'back'
 
     # motion primitives with costs #
     def mp_left_up(dist):

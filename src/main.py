@@ -15,9 +15,10 @@ def main():
 
     rospy.sleep(3)
 
-    bot_1.turn_90_ccw()
-    bot_2.turn_90_cw()
+    #bot_1.turn_90_ccw()
+    #bot_2.turn_90_cw()
     #bot_1.set_vel(0, math.pi / 2)
+    bot_1.turn_cw(45)
     '''
     for j in range(0, 8):
 	    for i in range(0, 75):
