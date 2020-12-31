@@ -4,13 +4,13 @@
 import rospy
 import math
 from geometry_msgs.msg import Twist
-from bot import amigobot
+from bot import amigobot, amigobot_xyControl
 
 def main():
     rospy.init_node('motion_primitive_test', anonymous=False)
 
-    bot_1 = amigobot(name='amigobot_1')
-    bot_2 = amigobot(name='amigobot_2')
+    bot_1 = amigobot_xyControl(name='amigobot_1')
+    bot_2 = amigobot_xyControl(name='amigobot_2')
     rate = rospy.Rate(25)	# 5Hz
 
     rospy.sleep(3)
@@ -18,21 +18,9 @@ def main():
     #bot_1.turn_90_ccw()
     #bot_2.turn_90_cw()
     #bot_1.set_vel(0, math.pi / 2)
-    bot_1.turn_cw(45)
-    '''
-    for j in range(0, 8):
-	    for i in range(0, 75):
-            bot_1.single_forward()
-            rate.sleep()
-
-	    for i in range(0, 25):
-            bot_1.single_turn()
-            rate.sleep()
-    '''
+    bot_1.add_waypoint(2, 2)
 
     while not rospy.is_shutdown():
-        #bot_1.set_vel(0, 0.2)
-        #bot_2.set_vel(0, -0.2)
 
         rate.sleep()
 

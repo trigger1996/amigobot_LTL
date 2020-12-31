@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #encoding=utf-8
 
 import rospy
@@ -8,7 +9,7 @@ from geometry_msgs.msg import Pose
 from geometry_msgs.msg import Quaternion
 from tf.transformations import euler_from_quaternion
 
-class amigobot(object):
+class amigobot:
     def __init__(self, name='RosAria'):
         self.name = name
 
@@ -46,19 +47,19 @@ class amigobot(object):
             self.set_vel(0, 0)
 
         elif self.current_motion == 'right_turn':
-            self.set_vel(0, -math.pi / 4)
+            self.set_vel(0, -math.pi / 2)
             if self.yaw <= self.yaw_desired:
                 self.current_motion = 'wait'
 
         elif self.current_motion == 'left_turn':
-            self.set_vel(0, math.pi / 4)
+            self.set_vel(0, math.pi / 2)
             if self.yaw >= self.yaw_desired:
                 self.current_motion = 'wait'
         
         elif self.current_motion == 'forward':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
             
-            self.set_vel(0.33, 0)                       # 0.48
+            self.set_vel(0.48, 0)
             if self.dist_curr >= self.dist_desired:
                 self.x_start = self.x
                 self.y_start = self.y
@@ -70,7 +71,7 @@ class amigobot(object):
         elif self.current_motion == 'back':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
 
-            self.set_vel(-0.33, 0)                       # -0.48
+            self.set_vel(-0.48, 0)
             if self.dist_curr >= self.dist_desired:
                 self.x_start = self.x
                 self.y_start = self.y
@@ -79,8 +80,7 @@ class amigobot(object):
 
                 self.current_motion = 'wait'
 
-        print(self.dist_curr, self.dist_desired)
-        self.update_target_vel()
+        self.update_target_vel()                
 
 
     def update_target_vel(self):
@@ -136,66 +136,41 @@ class amigobot(object):
     def mp_left_up(dist):
         self.set_vel(-0.5, 0)
 
-class amigobot_xyControl(amigobot):
-    def __init__(self, name='RosAria'):
-        super(amigobot_xyControl, self).__init__(name)
+def main():
+    rospy.init_node('motion_primitive_test', anonymous=False)
+
+    bot_1 = amigobot(name='amigobot_1')
+    bot_2 = amigobot(name='amigobot_2')
+    rate = rospy.Rate(25)	# 5Hz
+
+    rospy.sleep(3)
+
+    #bot_1.turn_90_ccw()
+    #bot_2.turn_90_cw()
+    #bot_1.set_vel(0, math.pi / 2)
+    bot_1.turn_cw(45)
+    '''
+    for j in range(0, 8):
+	    for i in range(0, 75):
+            bot_1.single_forward()
+            rate.sleep()
+
+	    for i in range(0, 25):
+            bot_1.single_turn()
+            rate.sleep()
+    '''
+
+    while not rospy.is_shutdown():
+        #bot_1.set_vel(0, 0.2)
+        #bot_2.set_vel(0, -0.2)
+
+        rate.sleep()
 
 
-        self.route_list = []        # [[x1, y1], ..., [xn, yn]]
-        self.x_tgt = self.x 
-        self.y_tgt = self.y
-        self.yaw_to_turn = 0
+    print(233)
 
-    def odom_cb(self, data):
-        # update xy
-
-        # target arrived
-        if self.is_vertex_arrived(self.x_tgt, self.y_tgt):
-            # with no next target
-            if self.route_list.__len__() == 0:
-                self.current_motion == 'wait'
-            # update next target
-            else:
-                [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
-
-                # update target parameters
-                self.yaw_to_turn  = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
-                self.yaw_to_turn  = self.yaw_to_turn - self.yaw
-                self.dist_desired = math.sqrt((self.x_tgt - self.x)**2 + (self.y_tgt - self.y)**2)
-
-        # target_not_arrived
-        else:
-            # first, align robot with target
-            if self.is_angle_arrived() == False:
-                if self.yaw_to_turn <= 0:
-                    self.turn_cw(self.yaw_to_turn)
-                else:
-                    self.turn_ccw(self.yaw_to_turn)
-            # second, go
-            else:
-                self.forward(self.dist_desired)
-
-
-        # update original data
-        super(amigobot_xyControl, self).odom_cb(data)
-
-    def is_angle_arrived(self, yaw_err = 20):
-        #in degree
-        target_yaw = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
-        if math.fabs(self.yaw - target_yaw) <= yaw_err:
-            return True
-        else:
-            return False
-    
-    def is_vertex_arrived(self, x, y, err = 0.5):
-        dist_err = math.sqrt((x -self.x)**2 + (y - self.y)**2)
-        if math.fabs(dist_err) <= err:
-            return True
-        else:
-            return False
-
-    def add_waypoint(self, x, y):
-        self.route_list.append([x, y])
-
-    def clear_waypoint(self):
-        self.route_list.clear()
+if __name__ == '__main__':
+     try:
+         main()
+     except rospy.ROSInterruptException:
+         pass
