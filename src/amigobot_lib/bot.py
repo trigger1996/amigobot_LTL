@@ -12,8 +12,8 @@ class amigobot(object):
     def __init__(self, name='RosAria'):
         self.name = name
 
-        self.twist_pub = rospy.Publisher('/' + name + '/cmd_vel', Twist, queue_size = 10)
-        self.pose_sub  = rospy.Subscriber('/' + name + '/pose', Odometry, self.odom_cb)
+        self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 10)
+        self.pose_sub  = rospy.Subscriber('/' + self.name + '/pose', Odometry, self.odom_cb)
 
         self.vx = 0
         self.wz = 0
@@ -31,7 +31,6 @@ class amigobot(object):
         self.basic_motion = ['wait', 'forward', 'back', 'left_turn', 'right_turn']
         self.current_motion = 'wait'
 
-
     def odom_cb(self, data):
         (roll, pitch, yaw) = euler_from_quaternion([data.pose.pose.orientation.x, 
                                                     data.pose.pose.orientation.y, 
@@ -46,19 +45,19 @@ class amigobot(object):
             self.set_vel(0, 0)
 
         elif self.current_motion == 'right_turn':
-            self.set_vel(0, -math.pi / 4)
+            self.set_vel(0, -math.pi / 10)
             if self.yaw <= self.yaw_desired:
                 self.current_motion = 'wait'
 
         elif self.current_motion == 'left_turn':
-            self.set_vel(0, math.pi / 4)
+            self.set_vel(0, math.pi / 10)
             if self.yaw >= self.yaw_desired:
                 self.current_motion = 'wait'
         
         elif self.current_motion == 'forward':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
             
-            self.set_vel(0.33, 0)                       # 0.48
+            self.set_vel(0.2, 0)                       # 0.48
             if self.dist_curr >= self.dist_desired:
                 self.x_start = self.x
                 self.y_start = self.y
@@ -70,7 +69,7 @@ class amigobot(object):
         elif self.current_motion == 'back':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
 
-            self.set_vel(-0.33, 0)                       # -0.48
+            self.set_vel(-0.2, 0)                       # -0.48
             if self.dist_curr >= self.dist_desired:
                 self.x_start = self.x
                 self.y_start = self.y
@@ -131,14 +130,9 @@ class amigobot(object):
         self.dist_desired = math.fabs(dist)
         self.current_motion = 'back'
 
-    # motion primitives with costs #RosAria
-    def mp_left_up(dist):
-        self.set_vel(-0.5, 0)
-
 class amigobot_xyControl(amigobot):
     def __init__(self, name='RosAria'):
         super(amigobot_xyControl, self).__init__(name)
-
 
         self.route_list = []        # [[x1, y1], ..., [xn, yn]], "FLU" frame from start
 
@@ -183,7 +177,9 @@ class amigobot_xyControl(amigobot):
         # update original data
         super(amigobot_xyControl, self).odom_cb(data)
 
-    def is_angle_arrived(self, yaw_err = 20):
+        print('[Current]: ', self.name + ": (" + str(self.x_tgt) + ", " + str(self.y_tgt) + ")")
+
+    def is_angle_arrived(self, yaw_err = 10):
         #in degree
         target_yaw = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
         if math.fabs(self.yaw - target_yaw) <= yaw_err:
@@ -191,8 +187,8 @@ class amigobot_xyControl(amigobot):
         else:
             return False
     
-    def is_vertex_arrived(self, x, y, err = 0.5):
-        dist_err = math.sqrt((x -self.x)**2 + (y - self.y)**2)
+    def is_vertex_arrived(self, x, y, err = 0.2):
+        dist_err = math.sqrt((x - self.x)**2 + (y - self.y)**2)
         if math.fabs(dist_err) <= err:
             return True
         else:
