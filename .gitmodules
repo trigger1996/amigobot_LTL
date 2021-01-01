@@ -1,0 +1,3 @@
+[submodule "src/LOMAP-Custom"]
+	path = src/LOMAP-Custom
+	url = https://github.com/trigger1996/LOMAP-Custom
