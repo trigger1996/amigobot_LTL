@@ -177,7 +177,9 @@ class amigobot_xyControl(amigobot):
         # update original data
         super(amigobot_xyControl, self).odom_cb(data)
 
-        print('[Current]: ', self.name + ": (" + str(self.x_tgt) + ", " + str(self.y_tgt) + ")")
+        #print('[Current]: ', self.name + ": (" + str(self.x_tgt) + ", " + str(self.y_tgt) + ")")
+        #print('[Current]: ', self.name + ": (" + str(self.yaw_desired) + ", " + str(self.yaw_to_turn) + ", " + str(self.yaw) + ")")
+
 
     def is_angle_arrived(self, yaw_err = 10):
         #in degree
@@ -187,7 +189,7 @@ class amigobot_xyControl(amigobot):
         else:
             return False
     
-    def is_vertex_arrived(self, x, y, err = 0.2):
+    def is_vertex_arrived(self, x, y, err = 0.1):
         dist_err = math.sqrt((x - self.x)**2 + (y - self.y)**2)
         if math.fabs(dist_err) <= err:
             return True

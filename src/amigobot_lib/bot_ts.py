@@ -52,5 +52,10 @@ class amigobot_TS(amigobot_xyControl, Ts):
         y_t = -(self.waypoint[waypt_name][0] - self.x_initial)
         x   =  x_t * math.cos(self.yaw_initial * math.pi / 180) + y_t * math.sin(self.yaw_initial * math.pi / 180)
         y   = -x_t * math.sin(self.yaw_initial * math.pi / 180) + y_t * math.cos(self.yaw_initial * math.pi / 180)
+        if math.fabs(x) < 1e-3:
+            x = 0
+        if math.fabs(y) < 1e-3:
+            y = 0
+
         print('[Command]: ' + self.name + ": (" + str(x) + ", " + str(y) + ")")
         self.add_waypoint(x, y)
