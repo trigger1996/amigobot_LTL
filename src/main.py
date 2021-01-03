@@ -37,12 +37,12 @@ def main():
     print(suffix_cycles)
     for i in range(0, prefixes[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(prefixes[0][i])
-    #for i in range(0, prefixes[1].__len__()):
-        #bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
+    for i in range(0, prefixes[1].__len__()):
+        bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
     for i in range(1, suffix_cycles[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
-    #for i in range(0, suffix_cycles[1].__len__()):
-        #bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
+    for i in range(0, suffix_cycles[1].__len__()):
+        bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
 
     #view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
 
@@ -51,10 +51,9 @@ def main():
             for i in range(1, suffix_cycles[0].__len__()):
                 bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
 
-        #if bot_2.is_all_done == True:
-            #bot_2.add_waypoint_from_waypt_list('u1')
-            #bot_2.add_waypoint_from_waypt_list('1')
-            #bot_2.add_waypoint_from_waypt_list('g1')
+        if bot_2.is_all_done == True:
+            for i in range(0, suffix_cycles[1].__len__()):
+                bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
 
         rate.sleep()
 
