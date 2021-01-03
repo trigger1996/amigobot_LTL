@@ -14,6 +14,9 @@ import lomap
 import lomap.algorithms.multi_agent_optimal_run_ca as ca
 import view
 
+test_waypoint_1 = ['4', '5', '6', '7', '8', '9', '10', '11', '12', '1', '2', '3', '4']
+test_waypoint_2 = ['4', '5', '6', '7', '8', '25', '26', 'g3,', '26', '27', '28', 'g4', '28', '21', '22', 'g1', '22', '23', '24', 'g2', '24', '25', '26', '27', '3', '4']
+
 def main():
     rospy.init_node('motion_primitive_test', anonymous=False)
 
@@ -24,6 +27,8 @@ def main():
     rate = rospy.Rate(25)	# 5Hz
 
     rospy.sleep(3)
+
+    '''
     ts_tuple = (bot_1, bot_2)
     formula = ('[]<>gather && [](gather->(r1gather && r2gather)) '
                '&& [](r1gather -> X(!r1gather U r1upload)) '
@@ -44,16 +49,20 @@ def main():
     for i in range(0, suffix_cycles[1].__len__()):
         bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
 
-    #view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
+    view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
+    '''
+    for i in range(0, test_waypoint_1.__len__()):
+        bot_1.add_waypoint_from_waypt_list(test_waypoint_1[i])
+
 
     while not rospy.is_shutdown():
-        if bot_1.is_all_done == True:
-            for i in range(1, suffix_cycles[0].__len__()):
-                bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
+        #if bot_1.is_all_done == True:
+        #    for i in range(1, suffix_cycles[0].__len__()):
+        #        bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
 
-        if bot_2.is_all_done == True:
-            for i in range(0, suffix_cycles[1].__len__()):
-                bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
+        #if bot_2.is_all_done == True:
+        #    for i in range(0, suffix_cycles[1].__len__()):
+        #        bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
 
         rate.sleep()
 
