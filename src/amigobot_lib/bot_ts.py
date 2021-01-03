@@ -10,7 +10,7 @@ try: # try using the libyaml if installed
 except ImportError: # else use default PyYAML loader and dumper
     from yaml import Loader, Dumper
 
-
+import math
 from bot import amigobot_xyControl
 from lomap import Model
 from lomap import Ts
@@ -32,22 +32,25 @@ class amigobot_TS(amigobot_xyControl, Ts):
 
         # import data from map
         self.waypoint = dict()
+        self.yaw_init_tab = dict()
         self.load_from_map(map_file)
 
         self.x_initial = self.waypoint[list(self.init)[0]][0]
         self.y_initial = self.waypoint[list(self.init)[0]][1]
+        self.yaw_initial = self.yaw_init_tab[list(self.init)[0]]
 
     def load_from_map(self, map_file):
         f = io.open(map_file, 'r', encoding='utf8')
         data = load(f, Loader=Loader)
 
         self.waypoint = data['waypoint']
+        self.yaw_init_tab = data['initial_yaw']
 
     def add_waypoint_from_waypt_list(self, waypt_name):
-        # FL->RF
-        # x = y
-        # y = -x
-        x =   self.waypoint[waypt_name][1] - self.y_initial
-        y = -(self.waypoint[waypt_name][0] - self.x_initial)
+        # FL->FR
+        x_t =   self.waypoint[waypt_name][1] - self.y_initial
+        y_t = -(self.waypoint[waypt_name][0] - self.x_initial)
+        x   =  x_t * math.cos(self.yaw_initial * math.pi / 180) + y_t * math.sin(self.yaw_initial * math.pi / 180)
+        y   = -x_t * math.sin(self.yaw_initial * math.pi / 180) + y_t * math.cos(self.yaw_initial * math.pi / 180)
         print('[Command]: ' + self.name + ": (" + str(x) + ", " + str(y) + ")")
         self.add_waypoint(x, y)
