@@ -156,8 +156,15 @@ class amigobot_xyControl(amigobot):
                 [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
 
                 # update target parameters
+                # yaw_to_turn
                 self.yaw_to_turn  = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
                 self.yaw_to_turn  = self.yaw_to_turn - self.yaw
+                # normalize to -180. - 180.
+                while self.yaw_to_turn >= 180.:
+                    self.yaw_to_turn -= 360.
+                while self.yaw_to_turn < -180.:
+                    self.yaw_to_turn += 360.
+                # target distance
                 self.dist_desired = math.sqrt((self.x_tgt - self.x)**2 + (self.y_tgt - self.y)**2)
 
         # target_not_arrived
@@ -178,18 +185,23 @@ class amigobot_xyControl(amigobot):
         super(amigobot_xyControl, self).odom_cb(data)
 
         #print('[Current]: ', self.name + ": (" + str(self.x_tgt) + ", " + str(self.y_tgt) + ")")
-        #print('[Current]: ', self.name + ": (" + str(self.yaw_desired) + ", " + str(self.yaw_to_turn) + ", " + str(self.yaw) + ")")
+        print('[Current]: ', self.name + ": (" + str(self.yaw_desired) + ", " + str(self.yaw_to_turn) + ", " + str(self.yaw) + ")")
 
 
-    def is_angle_arrived(self, yaw_err = 10):
+    def is_angle_arrived(self, yaw_err = 9):
         #in degree
         target_yaw = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
-        if math.fabs(self.yaw - target_yaw) <= yaw_err:
+        cur_yaw_err = self.yaw - target_yaw
+        while cur_yaw_err >= 180.:
+            cur_yaw_err -= 360.
+        while cur_yaw_err < -180.:
+            cur_yaw_err += 360.
+        if math.fabs(cur_yaw_err) <= yaw_err:
             return True
         else:
             return False
     
-    def is_vertex_arrived(self, x, y, err = 0.1):
+    def is_vertex_arrived(self, x, y, err = 0.085):
         dist_err = math.sqrt((x - self.x)**2 + (y - self.y)**2)
         if math.fabs(dist_err) <= err:
             return True
