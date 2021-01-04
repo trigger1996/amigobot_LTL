@@ -57,5 +57,5 @@ class amigobot_TS(amigobot_xyControl, Ts):
         if math.fabs(y) < 1e-3:
             y = 0
 
-        print('[Command]: ' + self.name + ": (" + str(x) + ", " + str(y) + ")")
+        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ")")
         self.add_waypoint(x, y)

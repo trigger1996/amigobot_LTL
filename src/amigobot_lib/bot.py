@@ -57,7 +57,7 @@ class amigobot(object):
         elif self.current_motion == 'forward':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
             
-            self.set_vel(0.2, 0)                       # 0.48
+            self.set_vel(0.215, 0)                       # 0.48
             if self.dist_curr >= self.dist_desired:
                 self.x_start = self.x
                 self.y_start = self.y
@@ -69,7 +69,7 @@ class amigobot(object):
         elif self.current_motion == 'back':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
 
-            self.set_vel(-0.2, 0)                       # -0.48
+            self.set_vel(-0.215, 0)                       # -0.48
             if self.dist_curr >= self.dist_desired:
                 self.x_start = self.x
                 self.y_start = self.y
@@ -184,14 +184,15 @@ class amigobot_xyControl(amigobot):
         # update original data
         super(amigobot_xyControl, self).odom_cb(data)
 
-        #print('[Current]: ', self.name + ": (" + str(self.x_tgt) + ", " + str(self.y_tgt) + ")")
-        print('[Current]: ', self.name + ": (" + str(self.yaw_desired) + ", " + str(self.yaw_to_turn) + ", " + str(self.yaw) + ")")
+        print('[Current]: ', self.name + ": (" + str([self.x_tgt, self.y_tgt]) + ", " + str([self.x, self.y]) + ")")
+        #print('[Current]: ', self.name + ": (" + str(self.yaw_desired) + ", " + str(self.yaw_to_turn) + ", " + str(self.yaw) + ")")
 
 
     def is_angle_arrived(self, yaw_err = 9):
-        #in degree
+        # in degree
         target_yaw = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
         cur_yaw_err = self.yaw - target_yaw
+        # normalization
         while cur_yaw_err >= 180.:
             cur_yaw_err -= 360.
         while cur_yaw_err < -180.:
@@ -201,7 +202,7 @@ class amigobot_xyControl(amigobot):
         else:
             return False
     
-    def is_vertex_arrived(self, x, y, err = 0.085):
+    def is_vertex_arrived(self, x, y, err = 0.095):
         dist_err = math.sqrt((x - self.x)**2 + (y - self.y)**2)
         if math.fabs(dist_err) <= err:
             return True

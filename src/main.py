@@ -15,7 +15,8 @@ import lomap.algorithms.multi_agent_optimal_run_ca as ca
 import view
 
 test_waypoint_1 = ['4', '5', '6', '7', '8', '9', '10', '11', '12', '1', '2', '3', '4']
-test_waypoint_2 = ['4', '5', '6', '7', '8', '25', '26', 'g3,', '26', '27', '28', 'g4', '28', '21', '22', 'g1', '22', '23', '24', 'g2', '24', '25', '26', '27', '3', '4']
+test_waypoint_2 = ['4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4']
+test_waypoint_3 = ['4', '5', '27', '28', 'g4', '28', '21', '2', '3', '4']
 
 def main():
     rospy.init_node('motion_primitive_test', anonymous=False)
@@ -51,8 +52,8 @@ def main():
 
     view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
     '''
-    for i in range(0, test_waypoint_1.__len__()):
-        bot_1.add_waypoint_from_waypt_list(test_waypoint_1[i])
+    for i in range(0, test_waypoint_2.__len__()):
+        bot_1.add_waypoint_from_waypt_list(test_waypoint_2[i])
 
 
     while not rospy.is_shutdown():
