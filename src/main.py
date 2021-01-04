@@ -21,34 +21,66 @@ def main():
                                            map_file =sys.path[0] + '/../model/ijrr_2013_improv/map.yaml')
     bot_2 = amigobot_TS(name='amigobot_2', yaml_file=sys.path[0] + '/../model/ijrr_2013_improv/robot_2.yaml',
                                            map_file =sys.path[0] + '/../model/ijrr_2013_improv/map.yaml')
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file=sys.path[0] + '/../model/ijrr_2013_improv/robot_3.yaml',
+                                           map_file =sys.path[0] + '/../model/ijrr_2013_improv/map.yaml')
     rate = rospy.Rate(25)	# 5Hz
 
     rospy.sleep(3)
 
 
-    ts_tuple = (bot_1, bot_2)
-    formula = ('[]<>gather && [](gather->(r1gather && r2gather)) '
-               '&& [](r1gather -> X(!r1gather U r1upload)) '
-               '&& [](r2gather -> X(!r2gather U r2upload))')
+    #ts_tuple = (bot_1, bot_2, bot_3)
+    #formula = ('[]<>gather && [](gather->(r1gather && r2gather)) '
+    #           '&& [](r1gather -> X(!r1gather U r1upload)) '
+    #           '&& [](r2gather -> X(!r2gather U r2upload))')
+    #opt_prop = set(['r1gather', 'r2gather'])
+    prefixes = [['u1', '4', '5', '27', '27', '3', '4', '5', '6', '7', '8'],
+                ['u2', '10', '11', '23', '24', '25', '26', '27'],
+                ['11', '12', '1', '2', '21', '22', '23', '9', '10', '11']]
+    suffix_cycles = [['8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27',
+                      '3', '4', 'u1', '4', '5', '5', '5', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4',
+                      '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '5', '5', '5', '6', '7', '8',
+                      '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3',
+                      '4', 'u1', '4', '5', '6', '7', '8'],
+                     ['27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24',
+                      '25', '26', '27', '3', '4', 'u1', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10',
+                      'u2', '10', '11', '23', '24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', 'u1', '4', '5', '27', '28',
+                      'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '26', '27', '3', '4',
+                      'u1', '4', '5', '27'],
+                     ['11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11',
+                      '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12',
+                      '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1',
+                      '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2',
+                      '21', '22', '23', '9', '10', '11']]
 
-    opt_prop = set(['r1gather', 'r2gather'])
-    prefix_length, prefixes, suffix_cycle_cost, suffix_cycles, prefix_on_team_ts, suffix_cycle_on_team_ts = \
-        ca.multi_agent_optimal_run(ts_tuple,  formula, opt_prop)
+    #ts_tuple = (bot_1, bot_2)
+    #formula = ('[]<>gather && [](gather->(r1gather && r2gather)) '
+    #           '&& [](r1gather -> X(!r1gather U r1upload)) '
+    #           '&& [](r2gather -> X(!r2gather U r2upload)) '
+    #           '&& [](!(r1gather1 && r2gather1) && !(r1gather2 && r2gather2)'
+    #           '&& !(r1gather3 && r2gather3) && !(r1gather4 && r2gather4))')
+    #opt_prop = set(['r1gather', 'r2gather'])
+
+    #prefix_length, prefixes, suffix_cycle_cost, suffix_cycles, prefix_on_team_ts, suffix_cycle_on_team_ts = \
+    #    ca.multi_agent_optimal_run_ca(ts_tuple,  formula, opt_prop, [True, True])
 
     print(prefixes)
     print(suffix_cycles)
+
     for i in range(0, prefixes[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(prefixes[0][i])
     for i in range(0, prefixes[1].__len__()):
         bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
+    for i in range(0, prefixes[2].__len__()):
+        bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
+
     for i in range(1, suffix_cycles[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
-    for i in range(0, suffix_cycles[1].__len__()):
+    for i in range(1, suffix_cycles[1].__len__()):
         bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
+    for i in range(1, suffix_cycles[2].__len__()):
+        bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
-    view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
-
-
+    #view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
 
     while not rospy.is_shutdown():
         if bot_1.is_all_done == True:
@@ -56,8 +88,12 @@ def main():
                 bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
 
         if bot_2.is_all_done == True:
-            for i in range(0, suffix_cycles[1].__len__()):
+            for i in range(1, suffix_cycles[1].__len__()):
                 bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
+
+        if bot_3.is_all_done == True:
+            for i in range(1, suffix_cycles[2].__len__()):
+                bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
         rate.sleep()
 

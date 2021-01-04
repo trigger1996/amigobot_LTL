@@ -28,10 +28,11 @@ class amigobot(object):
         self.dist_curr = 0
         self.yaw_desired = 0
 
-        self.basic_motion = ['wait', 'forward', 'back', 'left_turn', 'right_turn']
-        self.current_motion = 'wait'
+        self.basic_motion = [ 'standby', 'wait', 'forward', 'back', 'left_turn', 'right_turn']
+        self.current_motion = 'standby'
 
     def odom_cb(self, data):
+        # about 10Hz
         (roll, pitch, yaw) = euler_from_quaternion([data.pose.pose.orientation.x, 
                                                     data.pose.pose.orientation.y, 
                                                     data.pose.pose.orientation.z, 
@@ -41,18 +42,18 @@ class amigobot(object):
         self.y   = data.pose.pose.position.y
 
         # set vel
-        if self.current_motion == 'wait':
+        if self.current_motion == 'standby':
             self.set_vel(0, 0)
 
         elif self.current_motion == 'right_turn':
             self.set_vel(0, -math.pi / 10)
             if self.yaw <= self.yaw_desired:
-                self.current_motion = 'wait'
+                self.current_motion = 'standby'
 
         elif self.current_motion == 'left_turn':
             self.set_vel(0, math.pi / 10)
             if self.yaw >= self.yaw_desired:
-                self.current_motion = 'wait'
+                self.current_motion = 'standby'
         
         elif self.current_motion == 'forward':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
@@ -64,7 +65,7 @@ class amigobot(object):
                 self.dist_curr = 0
                 self.dist_desired = 0
 
-                self.current_motion = 'wait'
+                self.current_motion = 'standby'
 
         elif self.current_motion == 'back':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
@@ -76,7 +77,15 @@ class amigobot(object):
                 self.dist_curr = 0
                 self.dist_desired = 0
 
-                self.current_motion = 'wait'
+                self.current_motion = 'standby'
+
+        elif self.current_motion == 'wait':
+            self.set_vel(0, 0)
+            # send a sequence of wait signal to stop vehicle
+            # to debug
+            for i in range(0, 10):
+                self.update_target_vel()
+            self.current_motion = 'standby'
 
         self.update_target_vel()
 
@@ -149,23 +158,32 @@ class amigobot_xyControl(amigobot):
         if self.is_vertex_arrived(self.x_tgt, self.y_tgt):
             # with no next target
             if self.route_list.__len__() == 0:
-                self.current_motion == 'wait'
+                self.current_motion == 'standby'
                 self.is_all_done = True
             # update next target
             else:
+                self.x_tgt_last = self.x_tgt
+                self.y_tgt_last = self.y_tgt
                 [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
 
-                # update target parameters
-                # yaw_to_turn
-                self.yaw_to_turn  = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
-                self.yaw_to_turn  = self.yaw_to_turn - self.yaw
-                # normalize to -180. - 180.
-                while self.yaw_to_turn >= 180.:
-                    self.yaw_to_turn -= 360.
-                while self.yaw_to_turn < -180.:
-                    self.yaw_to_turn += 360.
-                # target distance
-                self.dist_desired = math.sqrt((self.x_tgt - self.x)**2 + (self.y_tgt - self.y)**2)
+                if self.x_tgt_last == self.x_tgt and self.y_tgt_last == self.y_tgt:
+                    self.current_motion = 'wait'
+
+                    self.x_tgt_last = self.x_tgt
+                    self.y_tgt_last = self.y_tgt
+                    [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
+                else:
+                    # update target parameters
+                    # yaw_to_turn
+                    self.yaw_to_turn  = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
+                    self.yaw_to_turn  = self.yaw_to_turn - self.yaw
+                    # normalize to -180. - 180.
+                    while self.yaw_to_turn >= 180.:
+                        self.yaw_to_turn -= 360.
+                    while self.yaw_to_turn < -180.:
+                        self.yaw_to_turn += 360.
+                    # target distance
+                    self.dist_desired = math.sqrt((self.x_tgt - self.x)**2 + (self.y_tgt - self.y)**2)
 
         # target_not_arrived
         else:

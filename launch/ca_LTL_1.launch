@@ -17,14 +17,6 @@
           output="screen">
     </node>
 
-    <arg name="robot_ip_3" default="10.0.126.32" />
-    <node pkg="rosaria"
-          type="RosAria"
-          name="amigobot_3"
-          args="_port:=$(arg robot_ip_3):8101"
-          output="screen">
-    </node>
-
     <node pkg="amigobot_LTL" name="amigobot_LTL" type="main.py" output="screen">
     </node>
 
