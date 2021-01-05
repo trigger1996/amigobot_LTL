@@ -12,7 +12,7 @@ class amigobot(object):
     def __init__(self, name='RosAria'):
         self.name = name
 
-        self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 10)
+        self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
         self.pose_sub  = rospy.Subscriber('/' + self.name + '/pose', Odometry, self.odom_cb)
 
         self.vx = 0
