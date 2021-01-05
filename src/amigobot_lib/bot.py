@@ -87,13 +87,8 @@ class amigobot(object):
         elif self.current_motion == 'back':
             self.dist_curr = math.sqrt((self.x - self.x_start)**2 + (self.y - self.y_start)**2)
 
-            self.set_vel(-0.215, 0)                       # -0.48
+            self.set_vel(-0.215, 0)                       # -0.48default_value
             if self.dist_curr >= self.dist_desired:
-                self.x_start = self.x
-                self.y_start = self.y
-                self.dist_curr = 0
-                self.dist_desired = 0
-
                 self.current_motion = 'standby'
 
         self.update_target_vel()

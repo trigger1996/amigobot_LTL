@@ -15,7 +15,7 @@ import lomap.algorithms.multi_agent_optimal_run_ca as ca
 import view
 
 def main():
-    rospy.init_node('motion_primitive_test', anonymous=False)
+    rospy.init_node('ijrr2013_ca_improv', anonymous=False)
 
     bot_1 = amigobot_TS(name='amigobot_1', yaml_file=sys.path[0] + '/../model/ijrr_2013_improv/robot_1.yaml',
                                            map_file =sys.path[0] + '/../model/ijrr_2013_improv/map.yaml')
