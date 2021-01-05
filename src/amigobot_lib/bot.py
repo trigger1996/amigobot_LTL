@@ -31,6 +31,8 @@ class amigobot(object):
         self.basic_motion = [ 'standby', 'wait', 'forward', 'back', 'left_turn', 'right_turn']
         self.current_motion = 'standby'
 
+        self.wait_index = 0
+
     def odom_cb(self, data):
         # about 10Hz
         (roll, pitch, yaw) = euler_from_quaternion([data.pose.pose.orientation.x, 
@@ -41,9 +43,24 @@ class amigobot(object):
         self.x   = data.pose.pose.position.x
         self.y   = data.pose.pose.position.y
 
+        self.motion_control()
+
+    def motion_control(self):
         # set vel
         if self.current_motion == 'standby':
             self.set_vel(0, 0)
+
+        elif self.current_motion == 'wait':
+            self.set_vel(0, 0)
+            # send a sequence of wait signal to stop vehicle
+            # to debug
+            if self.wait_index < 10:
+                self.update_target_vel()
+
+                self.wait_index += 1
+            else:
+                self.current_motion = 'standby'
+                self.wait_index = 0
 
         elif self.current_motion == 'right_turn':
             self.set_vel(0, -math.pi / 10)
@@ -78,14 +95,6 @@ class amigobot(object):
                 self.dist_desired = 0
 
                 self.current_motion = 'standby'
-
-        elif self.current_motion == 'wait':
-            self.set_vel(0, 0)
-            # send a sequence of wait signal to stop vehicle
-            # to debug
-            for i in range(0, 10):
-                self.update_target_vel()
-            self.current_motion = 'standby'
 
         self.update_target_vel()
 
@@ -172,18 +181,18 @@ class amigobot_xyControl(amigobot):
                     self.x_tgt_last = self.x_tgt
                     self.y_tgt_last = self.y_tgt
                     [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
-                else:
-                    # update target parameters
-                    # yaw_to_turn
-                    self.yaw_to_turn  = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
-                    self.yaw_to_turn  = self.yaw_to_turn - self.yaw
-                    # normalize to -180. - 180.
-                    while self.yaw_to_turn >= 180.:
-                        self.yaw_to_turn -= 360.
-                    while self.yaw_to_turn < -180.:
-                        self.yaw_to_turn += 360.
-                    # target distance
-                    self.dist_desired = math.sqrt((self.x_tgt - self.x)**2 + (self.y_tgt - self.y)**2)
+
+                # update target parameters
+                # yaw_to_turn
+                self.yaw_to_turn  = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) * 180. / math.pi
+                self.yaw_to_turn  = self.yaw_to_turn - self.yaw
+                # normalize to -180. - 180.
+                while self.yaw_to_turn >= 180.:
+                    self.yaw_to_turn -= 360.
+                while self.yaw_to_turn < -180.:
+                    self.yaw_to_turn += 360.
+                # target distance
+                self.dist_desired = math.sqrt((self.x_tgt - self.x)**2 + (self.y_tgt - self.y)**2)
 
         # target_not_arrived
         else:
@@ -202,9 +211,74 @@ class amigobot_xyControl(amigobot):
         # update original data
         super(amigobot_xyControl, self).odom_cb(data)
 
-        print('[Current]: ', self.name + ": (" + str([self.x_tgt, self.y_tgt]) + ", " + str([self.x, self.y]) + ")")
+        #print('[Current]: ', self.name + ": (" + str([self.x_tgt, self.y_tgt]) + ", " + str([self.x, self.y]) + ")")
         #print('[Current]: ', self.name + ": (" + str(self.yaw_desired) + ", " + str(self.yaw_to_turn) + ", " + str(self.yaw) + ")")
 
+    def motion_control(self):
+        # set vel
+        if self.current_motion == 'standby':
+            self.set_vel(0, 0)
+
+        elif self.current_motion == 'wait':
+            self.set_vel(0, 0)
+            # send a sequence of wait signal to stop vehicle
+            # to debug
+            if self.wait_index < 10:
+                self.update_target_vel()
+
+                self.wait_index += 1
+            else:
+                self.current_motion = 'standby'
+                self.wait_index = 0
+
+        elif self.current_motion == 'right_turn':
+            self.set_vel(0, -math.pi / 10)
+            if self.yaw <= self.yaw_desired:
+                self.current_motion = 'standby'
+
+        elif self.current_motion == 'left_turn':
+            self.set_vel(0, math.pi / 10)
+            if self.yaw >= self.yaw_desired:
+                self.current_motion = 'standby'
+
+        elif self.current_motion == 'forward':
+            self.dist_curr = math.sqrt((self.x - self.x_start) ** 2 + (self.y - self.y_start) ** 2)
+
+            # yaw feedback control
+            u_yaw = math.atan2(self.y_tgt - self.y, self.x_tgt - self.x) - self.yaw * math.pi / 180.
+            if math.fabs(self.dist_curr - self.dist_desired) <= 0.2:
+                u_vel = math.sqrt((self.y_tgt - self.y)**2 + (self.x_tgt - self.x)**2) * 1.05
+                if u_vel > 0.215:
+                    u_vel = 0.215
+                u_yaw = 1.10 * u_yaw
+            else:
+                u_vel = 0.215
+                u_yaw = 0.95 * u_yaw
+
+            print(u_vel, u_yaw)
+
+            self.set_vel(u_vel, u_yaw)
+            if self.dist_curr >= self.dist_desired:
+                self.x_start = self.x
+                self.y_start = self.y
+                self.dist_curr = 0
+                self.dist_desired = 0
+
+                self.current_motion = 'standby'
+
+        elif self.current_motion == 'back':
+            self.dist_curr = math.sqrt((self.x - self.x_start) ** 2 + (self.y - self.y_start) ** 2)
+
+            self.set_vel(-0.215, 0)  # -0.48
+            if self.dist_curr >= self.dist_desired:
+                self.x_start = self.x
+                self.y_start = self.y
+                self.dist_curr = 0
+                self.dist_desired = 0
+
+                self.current_motion = 'standby'
+
+        self.update_target_vel()
 
     def is_angle_arrived(self, yaw_err = 9):
         # in degree

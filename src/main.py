@@ -29,6 +29,7 @@ def main():
 
 
     ts_tuple = (bot_1, bot_2)
+    #ts_tuple = (bot_1, bot_2, bot_3)
     formula = ('[]<>gather && [](gather->(r1gather && r2gather)) '
                '&& [](r1gather -> X(!r1gather U r1upload)) '
                '&& [](r2gather -> X(!r2gather U r2upload))')
