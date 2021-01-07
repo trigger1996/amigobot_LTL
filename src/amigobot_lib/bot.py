@@ -31,7 +31,9 @@ class amigobot(object):
         self.basic_motion = [ 'standby', 'wait', 'forward', 'back', 'left_turn', 'right_turn']
         self.current_motion = 'standby'
 
+        self.wait_time  = 2 * 10        # 2 seconds * 10Hz
         self.wait_index = 0
+        self.is_wait_completed = False
 
     def odom_cb(self, data):
         # about 10Hz
@@ -54,11 +56,12 @@ class amigobot(object):
             self.set_vel(0, 0)
             # send a sequence of wait signal to stop vehicle
             # to debug
-            if self.wait_index < 10:
+            if self.wait_index < self.wait_time:
                 self.update_target_vel()
 
                 self.wait_index += 1
             else:
+                self.is_wait_completed = True
                 self.current_motion = 'standby'
                 self.wait_index = 0
 
@@ -160,8 +163,12 @@ class amigobot_xyControl(amigobot):
 
         # target arrived
         if self.is_vertex_arrived(self.x_tgt, self.y_tgt):
+            # if wait not completed
+            if self.current_motion == 'wait' and self.is_wait_completed == False:
+                pass
+
             # with no next target
-            if self.route_list.__len__() == 0:
+            elif self.route_list.__len__() == 0:
                 self.current_motion == 'standby'
                 self.is_all_done = True
             # update next target
@@ -172,6 +179,8 @@ class amigobot_xyControl(amigobot):
 
                 if self.x_tgt_last == self.x_tgt and self.y_tgt_last == self.y_tgt:
                     self.current_motion = 'wait'
+                    self.is_wait_completed = False
+                    self.wait_index = 0
 
                     self.x_tgt_last = self.x_tgt
                     self.y_tgt_last = self.y_tgt
@@ -218,11 +227,12 @@ class amigobot_xyControl(amigobot):
             self.set_vel(0, 0)
             # send a sequence of wait signal to stop vehicle
             # to debug
-            if self.wait_index < 10:
+            if self.wait_index < self.wait_time:
                 self.update_target_vel()
 
                 self.wait_index += 1
             else:
+                self.is_wait_completed = True
                 self.current_motion = 'standby'
                 self.wait_index = 0
 
@@ -249,8 +259,6 @@ class amigobot_xyControl(amigobot):
             else:
                 u_vel = 0.215
                 u_yaw = 0.95 * u_yaw
-
-            print(u_vel, u_yaw)
 
             self.set_vel(u_vel, u_yaw)
             if self.dist_curr >= self.dist_desired:
