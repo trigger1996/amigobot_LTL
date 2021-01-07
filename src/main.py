@@ -36,6 +36,7 @@ def main():
     opt_prop = set(['r1gather', 'r2gather'])
 
     #ts_tuple = (bot_1, bot_2)
+    #ts_tuple = (bot_1, bot_2, bot_3)    
     #formula = ('[]<>gather && [](gather->(r1gather && r2gather)) '
     #           '&& [](r1gather -> X(!r1gather U r1upload)) '
     #           '&& [](r2gather -> X(!r2gather U r2upload)) '
@@ -53,15 +54,15 @@ def main():
         bot_1.add_waypoint_from_waypt_list(prefixes[0][i])
     for i in range(0, prefixes[1].__len__()):
         bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
-    #for i in range(0, prefixes[2].__len__()):
-    #    bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
+    for i in range(0, prefixes[2].__len__()):
+        bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
 
     for i in range(1, suffix_cycles[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
     for i in range(1, suffix_cycles[1].__len__()):
         bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
-    #for i in range(1, suffix_cycles[2].__len__()):
-    #    bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
+    for i in range(1, suffix_cycles[2].__len__()):
+        bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
     #view.visualize_animation_w_team_run(ts_tuple, suffix_cycle_on_team_ts)
 
@@ -74,9 +75,9 @@ def main():
             for i in range(1, suffix_cycles[1].__len__()):
                 bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
 
-        #if bot_3.is_all_done == True:
-        #    for i in range(1, suffix_cycles[2].__len__()):
-        #        bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
+        if bot_3.is_all_done == True:
+            for i in range(1, suffix_cycles[2].__len__()):
+                bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
         rate.sleep()
 

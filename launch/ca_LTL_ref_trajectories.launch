@@ -34,7 +34,7 @@
         <param name="RevCount"    value="11548"/>
     </node>
 
-    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main.py" output="screen">
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories.py" output="screen">
     </node>
 
 </launch>
