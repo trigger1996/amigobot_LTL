@@ -1,0 +1,1511 @@
+INFO __main__ - Formula: []<>gather && [](gather->(r1gather && r2gather)) && [](r1gather -> X(!r1gather U r1upload)) && [](r2gather -> X(!r2gather U r2upload)) && [](!(r1gather1 && r2gather1) && !(r1gather2 && r2gather2)&& !(r1gather3 && r2gather3) && !(r1gather4 && r2gather4))
+INFO __main__ - opt_prop: set(['r2gather', 'r1gather'])
+INFO lomap.algorithms.optimal_run - T has 44620 states
+INFO lomap.algorithms.optimal_run - B has 5 states
+INFO lomap.algorithms.optimal_run - P has 123456 states
+INFO lomap.algorithms.optimal_run - Set F has 168 states
+INFO lomap.algorithms.optimal_run - Set S has 168 states
+INFO pp - Creating server instance (pp-1.6.5)
+INFO pp - Running on Python 2.7.17 linux2
+INFO pp - pp local server started with 16 workers
+INFO lomap.algorithms.optimal_run - S->S+F
+INFO pp - Task 0 started
+INFO pp - Task 1 started
+INFO pp - Task 2 started
+INFO pp - Task 3 started
+INFO pp - Task 4 started
+INFO pp - Task 5 started
+INFO pp - Task 6 started
+INFO pp - Task 7 started
+INFO pp - Task 8 started
+INFO pp - Task 9 started
+INFO pp - Task 10 started
+INFO pp - Task 11 started
+INFO pp - Task 12 started
+INFO pp - Task 13 started
+INFO pp - Task 14 started
+INFO pp - Task 15 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39698)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39690)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39694)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39702)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39712)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39714)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39728)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39730)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39732)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39734)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39740)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39736)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39710)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39738)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39744)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 39742)
+INFO pp - Task 16 started
+INFO pp - Task 17 started
+INFO pp - Task 18 started
+INFO pp - Task 19 started
+INFO pp - Task 20 started
+INFO pp - Task 21 started
+INFO pp - Task 22 started
+INFO pp - Task 23 started
+INFO pp - Task 24 started
+INFO pp - Task 25 started
+INFO pp - Task 26 started
+INFO pp - Task 27 started
+INFO pp - Task 28 started
+INFO pp - Task 29 started
+INFO pp - Task 30 started
+INFO pp - Task 31 started
+INFO pp - Task 32 started
+INFO pp - Task 33 started
+INFO pp - Task 34 started
+INFO pp - Task 35 started
+INFO pp - Task 36 started
+INFO pp - Task 37 started
+INFO pp - Task 38 started
+INFO pp - Task 39 started
+INFO pp - Task 40 started
+INFO pp - Task 41 started
+INFO pp - Task 42 started
+INFO pp - Task 43 started
+INFO pp - Task 44 started
+INFO pp - Task 45 started
+INFO pp - Task 46 started
+INFO pp - Task 47 started
+INFO pp - Task 48 started
+INFO pp - Task 49 started
+INFO pp - Task 50 started
+INFO pp - Task 51 started
+INFO pp - Task 52 started
+INFO pp - Task 53 started
+INFO pp - Task 54 started
+INFO pp - Task 55 started
+INFO pp - Task 56 started
+INFO pp - Task 57 started
+INFO pp - Task 58 started
+INFO pp - Task 59 started
+INFO pp - Task 60 started
+INFO pp - Task 61 started
+INFO pp - Task 62 started
+INFO pp - Task 63 started
+INFO pp - Task 64 started
+INFO pp - Task 65 started
+INFO pp - Task 66 started
+INFO pp - Task 67 started
+INFO pp - Task 68 started
+INFO pp - Task 69 started
+INFO pp - Task 70 started
+INFO pp - Task 71 started
+INFO pp - Task 72 started
+INFO pp - Task 73 started
+INFO pp - Task 74 started
+INFO pp - Task 75 started
+INFO pp - Task 76 started
+INFO pp - Task 77 started
+INFO pp - Task 78 started
+INFO pp - Task 79 started
+INFO pp - Task 80 started
+INFO pp - Task 81 started
+INFO pp - Task 82 started
+INFO pp - Task 83 started
+INFO pp - Task 84 started
+INFO pp - Task 85 started
+INFO pp - Task 86 started
+INFO pp - Task 87 started
+INFO pp - Task 88 started
+INFO pp - Task 89 started
+INFO pp - Task 90 started
+INFO pp - Task 91 started
+INFO pp - Task 92 started
+INFO pp - Task 93 started
+INFO pp - Task 94 started
+INFO pp - Task 95 started
+INFO pp - Task 96 started
+INFO pp - Task 97 started
+INFO pp - Task 98 started
+INFO pp - Task 99 started
+INFO pp - Task 100 started
+INFO pp - Task 101 started
+INFO pp - Task 102 started
+INFO pp - Task 103 started
+INFO pp - Task 104 started
+INFO pp - Task 105 started
+INFO pp - Task 106 started
+INFO pp - Task 107 started
+INFO pp - Task 108 started
+INFO pp - Task 109 started
+INFO pp - Task 110 started
+INFO pp - Task 111 started
+INFO pp - Task 112 started
+INFO pp - Task 113 started
+INFO pp - Task 114 started
+INFO pp - Task 115 started
+INFO pp - Task 116 started
+INFO pp - Task 117 started
+INFO pp - Task 118 started
+INFO pp - Task 119 started
+INFO pp - Task 120 started
+INFO pp - Task 121 started
+INFO pp - Task 122 started
+INFO pp - Task 123 started
+INFO pp - Task 124 started
+INFO pp - Task 125 started
+INFO pp - Task 126 started
+INFO pp - Task 127 started
+INFO pp - Task 128 started
+INFO pp - Task 129 started
+INFO pp - Task 130 started
+INFO pp - Task 131 started
+INFO pp - Task 132 started
+INFO pp - Task 133 started
+INFO pp - Task 134 started
+INFO pp - Task 135 started
+INFO pp - Task 136 started
+INFO pp - Task 137 started
+INFO pp - Task 138 started
+INFO pp - Task 139 started
+INFO pp - Task 140 started
+INFO pp - Task 141 started
+INFO pp - Task 142 started
+INFO pp - Task 143 started
+INFO pp - Task 144 started
+INFO pp - Task 145 started
+INFO pp - Task 146 started
+INFO pp - Task 147 started
+INFO pp - Task 148 started
+INFO pp - Task 149 started
+INFO pp - Task 150 started
+INFO pp - Task 151 started
+INFO pp - Task 152 started
+INFO pp - Task 153 started
+INFO pp - Task 154 started
+INFO pp - Task 155 started
+INFO pp - Task 156 started
+INFO pp - Task 157 started
+INFO pp - Task 158 started
+INFO pp - Task 159 started
+INFO pp - Task 160 started
+INFO pp - Task 161 started
+INFO pp - Task 162 started
+INFO pp - Task 163 started
+INFO pp - Task 164 started
+INFO pp - Task 165 started
+INFO pp - Task 166 started
+INFO pp - Task 167 started
+INFO lomap.algorithms.optimal_run - Collected results for S->S+F
+INFO lomap.algorithms.optimal_run - F->S
+INFO pp - Task 168 started
+INFO pp - Task 169 started
+INFO pp - Task 170 started
+INFO pp - Task 171 started
+INFO pp - Task 172 started
+INFO pp - Task 173 started
+INFO pp - Task 174 started
+INFO pp - Task 175 started
+INFO pp - Task 176 started
+INFO pp - Task 177 started
+INFO pp - Task 178 started
+INFO pp - Task 179 started
+INFO pp - Task 180 started
+INFO pp - Task 181 started
+INFO pp - Task 182 started
+INFO pp - Task 183 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40054)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40058)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40060)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40094)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40078)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40072)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40096)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40098)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40092)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40100)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40110)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40104)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40102)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40112)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40106)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 40108)
+INFO pp - Task 184 started
+INFO pp - Task 185 started
+INFO pp - Task 186 started
+INFO pp - Task 187 started
+INFO pp - Task 188 started
+INFO pp - Task 189 started
+INFO pp - Task 190 started
+INFO pp - Task 191 started
+INFO pp - Task 192 started
+INFO pp - Task 193 started
+INFO pp - Task 194 started
+INFO pp - Task 195 started
+INFO pp - Task 196 started
+INFO pp - Task 197 started
+INFO pp - Task 198 started
+INFO pp - Task 199 started
+INFO pp - Task 200 started
+INFO pp - Task 201 started
+INFO pp - Task 202 started
+INFO pp - Task 203 started
+INFO pp - Task 204 started
+INFO pp - Task 205 started
+INFO pp - Task 206 started
+INFO pp - Task 207 started
+INFO pp - Task 208 started
+INFO pp - Task 209 started
+INFO pp - Task 210 started
+INFO pp - Task 211 started
+INFO pp - Task 212 started
+INFO pp - Task 213 started
+INFO pp - Task 214 started
+INFO pp - Task 215 started
+INFO pp - Task 216 started
+INFO pp - Task 217 started
+INFO pp - Task 218 started
+INFO pp - Task 219 started
+INFO pp - Task 220 started
+INFO pp - Task 221 started
+INFO pp - Task 222 started
+INFO pp - Task 223 started
+INFO pp - Task 224 started
+INFO pp - Task 225 started
+INFO pp - Task 226 started
+INFO pp - Task 227 started
+INFO pp - Task 228 started
+INFO pp - Task 229 started
+INFO pp - Task 230 started
+INFO pp - Task 231 started
+INFO pp - Task 232 started
+INFO pp - Task 233 started
+INFO pp - Task 234 started
+INFO pp - Task 235 started
+INFO pp - Task 236 started
+INFO pp - Task 237 started
+INFO pp - Task 238 started
+INFO pp - Task 239 started
+INFO pp - Task 240 started
+INFO pp - Task 241 started
+INFO pp - Task 242 started
+INFO pp - Task 243 started
+INFO pp - Task 244 started
+INFO pp - Task 245 started
+INFO pp - Task 246 started
+INFO pp - Task 247 started
+INFO pp - Task 248 started
+INFO pp - Task 249 started
+INFO pp - Task 250 started
+INFO pp - Task 251 started
+INFO pp - Task 252 started
+INFO pp - Task 253 started
+INFO pp - Task 254 started
+INFO pp - Task 255 started
+INFO pp - Task 256 started
+INFO pp - Task 257 started
+INFO pp - Task 258 started
+INFO pp - Task 259 started
+INFO pp - Task 260 started
+INFO pp - Task 261 started
+INFO pp - Task 262 started
+INFO pp - Task 263 started
+INFO pp - Task 264 started
+INFO pp - Task 265 started
+INFO pp - Task 266 started
+INFO pp - Task 267 started
+INFO pp - Task 268 started
+INFO pp - Task 269 started
+INFO pp - Task 270 started
+INFO pp - Task 271 started
+INFO pp - Task 272 started
+INFO pp - Task 273 started
+INFO pp - Task 274 started
+INFO pp - Task 275 started
+INFO pp - Task 276 started
+INFO pp - Task 277 started
+INFO pp - Task 278 started
+INFO pp - Task 279 started
+INFO pp - Task 280 started
+INFO pp - Task 281 started
+INFO pp - Task 282 started
+INFO pp - Task 283 started
+INFO pp - Task 284 started
+INFO pp - Task 285 started
+INFO pp - Task 286 started
+INFO pp - Task 287 started
+INFO pp - Task 288 started
+INFO pp - Task 289 started
+INFO pp - Task 290 started
+INFO pp - Task 291 started
+INFO pp - Task 292 started
+INFO pp - Task 293 started
+INFO pp - Task 294 started
+INFO pp - Task 295 started
+INFO pp - Task 296 started
+INFO pp - Task 297 started
+INFO pp - Task 298 started
+INFO pp - Task 299 started
+INFO pp - Task 300 started
+INFO pp - Task 301 started
+INFO pp - Task 302 started
+INFO pp - Task 303 started
+INFO pp - Task 304 started
+INFO pp - Task 305 started
+INFO pp - Task 306 started
+INFO pp - Task 307 started
+INFO pp - Task 308 started
+INFO pp - Task 309 started
+INFO pp - Task 310 started
+INFO pp - Task 311 started
+INFO pp - Task 312 started
+INFO pp - Task 313 started
+INFO pp - Task 314 started
+INFO pp - Task 315 started
+INFO pp - Task 316 started
+INFO pp - Task 317 started
+INFO pp - Task 318 started
+INFO pp - Task 319 started
+INFO pp - Task 320 started
+INFO pp - Task 321 started
+INFO pp - Task 322 started
+INFO pp - Task 323 started
+INFO pp - Task 324 started
+INFO pp - Task 325 started
+INFO pp - Task 326 started
+INFO pp - Task 327 started
+INFO pp - Task 328 started
+INFO pp - Task 329 started
+INFO pp - Task 330 started
+INFO pp - Task 331 started
+INFO pp - Task 332 started
+INFO pp - Task 333 started
+INFO pp - Task 334 started
+INFO pp - Task 335 started
+INFO lomap.algorithms.optimal_run - Collected results for F->S
+INFO lomap.algorithms.optimal_run - S-bottleneck
+INFO pp - Task 336 started
+INFO pp - Task 337 started
+INFO pp - Task 338 started
+INFO pp - Task 339 started
+INFO pp - Task 340 started
+INFO pp - Task 341 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40422)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40424)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40428)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40434)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40436)
+INFO pp - Task 342 started
+INFO pp - Task 343 started
+INFO pp - Task 344 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40440)
+INFO pp - Task 345 started
+INFO pp - Task 346 started
+INFO pp - Task 347 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40448)
+INFO pp - Task 348 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40450)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40452)
+INFO pp - Task 349 started
+INFO pp - Task 350 started
+INFO pp - Task 351 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40462)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40464)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40468)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40474)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40476)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40478)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 40480)
+INFO pp - Task 352 started
+INFO pp - Task 353 started
+INFO pp - Task 354 started
+INFO pp - Task 355 started
+INFO pp - Task 356 started
+INFO pp - Task 357 started
+INFO pp - Task 358 started
+INFO pp - Task 359 started
+INFO pp - Task 360 started
+INFO pp - Task 361 started
+INFO pp - Task 362 started
+INFO pp - Task 363 started
+INFO pp - Task 364 started
+INFO pp - Task 365 started
+INFO pp - Task 366 started
+INFO pp - Task 367 started
+INFO pp - Task 368 started
+INFO pp - Task 369 started
+INFO pp - Task 370 started
+INFO pp - Task 371 started
+INFO pp - Task 372 started
+INFO pp - Task 373 started
+INFO pp - Task 374 started
+INFO pp - Task 375 started
+INFO pp - Task 376 started
+INFO pp - Task 377 started
+INFO pp - Task 378 started
+INFO pp - Task 379 started
+INFO pp - Task 380 started
+INFO pp - Task 381 started
+INFO pp - Task 382 started
+INFO pp - Task 383 started
+INFO pp - Task 384 started
+INFO pp - Task 385 started
+INFO pp - Task 386 started
+INFO pp - Task 387 started
+INFO pp - Task 388 started
+INFO pp - Task 389 started
+INFO pp - Task 390 started
+INFO pp - Task 391 started
+INFO pp - Task 392 started
+INFO pp - Task 393 started
+INFO pp - Task 394 started
+INFO pp - Task 395 started
+INFO pp - Task 396 started
+INFO pp - Task 397 started
+INFO pp - Task 398 started
+INFO pp - Task 399 started
+INFO pp - Task 400 started
+INFO pp - Task 401 started
+INFO pp - Task 402 started
+INFO pp - Task 403 started
+INFO pp - Task 404 started
+INFO pp - Task 405 started
+INFO pp - Task 406 started
+INFO pp - Task 407 started
+INFO pp - Task 408 started
+INFO pp - Task 409 started
+INFO pp - Task 410 started
+INFO pp - Task 411 started
+INFO pp - Task 412 started
+INFO pp - Task 413 started
+INFO pp - Task 414 started
+INFO pp - Task 415 started
+INFO pp - Task 416 started
+INFO pp - Task 417 started
+INFO pp - Task 418 started
+INFO pp - Task 419 started
+INFO pp - Task 420 started
+INFO pp - Task 421 started
+INFO pp - Task 422 started
+INFO pp - Task 423 started
+INFO pp - Task 424 started
+INFO pp - Task 425 started
+INFO pp - Task 426 started
+INFO pp - Task 427 started
+INFO pp - Task 428 started
+INFO pp - Task 429 started
+INFO pp - Task 430 started
+INFO pp - Task 431 started
+INFO pp - Task 432 started
+INFO pp - Task 433 started
+INFO pp - Task 434 started
+INFO pp - Task 435 started
+INFO pp - Task 436 started
+INFO pp - Task 437 started
+INFO pp - Task 438 started
+INFO pp - Task 439 started
+INFO pp - Task 440 started
+INFO pp - Task 441 started
+INFO pp - Task 442 started
+INFO pp - Task 443 started
+INFO pp - Task 444 started
+INFO pp - Task 445 started
+INFO pp - Task 446 started
+INFO pp - Task 447 started
+INFO pp - Task 448 started
+INFO pp - Task 449 started
+INFO pp - Task 450 started
+INFO pp - Task 451 started
+INFO pp - Task 452 started
+INFO pp - Task 453 started
+INFO pp - Task 454 started
+INFO pp - Task 455 started
+INFO pp - Task 456 started
+INFO pp - Task 457 started
+INFO pp - Task 458 started
+INFO pp - Task 459 started
+INFO pp - Task 460 started
+INFO pp - Task 461 started
+INFO pp - Task 462 started
+INFO pp - Task 463 started
+INFO pp - Task 464 started
+INFO pp - Task 465 started
+INFO pp - Task 466 started
+INFO pp - Task 467 started
+INFO pp - Task 468 started
+INFO pp - Task 469 started
+INFO pp - Task 470 started
+INFO pp - Task 471 started
+INFO pp - Task 472 started
+INFO pp - Task 473 started
+INFO pp - Task 474 started
+INFO pp - Task 475 started
+INFO pp - Task 476 started
+INFO pp - Task 477 started
+INFO pp - Task 478 started
+INFO pp - Task 479 started
+INFO pp - Task 480 started
+INFO pp - Task 481 started
+INFO pp - Task 482 started
+INFO pp - Task 483 started
+INFO pp - Task 484 started
+INFO pp - Task 485 started
+INFO pp - Task 486 started
+INFO pp - Task 487 started
+INFO pp - Task 488 started
+INFO pp - Task 489 started
+INFO pp - Task 490 started
+INFO pp - Task 491 started
+INFO pp - Task 492 started
+INFO pp - Task 493 started
+INFO pp - Task 494 started
+INFO pp - Task 495 started
+INFO pp - Task 496 started
+INFO pp - Task 497 started
+INFO pp - Task 498 started
+INFO pp - Task 499 started
+INFO pp - Task 500 started
+INFO pp - Task 501 started
+INFO pp - Task 502 started
+INFO pp - Task 503 started
+INFO lomap.algorithms.optimal_run - Collected results for S-bottleneck
+INFO lomap.algorithms.optimal_run - Path*
+INFO pp - Task 504 started
+INFO pp - Task 505 started
+INFO pp - Task 506 started
+INFO pp - Task 507 started
+INFO pp - Task 508 started
+INFO pp - Task 509 started
+INFO pp - Task 510 started
+INFO pp - Task 511 started
+INFO pp - Task 512 started
+INFO pp - Task 513 started
+INFO pp - Task 514 started
+INFO pp - Task 515 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40804)
+INFO pp - Task 516 started
+INFO pp - Task 517 started
+INFO pp - Task 518 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40810)
+INFO pp - Task 519 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40814)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40826)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40844)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40846)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40848)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40850)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40852)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40854)
+INFO pp - Task 520 started
+INFO pp - Task 521 started
+INFO pp - Task 522 started
+INFO pp - Task 523 started
+INFO pp - Task 524 started
+INFO pp - Task 525 started
+INFO pp - Task 526 started
+INFO pp - Task 527 started
+INFO pp - Task 528 started
+INFO pp - Task 529 started
+INFO pp - Task 530 started
+INFO pp - Task 531 started
+INFO pp - Task 532 started
+INFO pp - Task 533 started
+INFO pp - Task 534 started
+INFO pp - Task 535 started
+INFO pp - Task 536 started
+INFO pp - Task 537 started
+INFO pp - Task 538 started
+INFO pp - Task 539 started
+INFO pp - Task 540 started
+INFO pp - Task 541 started
+INFO pp - Task 542 started
+INFO pp - Task 543 started
+INFO pp - Task 544 started
+INFO pp - Task 545 started
+INFO pp - Task 546 started
+INFO pp - Task 547 started
+INFO pp - Task 548 started
+INFO pp - Task 549 started
+INFO pp - Task 550 started
+INFO pp - Task 551 started
+INFO pp - Task 552 started
+INFO pp - Task 553 started
+INFO pp - Task 554 started
+INFO pp - Task 555 started
+INFO pp - Task 556 started
+INFO pp - Task 557 started
+INFO pp - Task 558 started
+INFO pp - Task 559 started
+INFO pp - Task 560 started
+INFO pp - Task 561 started
+INFO pp - Task 562 started
+INFO pp - Task 563 started
+INFO pp - Task 564 started
+INFO pp - Task 565 started
+INFO pp - Task 566 started
+INFO pp - Task 567 started
+INFO pp - Task 568 started
+INFO pp - Task 569 started
+INFO pp - Task 570 started
+INFO pp - Task 571 started
+INFO pp - Task 572 started
+INFO pp - Task 573 started
+INFO pp - Task 574 started
+INFO pp - Task 575 started
+INFO pp - Task 576 started
+INFO pp - Task 577 started
+INFO pp - Task 578 started
+INFO pp - Task 579 started
+INFO pp - Task 580 started
+INFO pp - Task 581 started
+INFO pp - Task 582 started
+INFO pp - Task 583 started
+INFO pp - Task 584 started
+INFO pp - Task 585 started
+INFO pp - Task 586 started
+INFO pp - Task 587 started
+INFO pp - Task 588 started
+INFO pp - Task 589 started
+INFO pp - Task 590 started
+INFO pp - Task 591 started
+INFO pp - Task 592 started
+INFO pp - Task 593 started
+INFO pp - Task 594 started
+INFO pp - Task 595 started
+INFO pp - Task 596 started
+INFO pp - Task 597 started
+INFO pp - Task 598 started
+INFO pp - Task 599 started
+INFO pp - Task 600 started
+INFO pp - Task 601 started
+INFO pp - Task 602 started
+INFO pp - Task 603 started
+INFO pp - Task 604 started
+INFO pp - Task 605 started
+INFO pp - Task 606 started
+INFO pp - Task 607 started
+INFO pp - Task 608 started
+INFO pp - Task 609 started
+INFO pp - Task 610 started
+INFO pp - Task 611 started
+INFO pp - Task 612 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40832)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40840)
+INFO pp - Task 613 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 40824)
+INFO pp - Task 614 started
+INFO pp - Task 615 started
+INFO pp - Task 616 started
+INFO pp - Task 617 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41044)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41048)
+INFO pp - Task 618 started
+INFO pp - Task 619 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41054)
+INFO pp - Task 620 started
+INFO pp - Task 621 started
+INFO pp - Task 622 started
+INFO pp - Task 623 started
+INFO pp - Task 624 started
+INFO pp - Task 625 started
+INFO pp - Task 626 started
+INFO pp - Task 627 started
+INFO pp - Task 628 started
+INFO pp - Task 629 started
+INFO pp - Task 630 started
+INFO pp - Task 631 started
+INFO pp - Task 632 started
+INFO pp - Task 633 started
+INFO pp - Task 634 started
+INFO pp - Task 635 started
+INFO pp - Task 636 started
+INFO pp - Task 637 started
+INFO pp - Task 638 started
+INFO pp - Task 639 started
+INFO pp - Task 640 started
+INFO pp - Task 641 started
+INFO pp - Task 642 started
+INFO pp - Task 643 started
+INFO pp - Task 644 started
+INFO pp - Task 645 started
+INFO pp - Task 646 started
+INFO pp - Task 647 started
+INFO pp - Task 648 started
+INFO pp - Task 649 started
+INFO pp - Task 650 started
+INFO pp - Task 651 started
+INFO pp - Task 652 started
+INFO pp - Task 653 started
+INFO pp - Task 654 started
+INFO pp - Task 655 started
+INFO pp - Task 656 started
+INFO pp - Task 657 started
+INFO pp - Task 658 started
+INFO pp - Task 659 started
+INFO pp - Task 660 started
+INFO pp - Task 661 started
+INFO pp - Task 662 started
+INFO pp - Task 663 started
+INFO pp - Task 664 started
+INFO pp - Task 665 started
+INFO pp - Task 666 started
+INFO pp - Task 667 started
+INFO pp - Task 668 started
+INFO pp - Task 669 started
+INFO pp - Task 670 started
+INFO pp - Task 671 started
+INFO lomap.algorithms.optimal_run - Collected results for Path*
+INFO lomap.algorithms.optimal_run - Cost*: 20, Len*: 140, Cycle*: ((('g1', 'g3', '9'), u'accept_S2'), (('g1', 'g3', '9'), u'accept_S2'), (('g1', 'g3', '9'), u'accept_S2'))
+INFO lomap.algorithms.optimal_run - Extracting Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Robot-1             Robot-2             Robot-3             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - -------             -------             -------             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Prefix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u1', '4', 1)      ('u2', '10', 1)     12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     ('24', '25', 2)     9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Suffix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '22', 1)     ('25', '26', 1)     11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('22', '23', 1)     ('26', '27', 1)     1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 1)     ('5', '6', 1)       10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 2)     ('5', '6', 2)       11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '22', 1)     ('25', '26', 1)     2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g1', '22', 1)     ('g3', '26', 1)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('22', '23', 1)     ('26', '27', 1)     23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 1)     ('5', '6', 1)       1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 2)     ('5', '6', 2)       2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 3)     ('5', '6', 3)       21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '22', 1)     ('25', '26', 1)     9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 1)     ('5', '6', 1)       23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 2)     ('5', '6', 2)       9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 3)     ('5', '6', 3)       10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '22', 1)     ('25', '26', 1)     12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g1', '22', 1)     ('g3', '26', 1)     21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('22', '23', 1)     ('26', '27', 1)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u2', '10', 1)     ('u1', '4', 1)      11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 2)     ('5', '6', 2)       12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 3)     ('5', '6', 3)       1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g1', '22', 1)     ('g3', '26', 1)     10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u2', '10', 1)     ('u1', '4', 1)      2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 1)     ('5', '6', 1)       22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 3)     ('5', '6', 3)       23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g1', '22', 1)     ('g3', '26', 1)     1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('22', '23', 1)     ('26', '27', 1)     21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u2', '10', 1)     ('u1', '4', 1)      9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g3                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g1', '22', 1)     ('g3', '26', 1)     23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('22', '23', 1)     ('26', '27', 1)     10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u2', '10', 1)     ('u1', '4', 1)      12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 1)     ('5', '6', 1)       21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 3)     ('5', '6', 3)       22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  10                  
+INFO lomap.algorithms.optimal_run - T has 34642 states
+INFO lomap.algorithms.optimal_run - B has 5 states
+INFO lomap.algorithms.optimal_run - P has 81489 states
+INFO lomap.algorithms.optimal_run - Set F has 108 states
+INFO lomap.algorithms.optimal_run - Set S has 108 states
+INFO pp - Creating server instance (pp-1.6.5)
+INFO pp - Running on Python 2.7.17 linux2
+INFO pp - pp local server started with 16 workers
+INFO lomap.algorithms.optimal_run - S->S+F
+INFO pp - Task 0 started
+INFO pp - Task 1 started
+INFO pp - Task 2 started
+INFO pp - Task 3 started
+INFO pp - Task 4 started
+INFO pp - Task 5 started
+INFO pp - Task 6 started
+INFO pp - Task 7 started
+INFO pp - Task 8 started
+INFO pp - Task 9 started
+INFO pp - Task 10 started
+INFO pp - Task 11 started
+INFO pp - Task 12 started
+INFO pp - Task 13 started
+INFO pp - Task 14 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41172)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41182)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41196)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41194)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41192)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41198)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41202)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41216)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41210)
+INFO pp - Task 15 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41218)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41214)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41220)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41224)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41226)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41228)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 41230)
+INFO pp - Task 16 started
+INFO pp - Task 17 started
+INFO pp - Task 18 started
+INFO pp - Task 19 started
+INFO pp - Task 20 started
+INFO pp - Task 21 started
+INFO pp - Task 22 started
+INFO pp - Task 23 started
+INFO pp - Task 24 started
+INFO pp - Task 25 started
+INFO pp - Task 26 started
+INFO pp - Task 27 started
+INFO pp - Task 28 started
+INFO pp - Task 29 started
+INFO pp - Task 30 started
+INFO pp - Task 31 started
+INFO pp - Task 32 started
+INFO pp - Task 33 started
+INFO pp - Task 34 started
+INFO pp - Task 35 started
+INFO pp - Task 36 started
+INFO pp - Task 37 started
+INFO pp - Task 38 started
+INFO pp - Task 39 started
+INFO pp - Task 40 started
+INFO pp - Task 41 started
+INFO pp - Task 42 started
+INFO pp - Task 43 started
+INFO pp - Task 44 started
+INFO pp - Task 45 started
+INFO pp - Task 46 started
+INFO pp - Task 47 started
+INFO pp - Task 48 started
+INFO pp - Task 49 started
+INFO pp - Task 50 started
+INFO pp - Task 51 started
+INFO pp - Task 52 started
+INFO pp - Task 53 started
+INFO pp - Task 54 started
+INFO pp - Task 55 started
+INFO pp - Task 56 started
+INFO pp - Task 57 started
+INFO pp - Task 58 started
+INFO pp - Task 59 started
+INFO pp - Task 60 started
+INFO pp - Task 61 started
+INFO pp - Task 62 started
+INFO pp - Task 63 started
+INFO pp - Task 64 started
+INFO pp - Task 65 started
+INFO pp - Task 66 started
+INFO pp - Task 67 started
+INFO pp - Task 68 started
+INFO pp - Task 69 started
+INFO pp - Task 70 started
+INFO pp - Task 71 started
+INFO pp - Task 72 started
+INFO pp - Task 73 started
+INFO pp - Task 74 started
+INFO pp - Task 75 started
+INFO pp - Task 76 started
+INFO pp - Task 77 started
+INFO pp - Task 78 started
+INFO pp - Task 79 started
+INFO pp - Task 80 started
+INFO pp - Task 81 started
+INFO pp - Task 82 started
+INFO pp - Task 83 started
+INFO pp - Task 84 started
+INFO pp - Task 85 started
+INFO pp - Task 86 started
+INFO pp - Task 87 started
+INFO pp - Task 88 started
+INFO pp - Task 89 started
+INFO pp - Task 90 started
+INFO pp - Task 91 started
+INFO pp - Task 92 started
+INFO pp - Task 93 started
+INFO pp - Task 94 started
+INFO pp - Task 95 started
+INFO pp - Task 96 started
+INFO pp - Task 97 started
+INFO pp - Task 98 started
+INFO pp - Task 99 started
+INFO pp - Task 100 started
+INFO pp - Task 101 started
+INFO pp - Task 102 started
+INFO pp - Task 103 started
+INFO pp - Task 104 started
+INFO pp - Task 105 started
+INFO pp - Task 106 started
+INFO pp - Task 107 started
+INFO lomap.algorithms.optimal_run - Collected results for S->S+F
+INFO lomap.algorithms.optimal_run - F->S
+INFO pp - Task 108 started
+INFO pp - Task 109 started
+INFO pp - Task 110 started
+INFO pp - Task 111 started
+INFO pp - Task 112 started
+INFO pp - Task 113 started
+INFO pp - Task 114 started
+INFO pp - Task 115 started
+INFO pp - Task 116 started
+INFO pp - Task 117 started
+INFO pp - Task 118 started
+INFO pp - Task 119 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41436)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41422)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41426)
+INFO pp - Task 120 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41438)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41428)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41444)
+INFO pp - Task 121 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41442)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41448)
+INFO pp - Task 122 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41452)
+INFO pp - Task 123 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41458)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41468)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41466)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41472)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41476)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41478)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 41474)
+INFO pp - Task 124 started
+INFO pp - Task 125 started
+INFO pp - Task 126 started
+INFO pp - Task 127 started
+INFO pp - Task 128 started
+INFO pp - Task 129 started
+INFO pp - Task 130 started
+INFO pp - Task 131 started
+INFO pp - Task 132 started
+INFO pp - Task 133 started
+INFO pp - Task 134 started
+INFO pp - Task 135 started
+INFO pp - Task 136 started
+INFO pp - Task 137 started
+INFO pp - Task 138 started
+INFO pp - Task 139 started
+INFO pp - Task 140 started
+INFO pp - Task 141 started
+INFO pp - Task 142 started
+INFO pp - Task 143 started
+INFO pp - Task 144 started
+INFO pp - Task 145 started
+INFO pp - Task 146 started
+INFO pp - Task 147 started
+INFO pp - Task 148 started
+INFO pp - Task 149 started
+INFO pp - Task 150 started
+INFO pp - Task 151 started
+INFO pp - Task 152 started
+INFO pp - Task 153 started
+INFO pp - Task 154 started
+INFO pp - Task 155 started
+INFO pp - Task 156 started
+INFO pp - Task 157 started
+INFO pp - Task 158 started
+INFO pp - Task 159 started
+INFO pp - Task 160 started
+INFO pp - Task 161 started
+INFO pp - Task 162 started
+INFO pp - Task 163 started
+INFO pp - Task 164 started
+INFO pp - Task 165 started
+INFO pp - Task 166 started
+INFO pp - Task 167 started
+INFO pp - Task 168 started
+INFO pp - Task 169 started
+INFO pp - Task 170 started
+INFO pp - Task 171 started
+INFO pp - Task 172 started
+INFO pp - Task 173 started
+INFO pp - Task 174 started
+INFO pp - Task 175 started
+INFO pp - Task 176 started
+INFO pp - Task 177 started
+INFO pp - Task 178 started
+INFO pp - Task 179 started
+INFO pp - Task 180 started
+INFO pp - Task 181 started
+INFO pp - Task 182 started
+INFO pp - Task 183 started
+INFO pp - Task 184 started
+INFO pp - Task 185 started
+INFO pp - Task 186 started
+INFO pp - Task 187 started
+INFO pp - Task 188 started
+INFO pp - Task 189 started
+INFO pp - Task 190 started
+INFO pp - Task 191 started
+INFO pp - Task 192 started
+INFO pp - Task 193 started
+INFO pp - Task 194 started
+INFO pp - Task 195 started
+INFO pp - Task 196 started
+INFO pp - Task 197 started
+INFO pp - Task 198 started
+INFO pp - Task 199 started
+INFO pp - Task 200 started
+INFO pp - Task 201 started
+INFO pp - Task 202 started
+INFO pp - Task 203 started
+INFO pp - Task 204 started
+INFO pp - Task 205 started
+INFO pp - Task 206 started
+INFO pp - Task 207 started
+INFO pp - Task 208 started
+INFO pp - Task 209 started
+INFO pp - Task 210 started
+INFO pp - Task 211 started
+INFO pp - Task 212 started
+INFO pp - Task 213 started
+INFO pp - Task 214 started
+INFO pp - Task 215 started
+INFO lomap.algorithms.optimal_run - Collected results for F->S
+INFO lomap.algorithms.optimal_run - S-bottleneck
+INFO pp - Task 216 started
+INFO pp - Task 217 started
+INFO pp - Task 218 started
+INFO pp - Task 219 started
+INFO pp - Task 220 started
+INFO pp - Task 221 started
+INFO pp - Task 222 started
+INFO pp - Task 223 started
+INFO pp - Task 224 started
+INFO pp - Task 225 started
+INFO pp - Task 226 started
+INFO pp - Task 227 started
+INFO pp - Task 228 started
+INFO pp - Task 229 started
+INFO pp - Task 230 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41678)
+INFO pp - Task 231 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41680)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41692)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41698)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41704)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41708)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41710)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41716)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41718)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41720)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41694)
+INFO pp - Task 232 started
+INFO pp - Task 233 started
+INFO pp - Task 234 started
+INFO pp - Task 235 started
+INFO pp - Task 236 started
+INFO pp - Task 237 started
+INFO pp - Task 238 started
+INFO pp - Task 239 started
+INFO pp - Task 240 started
+INFO pp - Task 241 started
+INFO pp - Task 242 started
+INFO pp - Task 243 started
+INFO pp - Task 244 started
+INFO pp - Task 245 started
+INFO pp - Task 246 started
+INFO pp - Task 247 started
+INFO pp - Task 248 started
+INFO pp - Task 249 started
+INFO pp - Task 250 started
+INFO pp - Task 251 started
+INFO pp - Task 252 started
+INFO pp - Task 253 started
+INFO pp - Task 254 started
+INFO pp - Task 255 started
+INFO pp - Task 256 started
+INFO pp - Task 257 started
+INFO pp - Task 258 started
+INFO pp - Task 259 started
+INFO pp - Task 260 started
+INFO pp - Task 261 started
+INFO pp - Task 262 started
+INFO pp - Task 263 started
+INFO pp - Task 264 started
+INFO pp - Task 265 started
+INFO pp - Task 266 started
+INFO pp - Task 267 started
+INFO pp - Task 268 started
+INFO pp - Task 269 started
+INFO pp - Task 270 started
+INFO pp - Task 271 started
+INFO pp - Task 272 started
+INFO pp - Task 273 started
+INFO pp - Task 274 started
+INFO pp - Task 275 started
+INFO pp - Task 276 started
+INFO pp - Task 277 started
+INFO pp - Task 278 started
+INFO pp - Task 279 started
+INFO pp - Task 280 started
+INFO pp - Task 281 started
+INFO pp - Task 282 started
+INFO pp - Task 283 started
+INFO pp - Task 284 started
+INFO pp - Task 285 started
+INFO pp - Task 286 started
+INFO pp - Task 287 started
+INFO pp - Task 288 started
+INFO pp - Task 289 started
+INFO pp - Task 290 started
+INFO pp - Task 291 started
+INFO pp - Task 292 started
+INFO pp - Task 293 started
+INFO pp - Task 294 started
+INFO pp - Task 295 started
+INFO pp - Task 296 started
+INFO pp - Task 297 started
+INFO pp - Task 298 started
+INFO pp - Task 299 started
+INFO pp - Task 300 started
+INFO pp - Task 301 started
+INFO pp - Task 302 started
+INFO pp - Task 303 started
+INFO pp - Task 304 started
+INFO pp - Task 305 started
+INFO pp - Task 306 started
+INFO pp - Task 307 started
+INFO pp - Task 308 started
+INFO pp - Task 309 started
+INFO pp - Task 310 started
+INFO pp - Task 311 started
+INFO pp - Task 312 started
+INFO pp - Task 313 started
+INFO pp - Task 314 started
+INFO pp - Task 315 started
+INFO pp - Task 316 started
+INFO pp - Task 317 started
+INFO pp - Task 318 started
+INFO pp - Task 319 started
+INFO pp - Task 320 started
+INFO pp - Task 321 started
+INFO pp - Task 322 started
+INFO pp - Task 323 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41684)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41910)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41912)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41914)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 41916)
+INFO lomap.algorithms.optimal_run - Collected results for S-bottleneck
+INFO lomap.algorithms.optimal_run - Path*
+INFO pp - Task 324 started
+INFO pp - Task 325 started
+INFO pp - Task 326 started
+INFO pp - Task 327 started
+INFO pp - Task 328 started
+INFO pp - Task 329 started
+INFO pp - Task 330 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41920)
+INFO pp - Task 331 started
+INFO pp - Task 332 started
+INFO pp - Task 333 started
+INFO pp - Task 334 started
+INFO pp - Task 335 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41930)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41944)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41942)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41950)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41952)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41954)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41958)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41960)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41962)
+INFO pp - Task 336 started
+INFO pp - Task 337 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41966)
+INFO pp - Task 338 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41970)
+INFO pp - Task 339 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41974)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41978)
+INFO pp - Task 340 started
+INFO pp - Task 341 started
+INFO pp - Task 342 started
+INFO pp - Task 343 started
+INFO pp - Task 344 started
+INFO pp - Task 345 started
+INFO pp - Task 346 started
+INFO pp - Task 347 started
+INFO pp - Task 348 started
+INFO pp - Task 349 started
+INFO pp - Task 350 started
+INFO pp - Task 351 started
+INFO pp - Task 352 started
+INFO pp - Task 353 started
+INFO pp - Task 354 started
+INFO pp - Task 355 started
+INFO pp - Task 356 started
+INFO pp - Task 357 started
+INFO pp - Task 358 started
+INFO pp - Task 359 started
+INFO pp - Task 360 started
+INFO pp - Task 361 started
+INFO pp - Task 362 started
+INFO pp - Task 363 started
+INFO pp - Task 364 started
+INFO pp - Task 365 started
+INFO pp - Task 366 started
+INFO pp - Task 367 started
+INFO pp - Task 368 started
+INFO pp - Task 369 started
+INFO pp - Task 370 started
+INFO pp - Task 371 started
+INFO pp - Task 372 started
+INFO pp - Task 373 started
+INFO pp - Task 374 started
+INFO pp - Task 375 started
+INFO pp - Task 376 started
+INFO pp - Task 377 started
+INFO pp - Task 378 started
+INFO pp - Task 379 started
+INFO pp - Task 380 started
+INFO pp - Task 381 started
+INFO pp - Task 382 started
+INFO pp - Task 383 started
+INFO pp - Task 384 started
+INFO pp - Task 385 started
+INFO pp - Task 386 started
+INFO pp - Task 387 started
+INFO pp - Task 388 started
+INFO pp - Task 389 started
+INFO pp - Task 390 started
+INFO pp - Task 391 started
+INFO pp - Task 392 started
+INFO pp - Task 393 started
+INFO pp - Task 394 started
+INFO pp - Task 395 started
+INFO pp - Task 396 started
+INFO pp - Task 397 started
+INFO pp - Task 398 started
+INFO pp - Task 399 started
+INFO pp - Task 400 started
+INFO pp - Task 401 started
+INFO pp - Task 402 started
+INFO pp - Task 403 started
+INFO pp - Task 404 started
+INFO pp - Task 405 started
+INFO pp - Task 406 started
+INFO pp - Task 407 started
+INFO pp - Task 408 started
+INFO pp - Task 409 started
+INFO pp - Task 410 started
+INFO pp - Task 411 started
+INFO pp - Task 412 started
+INFO pp - Task 413 started
+INFO pp - Task 414 started
+INFO pp - Task 415 started
+INFO pp - Task 416 started
+INFO pp - Task 417 started
+INFO pp - Task 418 started
+INFO pp - Task 419 started
+INFO pp - Task 420 started
+INFO pp - Task 421 started
+INFO pp - Task 422 started
+INFO pp - Task 423 started
+INFO pp - Task 424 started
+INFO pp - Task 425 started
+INFO pp - Task 426 started
+INFO pp - Task 427 started
+INFO pp - Task 428 started
+INFO pp - Task 429 started
+INFO pp - Task 430 started
+INFO pp - Task 431 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 41940)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 42168)
+INFO lomap.algorithms.optimal_run - Collected results for Path*
+INFO lomap.algorithms.optimal_run - Cost*: 24, Len*: 70, Cycle*: ((('g4', 'g3', '1'), u'accept_S2'), (('g4', 'g3', '1'), u'accept_S2'), (('g4', 'g3', '1'), u'accept_S2'))
+INFO lomap.algorithms.optimal_run - Extracting Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Robot-1             Robot-2             Robot-3             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - -------             -------             -------             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Prefix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   u2                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  ('u2', '10', 1)     12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   10                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   11                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   23                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  ('23', '24', 1)     ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   ('23', '24', 2)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   24                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   ('24', '25', 1)     23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  ('24', '25', 2)     9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   25                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   6                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   7                   ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  8                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   25                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   6                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Suffix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   6                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   7                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  8                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 1)     25                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  26                  22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g3                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g4', '28', 1)     ('g3', '26', 1)     23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  26                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('26', '27', 1)     10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     27                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  3                   ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   4                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   u1                  ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 1)       ('u1', '4', 1)      12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       4                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 3)       u1                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 4)       ('u1', '4', 1)      21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 5)       4                   ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   5                   22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   ('5', '6', 1)       ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  ('5', '6', 2)       23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u1', '4', 1)      ('5', '6', 3)       9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   6                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   7                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  8                   ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 1)     25                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  26                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g3                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('g4', '28', 1)     ('g3', '26', 1)     2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  26                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     27                  22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  3                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   4                   23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   u1                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 1)       ('u1', '4', 1)      10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       4                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 3)       u1                  ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 5)       4                   ('11', '12', 3)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   5                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   ('5', '6', 1)       1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  ('5', '6', 2)       2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u1', '4', 1)      ('5', '6', 3)       21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   6                   ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   7                   22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  8                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 1)     25                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('25', '26', 1)     9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  26                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g3                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  26                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     27                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  3                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  4                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   u1                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   ('u1', '4', 1)      ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 1)       4                   22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       5                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 3)       27                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 4)       3                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 5)       4                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   5                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   ('5', '6', 1)       ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  ('5', '6', 2)       ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   6                   12                  
+INFO __main__ - Cost: 24
+INFO __main__ - Prefix length: 18
+INFO __main__ - robot_1 run prefix: ['u1', '4', '5', '27', '3', '4', '5', '27', '3', '4', '5', '27', '3', '4', '5', '27', '3', '4']
+INFO __main__ - robot_1 control perfix: ['ufl', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f']
+INFO __main__ - robot_1 suffix cycle: ['4', '5', '27', '28', 'g4', '28', '21', '2', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '2', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4']
+INFO __main__ - robot_1 control suffix cycle: ['rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'go_back', 's', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'go_back', 's', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl']
+INFO __main__ - robot_2 run prefix: ['u2', '10', 'u2', '10', '11', '23', '24', '25', '6', '7', '8', '25', '6']
+INFO __main__ - robot_2 control perfix: ['ufl', 'f', 'ufl', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'rfr', 'f']
+INFO __main__ - robot_2 suffix cycle: ['6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '27', '3', '4', '5', '6']
+INFO __main__ - robot_2 control suffix cycle: ['f', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'f', 'ufl', 'f', 'ufl', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'f', 'ufl', 'f', 'ufl', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'f', 'ufl', 'rf', 'rfr', 'fr', 'f', 'rf', 'f']
+INFO __main__ - robot_3 run prefix: ['11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12']
+INFO __main__ - robot_3 control perfix: ['f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f']
+INFO __main__ - robot_3 suffix cycle: ['12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12']
+INFO __main__ - robot_3 control suffix cycle: ['f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f']
+INFO lomap.classes.timer - IJRR 2013 Case-Study 2 took 160759.075 ms.

@@ -2,9 +2,9 @@
 <launch>
 
     <arg name="robot_ip_1" default="10.0.126.11" />
-    <node pkg="rosaria" 
-          type="RosAria" 
-          name="amigobot_1" 
+    <node pkg="rosaria"
+          type="RosAria"
+          name="amigobot_1"
           args="_port:=$(arg robot_ip_1):8101"
           output="screen">
         <param name="DriftFactor" value="0"/>
@@ -23,7 +23,18 @@
         <param name="RevCount"    value="11548"/>
     </node>
 
-    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main.py" output="screen">
+    <arg name="robot_ip_3" default="10.0.126.32" />
+    <node pkg="rosaria"
+          type="RosAria"
+          name="amigobot_3"
+          args="_port:=$(arg robot_ip_3):8101"
+          output="screen">
+        <param name="DriftFactor" value="0"/>
+        <param name="TicksMM"     value="123"/>
+        <param name="RevCount"    value="11548"/>
+    </node>
+
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories.py" output="screen">
     </node>
 
 </launch>
