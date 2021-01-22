@@ -54,30 +54,30 @@ def main():
 
     for i in range(0, prefixes[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(prefixes[0][i])
-    for i in range(0, prefixes[1].__len__()):
-        bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
-    for i in range(0, prefixes[2].__len__()):
-        bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
+    #for i in range(0, prefixes[1].__len__()):
+    #    bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
+    #for i in range(0, prefixes[2].__len__()):
+    #    bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
 
     for i in range(1, suffix_cycles[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
-    for i in range(1, suffix_cycles[1].__len__()):
-        bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
-    for i in range(0, suffix_cycles[2].__len__()):                      # range(0, ...)
-        bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
+    #for i in range(1, suffix_cycles[1].__len__()):
+    #    bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
+    #for i in range(0, suffix_cycles[2].__len__()):                      # range(0, ...)
+    #    bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
     while not rospy.is_shutdown():
         if bot_1.is_all_done == True:
             for i in range(1, suffix_cycles[0].__len__()):
                 bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
 
-        if bot_2.is_all_done == True:
-            for i in range(1, suffix_cycles[1].__len__()):
-                bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
+        #if bot_2.is_all_done == True:
+        #    for i in range(1, suffix_cycles[1].__len__()):
+        #        bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
 
-        if bot_3.is_all_done == True:
-            for i in range(0, suffix_cycles[2].__len__()):
-                bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
+        #if bot_3.is_all_done == True:
+        #    for i in range(0, suffix_cycles[2].__len__()):
+        #        bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
         rate.sleep()
 
