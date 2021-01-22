@@ -13,7 +13,7 @@ class amigobot(object):
         self.name = name
 
         self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
-        self.pose_sub  = rospy.Subscriber('/' + self.name + '/pose', Odometry, self.odom_cb)
+        self.pose_sub  = rospy.Subscriber('/' + self.name + '/odom', Odometry, self.odom_cb)        # '/' + self.name + '/pose'
 
         self.vx = 0
         self.wz = 0
@@ -177,7 +177,7 @@ class amigobot_xyControl(amigobot):
                 self.y_tgt_last = self.y_tgt
                 [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
 
-                if self.x_tgt_last == self.x_tgt and self.y_tgt_last == self.y_tgt:
+                if self.x_tgt_last == self.x_tgt and self.y_tgt_last == self.y_tgt and self.route_list.__len__() != 0:
                     self.current_motion = 'wait'
                     self.is_wait_completed = False
                     self.wait_index = 0
