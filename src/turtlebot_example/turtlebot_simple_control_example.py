@@ -178,7 +178,7 @@ class amigobot_xyControl(amigobot):
                 self.y_tgt_last = self.y_tgt
                 [self.x_tgt, self.y_tgt] = self.route_list.pop(0)
 
-                if self.x_tgt_last == self.x_tgt and self.y_tgt_last == self.y_tgt:
+                if self.x_tgt_last == self.x_tgt and self.y_tgt_last == self.y_tgt and self.route_list.__len__() != 0:
                     self.current_motion = 'wait'
                     self.is_wait_completed = False
                     self.wait_index = 0
@@ -317,7 +317,8 @@ def main():
     rospy.init_node('motion_primitive_test', anonymous=False)
 
     bot_1 = amigobot_xyControl(name='amigobot_1')
-    #bot_2 = amigobot_xyControl(name='amigobot_2')
+    bot_2 = amigobot_xyControl(name='amigobot_2')
+    bot_3 = amigobot_xyControl(name='amigobot_3')
     rate = rospy.Rate(25)	# 5Hz
 
     rospy.sleep(3)
@@ -327,9 +328,18 @@ def main():
     bot_1.add_waypoint(1, 0)
     bot_1.add_waypoint(0, 0)
 
+    bot_2.add_waypoint(2, 0)
+    bot_2.add_waypoint(2, 2)
+    bot_2.add_waypoint(0, 2)
+    bot_2.add_waypoint(0, 0)
+
+    bot_3.add_waypoint(-5, 5)
+
+
     while not rospy.is_shutdown():
         if bot_1.is_all_done == True:
             bot_1.add_waypoint(1, 1)
+
 
         rate.sleep()
 
