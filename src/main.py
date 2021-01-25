@@ -136,7 +136,7 @@ class turtlebot(object):
                     u_yaw = -self.u_yaw_max
 
                 #
-                self.update_target_vel(u_dist, u_yaw * pi / 180 * 0.025)
+                self.update_target_vel(u_dist, u_yaw * pi / 180 * 0.066)
                 #self.update_target_vel(u_dist, 0)
 
 
@@ -175,7 +175,10 @@ def main():
 
     bot_1 = turtlebot(name='amigobot_1', model=None)
     
-    bot_1.add_waypoint(-3, 0)
+    bot_1.add_waypoint(-3,  0)
+    bot_1.add_waypoint(-3, -3)
+    bot_1.add_waypoint( 0, -3)
+    bot_1.add_waypoint( 0,  0)
 
     while not rospy.is_shutdown():
         rate.sleep()
