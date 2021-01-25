@@ -10,7 +10,7 @@ import numpy as np
 
 global ros_rate
 global time_to_wait
-ros_rate = 50
+odom_cb_rate = 30       # read from gazebo, in hz
 time_to_wait = 4        # seconds
 
 class turtlebot(object):
@@ -104,9 +104,9 @@ class turtlebot(object):
                     self.is_wait = True
 
             # waiting
-            elif self.is_wait == True and self.wait_index <= ros_rate * time_to_wait:
+            elif self.is_wait == True and self.wait_index <= odom_cb_rate * time_to_wait:
                 self.wait_index += 1
-                if self.wait_index >= ros_rate * time_to_wait:
+                if self.wait_index >= odom_cb_rate * time_to_wait:
                     self.wait_index = 0
                     self.is_wait = False
 
@@ -197,7 +197,7 @@ class turtlebot(object):
 def main():
     rospy.init_node('ijrr2013_ca_improv', anonymous=False)
 
-    rate = rospy.Rate(ros_rate)	# 5Hz
+    rate = rospy.Rate(50)	# 50Hz
 
     rospy.sleep(5)
 
