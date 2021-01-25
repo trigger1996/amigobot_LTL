@@ -32,10 +32,10 @@ class turtlebot(object):
 
         # v-w controller target
         self.yaw_setpoint = 0
-        self.dist_setpoint = 0
+        #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 2          # deg, ref: 5
-        self.dist_setpt_threshold = 0.05
+        self.yaw_setpt_threshold  = 0.5          # deg, ref: 5
+        self.dist_setpt_threshold = 0.15
 
         # yaw PI controller
         self.yaw_kp = 2.25
@@ -44,6 +44,14 @@ class turtlebot(object):
         self.yaw_inc_max = 0.15
         self.u_yaw_max = 180         # deg/s
 
+        # dist PI controller
+        self.dist_kp = 0.3
+        self.dist_ki = 0.15
+        self.dist_increment  = 0
+        self.dist_inc_max = 0.15
+        self.u_dist_max = 0.25        # m/s, maximum speed with no slide in startup: 0.3 (about)
+
+        self.is_steer_completed = False
 
 
     def odom_cb(self, data):
@@ -60,9 +68,10 @@ class turtlebot(object):
 
     def motion_control(self):
         # first check if arrived next waypoint
-        if self.is_vertex_arrived(self.target_x, self.target_y):
+        if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold):
             # send a break
-            self.update_target_vel(0, 0)            
+            self.update_target_vel(0, 0)
+            self.is_steer_completed = False
 
             # no next points
             if self.waypt.__len__() == 0:
@@ -73,16 +82,20 @@ class turtlebot(object):
                 # if waypoint is the same, wait
 
                 self.yaw_setpoint  = atan2(self.target_y - self.y, self.target_x - self.x) * 180 / pi
-                self.dist_setpoint = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)
+                #self.dist_setpoint = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)
         else:
-            if fabs(self.yaw_setpoint - self.yaw) >= self.yaw_setpt_threshold:
-                # PI control w saturation
-                yaw_err = self.yaw_setpoint - self.yaw
-                while yaw_err >= 180.:
-                    yaw_err -= 360.
-                while yaw_err < -180.:
-                    yaw_err += 360.
-                
+
+            # calculate errors
+            yaw_err = atan2(self.target_y - self.y, self.target_x - self.x) * 180 / pi - self.yaw
+            dist_err = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)            
+            while yaw_err >= 180.:
+                yaw_err -= 360.
+            while yaw_err < -180.:
+                yaw_err += 360.
+
+            # turn first
+            if fabs(yaw_err) >= self.yaw_setpt_threshold and self.is_steer_completed == False:
+                # PI control w saturation               
                 self.yaw_increment += yaw_err
                 if self.yaw_increment > self.yaw_inc_max:
                     self.yaw_increment = self.yaw_inc_max
@@ -95,15 +108,36 @@ class turtlebot(object):
                 elif u_yaw < -self.u_yaw_max:
                     u_yaw = -self.u_yaw_max
 
+                if fabs(yaw_err) <= self.yaw_setpt_threshold + 0.1:         # for easy to stop steering
+                    self.is_steer_completed = True
+
                 self.update_target_vel(0, u_yaw * pi / 180)
 
-                print(self.yaw_kp * yaw_err, yaw_err, u_yaw)
-                print(fabs(self.yaw_setpoint - self.yaw))
-
             else:
-                # for testing, send a break
-                self.update_target_vel(0, 0)      
+                # PI control w saturation
+                # dist
+                self.dist_increment += dist_err
+                if self.dist_increment > self.dist_inc_max:
+                    self.dist_increment = self.dist_inc_max
+                elif self.dist_increment < -self.dist_inc_max:
+                    self.dist_increment = -self.dist_inc_max
 
+                u_dist = self.dist_kp * dist_err + self.dist_ki * self.dist_increment
+                if u_dist > self.u_dist_max:
+                    u_dist = self.u_dist_max
+                elif u_dist < -self.u_dist_max:
+                    u_dist = -self.u_dist_max
+
+                # yaw P controller
+                u_yaw = self.yaw_kp * yaw_err
+                if u_yaw > self.u_yaw_max:
+                    u_yaw = self.u_yaw_max
+                elif u_yaw < -self.u_yaw_max:
+                    u_yaw = -self.u_yaw_max
+
+                #
+                self.update_target_vel(u_dist, u_yaw * pi / 180 * 0.025)
+                #self.update_target_vel(u_dist, 0)
 
 
     def update_target_vel(self, v, w):
