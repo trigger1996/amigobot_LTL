@@ -8,6 +8,11 @@ from math import radians, copysign, sqrt, pow, pi, atan2, fabs
 from tf.transformations import euler_from_quaternion
 import numpy as np
 
+global ros_rate
+global time_to_wait
+ros_rate = 50
+time_to_wait = 4        # seconds
+
 class turtlebot(object):
     def __init__(self, name, model, x = 0, y = 0, yaw = 0):
         self.name = name
@@ -26,6 +31,9 @@ class turtlebot(object):
         self.target_x = self.x      # current target
         self.target_y = self.y
         self.target_yaw = self.yaw
+        self.target_x_last = None
+        self.target_y_last = None
+        self.target_yaw_last = None
         self.waypt = []             # next target list [[x, y, yaw]]
 
         self.is_all_done = False
@@ -52,6 +60,8 @@ class turtlebot(object):
         self.u_dist_max = 0.25        # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
+        self.is_wait = False          # symbol for waiting
+        self.wait_index = 0
 
 
     def odom_cb(self, data):
@@ -76,13 +86,31 @@ class turtlebot(object):
             # no next points
             if self.waypt.__len__() == 0:
                 self.is_all_done = True
-            else:
-                [self.target_x, self.target_y, self.target_yaw] = self.waypt.pop(0)
+            
+            # next point exists
+            elif self.is_wait == False:
+                self.target_x_last   = self.target_x
+                self.target_y_last   = self.target_y
+                self.target_yaw_last = self.target_yaw
 
-                # if waypoint is the same, wait
+                [self.target_x, self.target_y, self.target_yaw] = self.waypt.pop(0)
 
                 self.yaw_setpoint  = atan2(self.target_y - self.y, self.target_x - self.x) * 180 / pi
                 #self.dist_setpoint = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)
+
+                # if waypoint is the same, wait
+                if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:
+                    self.wait_index = 0
+                    self.is_wait = True
+
+            # waiting
+            elif self.is_wait == True and self.wait_index <= ros_rate * time_to_wait:
+                self.wait_index += 1
+                if self.wait_index >= ros_rate * time_to_wait:
+                    self.wait_index = 0
+                    self.is_wait = False
+
+        #
         else:
 
             # calculate errors
@@ -169,14 +197,16 @@ class turtlebot(object):
 def main():
     rospy.init_node('ijrr2013_ca_improv', anonymous=False)
 
-    rate = rospy.Rate(50)	# 5Hz
+    rate = rospy.Rate(ros_rate)	# 5Hz
 
     rospy.sleep(5)
 
     bot_1 = turtlebot(name='amigobot_1', model=None)
     
+    bot_1.add_waypoint( 0,  0)    
     bot_1.add_waypoint(-3,  0)
     bot_1.add_waypoint(-3, -3)
+    bot_1.add_waypoint(-3, -3)    
     bot_1.add_waypoint( 0, -3)
     bot_1.add_waypoint( 0,  0)
 
