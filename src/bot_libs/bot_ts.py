@@ -30,20 +30,32 @@ class turtlebot_TS(turtlebot, Ts):
         self.multi    = ts_raw.multi
 
         # import data from map
-        self.waypoint = dict()
-        self.yaw_init_tab = dict()
+        self.waypoint_dict = dict()
+        self.yaw_init_tab  = dict()
         self.load_from_map(map_file)
+
+        # override waypoint varibles
+        if x == None or y == None:
+            self.x = self.waypoint_dict[list(self.init)[0]][0]
+            self.y = self.waypoint_dict[list(self.init)[0]][1]
+            self.target_x = self.x      # current target
+            self.target_y = self.y
+            self.target_yaw = self.yaw
+            self.target_x_last = None
+            self.target_y_last = None
+            self.target_yaw_last = None
+            self.waypt = []             # next target list [[x, y, yaw]]
 
     def load_from_map(self, map_file):
         f = io.open(map_file, 'r', encoding='utf8')
         data = load(f, Loader=Loader)
 
-        self.waypoint = data['waypoint']
-        self.yaw_init_tab = data['initial_yaw']
+        self.waypoint_dict = data['waypoint']
+        self.yaw_init_tab  = data['initial_yaw']
 
     def add_waypoint_from_waypt_list(self, waypt_name):
-        x   = self.waypoint[waypt_name][0]
-        y   = self.waypoint[waypt_name][1]
+        x = self.waypoint_dict[waypt_name][0]
+        y = self.waypoint_dict[waypt_name][1]
 
         print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ")")
         self.add_waypoint(x, y)

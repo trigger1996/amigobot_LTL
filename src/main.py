@@ -5,6 +5,7 @@ import sys
 sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
 
 import rospy
+import bot_libs.bot as bot
 import bot_libs.bot_ts as bot_ts
 
 def main():
@@ -16,18 +17,10 @@ def main():
 
     bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_1.yaml',
                                                                map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml')
-    
-    '''
-    bot_1.add_waypoint( 0,  0)    
-    bot_1.add_waypoint(-3,  0)
-    bot_1.add_waypoint(-3, -3)
-    bot_1.add_waypoint(-3, -3)    
-    bot_1.add_waypoint( 0, -3)
-    bot_1.add_waypoint( 0,  0)
-    '''
-    bot_1.add_waypoint_from_waypt_list('u1')
-    bot_1.add_waypoint_from_waypt_list('u1')
+
     bot_1.add_waypoint_from_waypt_list('4')
+    bot_1.add_waypoint_from_waypt_list('4')
+    bot_1.add_waypoint_from_waypt_list('5')
     bot_1.add_waypoint_from_waypt_list('27')  
 
     while not rospy.is_shutdown():
