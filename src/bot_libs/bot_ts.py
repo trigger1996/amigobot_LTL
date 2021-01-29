@@ -40,7 +40,7 @@ class turtlebot_TS(turtlebot, Ts):
             self.y = self.waypoint_dict[list(self.init)[0]][1]
             self.target_x = self.x      # current target
             self.target_y = self.y
-            self.target_yaw = self.yaw
+            self.target_yaw = None
             self.target_x_last = None
             self.target_y_last = None
             self.target_yaw_last = None
@@ -56,6 +56,7 @@ class turtlebot_TS(turtlebot, Ts):
     def add_waypoint_from_waypt_list(self, waypt_name):
         x = self.waypoint_dict[waypt_name][0]
         y = self.waypoint_dict[waypt_name][1]
+        yaw = self.yaw_init_tab[waypt_name]
 
         print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ")")
-        self.add_waypoint(x, y)
+        self.add_waypoint(x, y, yaw)

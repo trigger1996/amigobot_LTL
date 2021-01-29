@@ -8,12 +8,12 @@
     <arg name="first_tb3_x_pos" default=" 0.0"/>
     <arg name="first_tb3_y_pos" default=" 3.2"/>
     <arg name="first_tb3_z_pos" default=" 0.0"/>
-    <arg name="first_tb3_yaw"   default="-1.57"/>
+    <arg name="first_tb3_yaw"   default=" 1.57"/>
 
     <arg name="second_tb3_x_pos" default=" 2.0"/>
     <arg name="second_tb3_y_pos" default=" 0.0"/>
     <arg name="second_tb3_z_pos" default=" 0.0"/>
-    <arg name="second_tb3_yaw"   default=" 1.57"/>
+    <arg name="second_tb3_yaw"   default="-1.57"/>
 
     <arg name="third_tb3_x_pos" default=" 1.6"/>
     <arg name="third_tb3_y_pos" default=" 0.4"/>
@@ -62,7 +62,7 @@
       <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg third_tb3) -x $(arg third_tb3_x_pos) -y $(arg third_tb3_y_pos) -z $(arg third_tb3_z_pos) -Y $(arg third_tb3_yaw) -param robot_description" />
     </group>
 
-    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main.py" output="screen">
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtainet_trajectories.py" output="screen">
     </node>
 
     <node pkg="rviz" name="rviz" type="rviz" output="screen">

@@ -22,3 +22,9 @@ roscore
 rosrun rosaria RosAria _port:=10.0.126.32:8101
 
 rostopic pub -r 5 /RosAria/cmd_vel geometry_msgs/Twist '[0.1, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+
+__________________
+#关于turtlebot_gazebo
+很有意思
+车辆在roslaunch文件内的位置会映射到odom的初始位置，改变roslaunch，会改变odom的初始位置
+但是改变roslaunch文件内的角度不会改变车辆odom的初始角度，怎么转roslaunch内的yaw，车开始都会认为自身角度为0

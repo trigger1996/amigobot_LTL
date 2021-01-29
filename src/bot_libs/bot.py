@@ -30,7 +30,7 @@ class turtlebot(object):
         # waypoint varibles
         self.target_x = self.x      # current target
         self.target_y = self.y
-        self.target_yaw = self.yaw
+        self.target_yaw = None
         self.target_x_last = None
         self.target_y_last = None
         self.target_yaw_last = None
@@ -63,7 +63,6 @@ class turtlebot(object):
         self.is_wait = False          # symbol for waiting
         self.wait_index = 0
 
-
     def odom_cb(self, data):
         # about 10Hz
         (roll, pitch, yaw) = euler_from_quaternion([data.pose.pose.orientation.x, 
@@ -77,8 +76,10 @@ class turtlebot(object):
         self.motion_control()
 
     def motion_control(self):
+
         # first check if arrived next waypoint
-        if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold):
+        if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
+           (self.target_yaw == None or fabs(self.target_yaw - self.yaw) <=self.yaw_setpt_threshold):
             # send a break
             self.update_target_vel(0, 0)
             self.is_steer_completed = False
@@ -109,6 +110,34 @@ class turtlebot(object):
                 if self.wait_index >= odom_cb_rate * time_to_wait:
                     self.wait_index = 0
                     self.is_wait = False
+
+        # target arrived but not turn to corresponding heading
+        elif self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
+             self.target_yaw != None and fabs(self.target_yaw - self.yaw) >= self.yaw_setpt_threshold:
+
+            yaw_err = self.target_yaw - self.yaw
+            while yaw_err >= 180.:
+                yaw_err -= 360.
+            while yaw_err < -180.:
+                yaw_err += 360.
+
+            # PI control w saturation               
+            self.yaw_increment += yaw_err
+            if self.yaw_increment > self.yaw_inc_max:
+                self.yaw_increment = self.yaw_inc_max
+            elif self.yaw_increment < -self.yaw_inc_max:
+                self.yaw_increment = -self.yaw_inc_max
+
+            u_yaw = self.yaw_kp * yaw_err + self.yaw_ki * self.yaw_increment
+            if u_yaw > self.u_yaw_max:
+                u_yaw = self.u_yaw_max
+            elif u_yaw < -self.u_yaw_max:
+                u_yaw = -self.u_yaw_max
+
+            if fabs(yaw_err) <= self.yaw_setpt_threshold + 0.1:         # for easy to stop steering
+                self.is_steer_completed = True
+
+            self.update_target_vel(0, u_yaw * pi / 180)
 
         #
         else:
@@ -184,12 +213,8 @@ class turtlebot(object):
         else:
             return False
 
-    def add_waypoint(self, x, y, yaw = 0):
-        self.waypt.append([x, y, yaw])
-        self.is_all_done = False
+    def add_waypoint(self, x, y, yaw = None):
+            self.waypt.append([x, y, yaw])
+            self.is_all_done = False
 
-        # if there is no waypoint for the current target, add it
-        if self.waypt.__len__() == 0:
-            [self.target_x, self.target_y, self.target_yaw] = self.waypt.pop(0)
-            self.yaw_setpoint  = atan2(self.target_y - self.y, self.target_x - self.x)
-            self.dist_setpoint = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)        
+
