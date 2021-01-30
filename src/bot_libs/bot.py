@@ -77,9 +77,19 @@ class turtlebot(object):
 
     def motion_control(self):
 
+        # obtain yaw error for final turn first
+        yaw_err_final = None                                  # for desired yaw after arriving
+        if self.target_yaw != None:
+            yaw_err_final = self.target_yaw - self.yaw
+            while yaw_err_final >= 180.:
+                yaw_err_final -= 360.
+            while yaw_err_final < -180.:
+                yaw_err_final += 360.
+
         # first check if arrived next waypoint
         if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
-           (self.target_yaw == None or fabs(self.target_yaw - self.yaw) <=self.yaw_setpt_threshold):
+           (self.target_yaw == None or fabs(yaw_err_final) <=self.yaw_setpt_threshold):
+
             # send a break
             self.update_target_vel(0, 0)
             self.is_steer_completed = False
@@ -113,9 +123,9 @@ class turtlebot(object):
 
         # target arrived but not turn to corresponding heading
         elif self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
-             self.target_yaw != None and fabs(self.target_yaw - self.yaw) >= self.yaw_setpt_threshold:
+             self.target_yaw != None and fabs(yaw_err_final) >= self.yaw_setpt_threshold:
 
-            yaw_err = self.target_yaw - self.yaw
+            yaw_err = self.target_yaw - self.yaw        # yaw_err_final
             while yaw_err >= 180.:
                 yaw_err -= 360.
             while yaw_err < -180.:
@@ -171,6 +181,7 @@ class turtlebot(object):
                 self.update_target_vel(0, u_yaw * pi / 180)
 
             else:
+
                 # PI control w saturation
                 # dist
                 self.dist_increment += dist_err
