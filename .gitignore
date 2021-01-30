@@ -1,0 +1,4 @@
+*.pyc
+.pyc
+src/*.pyc
+src/bot_libs/*.pyc
