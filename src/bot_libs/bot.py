@@ -56,7 +56,7 @@ class turtlebot(object):
         self.dist_kp = 0.3
         self.dist_ki = 0.15
         self.dist_increment  = 0
-        self.dist_inc_max = 0.15
+        self.dist_inc_max = 0.2
         self.u_dist_max = 0.25        # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
