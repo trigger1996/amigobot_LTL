@@ -69,8 +69,20 @@ class turtlebot_TS(turtlebot, Ts):
         self.add_waypoint(x, y, yaw)
 
     def find_motion_target_yaw(self, src, dst):
+
         for index in self.final_yaw_tab:
+            # find the corresponding final yaw for each motion
             if src == index[0]:
                 if dst == index[1]:
                     return index[2]['yaw']
+
+        # must ensure ALL possibilities do not exist, so there should 2 for-loop
+        for index in self.final_yaw_tab:
+            # else if the motion is go-back, vehicle should make the same turn
+            # wired but useful, if route is 2 --> 1 --> 12, when arrving 1, the yaw is 90 not -180, depending on 2 rather than 1, but this rule is easy and useful, if depend on 1, it will harder to determind how to reach 1 (if route is 5 --> 4 --> 3, 4 can be arrived from both u1 and 5)
+            if src == index[1]:
+                if dst == index[0]:
+                    return index[2]['yaw']      
+                    
+        # if motion does not found, do not restrict the final yaw
         return None
