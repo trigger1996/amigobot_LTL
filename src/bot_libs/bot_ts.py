@@ -31,8 +31,12 @@ class turtlebot_TS(turtlebot, Ts):
 
         # import data from map
         self.waypoint_dict = dict()
-        self.yaw_init_tab  = dict()
+        self.final_yaw_tab = dict()
         self.load_from_map(map_file)
+
+        #
+        self.last_target_waypt = None
+        self.next_target_waypt = list(self.init)[0]
 
         # override waypoint varibles
         if x == None or y == None:
@@ -51,12 +55,22 @@ class turtlebot_TS(turtlebot, Ts):
         data = load(f, Loader=Loader)
 
         self.waypoint_dict = data['waypoint']
-        self.yaw_init_tab  = data['initial_yaw']
+        self.final_yaw_tab  = data['initial_yaw']
 
     def add_waypoint_from_waypt_list(self, waypt_name):
+        self.last_target_waypt = self.next_target_waypt
+        self.next_target_waypt = waypt_name
+
         x = self.waypoint_dict[waypt_name][0]
         y = self.waypoint_dict[waypt_name][1]
-        yaw = self.yaw_init_tab[waypt_name]
+        yaw = self.find_motion_target_yaw(self.last_target_waypt, self.next_target_waypt)
 
-        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ")")
+        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ", " + str(yaw) + ")")
         self.add_waypoint(x, y, yaw)
+
+    def find_motion_target_yaw(self, src, dst):
+        for index in self.final_yaw_tab:
+            if src == index[0]:
+                if dst == index[1]:
+                    return index[2]['yaw']
+        return None

@@ -6,6 +6,7 @@ from nav_msgs.msg import Odometry
 import tf
 from math import radians, copysign, sqrt, pow, pi, atan2, fabs
 from tf.transformations import euler_from_quaternion
+from tf import TransformBroadcaster
 import numpy as np
 
 global ros_rate
@@ -19,6 +20,8 @@ class turtlebot(object):
 
         self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
         self.pose_sub  = rospy.Subscriber('/' + self.name + '/odom', Odometry, self.odom_cb)
+
+        self.tf_basefootprint_odom = TransformBroadcaster()        
 
         self.x = x
         self.y = y
@@ -42,8 +45,8 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.5          # deg, ref: 5
-        self.dist_setpt_threshold = 0.15
+        self.yaw_setpt_threshold  = 0.25          # deg, ref: 5
+        self.dist_setpt_threshold = 0.125
 
         # yaw PI controller
         self.yaw_kp = 2.25
@@ -74,6 +77,7 @@ class turtlebot(object):
         self.y   = data.pose.pose.position.y
 
         self.motion_control()
+        self.publish_tf_4_rviz()
 
     def motion_control(self):
 
@@ -216,6 +220,14 @@ class turtlebot(object):
         move_cmd.linear.x = self.vx
         move_cmd.angular.z =self.wz
         self.twist_pub.publish(move_cmd)
+
+    def publish_tf_4_rviz(self):
+        self.tf_basefootprint_odom.sendTransform((self.x, self.y, 0),
+                                           tf.transformations.quaternion_from_euler(0, 0, self.yaw * pi / 180.),
+                                           rospy.Time.now(),
+                                           self.name + "/base_link",
+                                           "map")
+        
 
     def is_vertex_arrived(self, x, y, threshold = 0.05):
         dist = sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
