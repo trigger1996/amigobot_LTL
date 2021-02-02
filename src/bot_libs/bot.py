@@ -45,8 +45,8 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.25          # deg, ref: 5
-        self.dist_setpt_threshold = 0.15
+        self.yaw_setpt_threshold  = 0.05          # deg, ref: 5
+        self.dist_setpt_threshold = 0.1
 
         # yaw PI controller
         self.yaw_kp = 2.25
@@ -100,10 +100,16 @@ class turtlebot(object):
 
             # no next points
             if self.waypt.__len__() == 0:
+
+                #print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' finished!: (' + str(self.x) + ', ' + str(self.y) + ')')
+                
                 self.is_all_done = True
             
             # next point exists
             elif self.is_wait == False:
+
+                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ')')
+
                 self.target_x_last   = self.target_x
                 self.target_y_last   = self.target_y
                 self.target_yaw_last = self.target_yaw
@@ -115,6 +121,9 @@ class turtlebot(object):
 
                 # if waypoint is the same, wait
                 if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:
+                    
+                    print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' waiting: (' + str(self.x) + ', ' + str(self.y) + ')')
+
                     self.wait_index = 0
                     self.is_wait = True
 
