@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
         - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.5
@@ -51,7 +52,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 26
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz/TF
@@ -75,21 +76,7 @@ Visualization Manager:
           Value: false
         amigobot_1/wheel_right_link:
           Value: false
-        amigobot_2/base_footprint:
-          Value: false
-        amigobot_2/base_link:
-          Value: true
-        amigobot_2/base_scan:
-          Value: false
-        amigobot_2/caster_back_link:
-          Value: false
-        amigobot_2/imu_link:
-          Value: false
         amigobot_2/odom:
-          Value: false
-        amigobot_2/wheel_left_link:
-          Value: false
-        amigobot_2/wheel_right_link:
           Value: false
         amigobot_3/odom:
           Value: false
@@ -116,18 +103,7 @@ Visualization Manager:
                 amigobot_1/wheel_right_link:
                   {}
           amigobot_2/odom:
-            amigobot_2/base_footprint:
-              amigobot_2/base_link:
-                amigobot_2/base_scan:
-                  {}
-                amigobot_2/caster_back_link:
-                  {}
-                amigobot_2/imu_link:
-                  {}
-                amigobot_2/wheel_left_link:
-                  {}
-                amigobot_2/wheel_right_link:
-                  {}
+            {}
           amigobot_3/odom:
             {}
       Update Interval: 0
@@ -160,25 +136,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.434266090393066
+      Distance: 12.021410942077637
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.0113070011138916
-        Y: 1.126021146774292
-        Z: 0.286399781703949
+        X: 3.6679434776306152
+        Y: 2.502419948577881
+        Z: -1.0943859815597534
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7653979063034058
+      Pitch: 0.6453980207443237
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.368581771850586
+      Yaw: 5.533584117889404
     Saved: ~
 Window Geometry:
   Displays:
@@ -196,5 +172,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1389
-  X: -363
-  Y: 31
+  X: 67
+  Y: 27
