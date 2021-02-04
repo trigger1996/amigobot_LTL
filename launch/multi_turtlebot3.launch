@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="model" default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
     <arg name="first_tb3"  default="amigobot_1"/>
     <arg name="second_tb3" default="amigobot_2"/>
     <arg name="third_tb3"  default="amigobot_3"/>

@@ -66,7 +66,15 @@ Visualization Manager:
           Value: true
         amigobot_1/base_scan:
           Value: false
-        amigobot_1/caster_back_link:
+        amigobot_1/camera_link:
+          Value: false
+        amigobot_1/camera_rgb_frame:
+          Value: false
+        amigobot_1/camera_rgb_optical_frame:
+          Value: false
+        amigobot_1/caster_back_left_link:
+          Value: false
+        amigobot_1/caster_back_right_link:
           Value: false
         amigobot_1/imu_link:
           Value: false
@@ -94,7 +102,13 @@ Visualization Manager:
               amigobot_1/base_link:
                 amigobot_1/base_scan:
                   {}
-                amigobot_1/caster_back_link:
+                amigobot_1/camera_link:
+                  amigobot_1/camera_rgb_frame:
+                    amigobot_1/camera_rgb_optical_frame:
+                      {}
+                amigobot_1/caster_back_left_link:
+                  {}
+                amigobot_1/caster_back_right_link:
                   {}
                 amigobot_1/imu_link:
                   {}
@@ -136,16 +150,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 32.67875671386719
+      Distance: 40.29265594482422
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 9.113496780395508
-        Y: 0.6367096304893494
-        Z: -5.142730712890625
+        X: 2.562690019607544
+        Y: -0.26848945021629333
+        Z: -3.977796792984009
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
