@@ -9,7 +9,7 @@ Panels:
         - /Grid1
         - /TF1
         - /TF1/Frames1
-      Splitter Ratio: 0.5
+      Splitter Ratio: 0.8294117450714111
     Tree Height: 462
   - Class: rviz/Selection
     Name: Selection
@@ -84,9 +84,53 @@ Visualization Manager:
           Value: false
         amigobot_1/wheel_right_link:
           Value: false
+        amigobot_2/base_footprint:
+          Value: false
+        amigobot_2/base_link:
+          Value: true
+        amigobot_2/base_scan:
+          Value: false
+        amigobot_2/camera_link:
+          Value: false
+        amigobot_2/camera_rgb_frame:
+          Value: false
+        amigobot_2/camera_rgb_optical_frame:
+          Value: false
+        amigobot_2/caster_back_left_link:
+          Value: false
+        amigobot_2/caster_back_right_link:
+          Value: false
+        amigobot_2/imu_link:
+          Value: false
         amigobot_2/odom:
           Value: false
+        amigobot_2/wheel_left_link:
+          Value: false
+        amigobot_2/wheel_right_link:
+          Value: false
+        amigobot_3/base_footprint:
+          Value: false
+        amigobot_3/base_link:
+          Value: true
+        amigobot_3/base_scan:
+          Value: false
+        amigobot_3/camera_link:
+          Value: false
+        amigobot_3/camera_rgb_frame:
+          Value: false
+        amigobot_3/camera_rgb_optical_frame:
+          Value: false
+        amigobot_3/caster_back_left_link:
+          Value: false
+        amigobot_3/caster_back_right_link:
+          Value: false
+        amigobot_3/imu_link:
+          Value: false
         amigobot_3/odom:
+          Value: false
+        amigobot_3/wheel_left_link:
+          Value: false
+        amigobot_3/wheel_right_link:
           Value: false
         map:
           Value: true
@@ -117,9 +161,43 @@ Visualization Manager:
                 amigobot_1/wheel_right_link:
                   {}
           amigobot_2/odom:
-            {}
+            amigobot_2/base_footprint:
+              amigobot_2/base_link:
+                amigobot_2/base_scan:
+                  {}
+                amigobot_2/camera_link:
+                  amigobot_2/camera_rgb_frame:
+                    amigobot_2/camera_rgb_optical_frame:
+                      {}
+                amigobot_2/caster_back_left_link:
+                  {}
+                amigobot_2/caster_back_right_link:
+                  {}
+                amigobot_2/imu_link:
+                  {}
+                amigobot_2/wheel_left_link:
+                  {}
+                amigobot_2/wheel_right_link:
+                  {}
           amigobot_3/odom:
-            {}
+            amigobot_3/base_footprint:
+              amigobot_3/base_link:
+                amigobot_3/base_scan:
+                  {}
+                amigobot_3/camera_link:
+                  amigobot_3/camera_rgb_frame:
+                    amigobot_3/camera_rgb_optical_frame:
+                      {}
+                amigobot_3/caster_back_left_link:
+                  {}
+                amigobot_3/caster_back_right_link:
+                  {}
+                amigobot_3/imu_link:
+                  {}
+                amigobot_3/wheel_left_link:
+                  {}
+                amigobot_3/wheel_right_link:
+                  {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -150,7 +228,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 40.29265594482422
+      Distance: 44.35762023925781
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

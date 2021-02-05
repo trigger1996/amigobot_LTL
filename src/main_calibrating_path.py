@@ -23,7 +23,8 @@ def main():
     #bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_3.yaml',
     #                                                           map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml')
 
-    
+    '''
+    # outer loop
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('5')
@@ -42,8 +43,10 @@ def main():
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('u1')    
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
+    '''
     
     '''
+    # inner loop
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('5')
@@ -69,6 +72,26 @@ def main():
     bot_1.add_waypoint_from_waypt_list('u1')    
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
     '''
+
+    # etc
+    bot_1.add_waypoint_from_waypt_list('4')
+    bot_1.add_waypoint_from_waypt_list('4')
+    bot_1.add_waypoint_from_waypt_list('5')
+    bot_1.add_waypoint_from_waypt_list('27')
+    bot_1.add_waypoint_from_waypt_list('28')
+    bot_1.add_waypoint_from_waypt_list('21')
+    bot_1.add_waypoint_from_waypt_list('12')
+    bot_1.add_waypoint_from_waypt_list('11')    # cheating, inverted
+    bot_1.add_waypoint_from_waypt_list('23')
+    bot_1.add_waypoint_from_waypt_list('24')
+    bot_1.add_waypoint_from_waypt_list('25')
+    bot_1.add_waypoint_from_waypt_list('6')
+    bot_1.add_waypoint_from_waypt_list('5')
+    bot_1.add_waypoint_from_waypt_list('27')
+    bot_1.add_waypoint_from_waypt_list('3')    
+    bot_1.add_waypoint_from_waypt_list('4')
+    bot_1.add_waypoint_from_waypt_list('u1')    
+    bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
 
     while not rospy.is_shutdown():
         rate.sleep()
