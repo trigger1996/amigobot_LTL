@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="model" default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
     <arg name="first_tb3"  default="amigobot_1"/>
     <arg name="second_tb3" default="amigobot_2"/>
     <arg name="third_tb3"  default="amigobot_3"/>
 
     <arg name="first_tb3_x_pos" default=" 0.0"/>
-    <arg name="first_tb3_y_pos" default=" 3.2"/>
+    <arg name="first_tb3_y_pos" default=" 6.8"/>
     <arg name="first_tb3_z_pos" default=" 0.0"/>
-    <arg name="first_tb3_yaw"   default=" 1.57"/>
+    <arg name="first_tb3_yaw"   default="-1.57"/>
 
-    <arg name="second_tb3_x_pos" default=" 2.0"/>
-    <arg name="second_tb3_y_pos" default=" 0.0"/>
+    <arg name="second_tb3_x_pos" default=" 15.2"/>
+    <arg name="second_tb3_y_pos" default="-16.2"/>
     <arg name="second_tb3_z_pos" default=" 0.0"/>
-    <arg name="second_tb3_yaw"   default="-1.57"/>
+    <arg name="second_tb3_yaw"   default=" 1.57"/>
 
-    <arg name="third_tb3_x_pos" default=" 1.6"/>
-    <arg name="third_tb3_y_pos" default=" 0.4"/>
+    <arg name="third_tb3_x_pos" default="  12.0"/>
+    <arg name="third_tb3_y_pos" default=" -12.2"/>
     <arg name="third_tb3_z_pos" default=" 0.0"/>
     <arg name="third_tb3_yaw"   default=" 3.14"/>
 
@@ -65,7 +65,11 @@
     <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtainet_trajectories.py" output="screen">
     </node>
 
-    <node pkg="rviz" name="rviz" type="rviz" output="screen">
+    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ghost/catkin_ws_ros/src/amigobot_LTL/launch/rviz/multi_turtlebot3.rviz">
     </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster" args="0 0 0 0 0 0 /map /$(arg first_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg second_tb3)_map_odom_broadcaster" args="0 0 0 0 0 0 /map /$(arg second_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg third_tb3)_map_odom_broadcaster" args="0 0 0 0 0 0 /map /$(arg third_tb3)/odom 5" />    
 
 </launch>
