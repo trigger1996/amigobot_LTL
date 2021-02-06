@@ -43,7 +43,7 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.025         # deg, ref: 5
+        self.yaw_setpt_threshold  = 0.05         # deg, ref: 5
         self.dist_setpt_threshold = 0.1          # meter
 
         # yaw PI controller
