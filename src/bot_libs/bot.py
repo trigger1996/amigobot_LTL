@@ -10,7 +10,7 @@ from tf import TransformBroadcaster
 import numpy as np
 
 global ros_rate
-odom_cb_rate = 30       # read from gazebo, in hz
+odom_cb_rate = 120       # read from gazebo, in hz
 
 class turtlebot(object):
     def __init__(self, name='amigobot_1', model=None, x = 0, y = 0, yaw = 0, time_to_wait = 1):
@@ -43,8 +43,8 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.05          # deg, ref: 5
-        self.dist_setpt_threshold = 0.1
+        self.yaw_setpt_threshold  = 0.025         # deg, ref: 5
+        self.dist_setpt_threshold = 0.1          # meter
 
         # yaw PI controller
         self.yaw_kp = 2.25
