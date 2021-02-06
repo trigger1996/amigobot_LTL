@@ -8,6 +8,8 @@ import rospy
 import bot_libs.bot as bot
 import bot_libs.bot_ts as bot_ts
 
+global time_to_wait
+time_to_wait = 10        # seconds
 
 def main():
     rospy.init_node('ijrr2013_ca_improv', anonymous=False)
@@ -17,11 +19,14 @@ def main():
     rospy.sleep(8)
 
     bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_1.yaml',
-                                                               map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml')
-    #bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_2.yaml',
-    #                                                           map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml')
-    #bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_3.yaml',
-    #                                                           map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml')
+                                                               map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+                                                               time_to_wait = time_to_wait)
+    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_2.yaml',
+                                                               map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+                                                               time_to_wait = time_to_wait)
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', model=None, yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_3.yaml',
+                                                               map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+                                                               time_to_wait = time_to_wait)
 
     
     bot_1.add_waypoint_from_waypt_list('4')

@@ -15,9 +15,9 @@ from lomap import Model
 from lomap import Ts
 
 class turtlebot_TS(turtlebot, Ts):
-    def __init__(self, name='amigobot_1', model=None, x = None, y = None, yaw = None, yaml_file='robot.yaml', map_file='map.yaml'):
+    def __init__(self, name='amigobot_1', model=None, x = None, y = None, yaw = None, time_to_wait = 1, yaml_file='robot.yaml', map_file='map.yaml'):
         super(Ts, self).__init__()
-        super(turtlebot_TS, self).__init__(name)
+        super(turtlebot_TS, self).__init__(name, time_to_wait=time_to_wait)
 
         # import data from TS
         ts_raw = self.load(yaml_file)

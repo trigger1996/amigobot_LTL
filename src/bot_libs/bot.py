@@ -10,12 +10,10 @@ from tf import TransformBroadcaster
 import numpy as np
 
 global ros_rate
-global time_to_wait
 odom_cb_rate = 30       # read from gazebo, in hz
-time_to_wait = 4        # seconds
 
 class turtlebot(object):
-    def __init__(self, name='amigobot_1', model=None, x = 0, y = 0, yaw = 0):
+    def __init__(self, name='amigobot_1', model=None, x = 0, y = 0, yaw = 0, time_to_wait = 1):
         self.name = name
 
         self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
@@ -64,6 +62,8 @@ class turtlebot(object):
 
         self.is_steer_completed = False
         self.is_wait = False          # symbol for waiting
+
+        self.time_to_wait = time_to_wait
         self.wait_index = 0
 
     def odom_cb(self, data):
@@ -128,9 +128,9 @@ class turtlebot(object):
                     self.is_wait = True
 
             # waiting
-            elif self.is_wait == True and self.wait_index <= odom_cb_rate * time_to_wait:
+            elif self.is_wait == True and self.wait_index <= odom_cb_rate * self.time_to_wait:
                 self.wait_index += 1
-                if self.wait_index >= odom_cb_rate * time_to_wait:
+                if self.wait_index >= odom_cb_rate * self.time_to_wait:
                     self.wait_index = 0
                     self.is_wait = False
 
