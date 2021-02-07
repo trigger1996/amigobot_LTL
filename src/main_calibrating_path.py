@@ -24,9 +24,8 @@ def main():
 
     bot_1 = bot.turtlebot(x=0, y=6.8, name='amigobot_1', model=None)
 
-    bot_1.current_motion = 'forward'
-    bot_1.target_duration = 3
-    bot_1.is_all_done = True
+    bot_1.add_motion('forward', 3)
+    bot_1.add_motion('right_turn')
 
     while not rospy.is_shutdown():
         print('[', str(bot_1.timestamp_next),' ', str(bot_1.time_curr), ']', bot_1.yaw, ' ', -180 - bot_1.yaw)

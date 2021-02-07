@@ -30,27 +30,19 @@ class turtlebot(object):
 
         self.vx = 0
         self.wz = 0
-
-        # waypoint varibles
-        self.target_x = self.x      # current target
-        self.target_y = self.y
-        self.target_yaw = None
-        self.target_x_last = None
-        self.target_y_last = None
-        self.target_yaw_last = None
-        self.waypt = []             # next target list [[x, y, yaw]]
-
-        self.is_all_done = False
-
+        
         # timer varibles
         self.timestamp_last = 0     # timestamp for last motion compeletion
         self.timestamp_next = 0     # timestamp for next motion
         self.time_curr = 0          # current time
         self.init_time()
        
-        # wait varibles
+        # motion library varibles
         self.current_motion = 'standby'
         self.target_duration = 0.
+        self.next_motion_list = []  # [['motion', target_duration], ...]
+        self.is_target_set = False
+        self.is_all_done   = False
 
 
         # control lib varibles
@@ -86,45 +78,53 @@ class turtlebot(object):
 
         # if time ended, pop next motion out
 
-        if self.is_all_done == True:
-            self.timestamp_last = self.timestamp_next
+        if self.is_target_set == False:
 
+            # target arrived
+            if self.timestamp_next >= self.time_curr:
+                self.timestamp_last = self.timestamp_next
+
+                if self.next_motion_list.__len__() == 0:
+                    pass
+                else:
+                    [self.current_motion, self.target_duration] = self.next_motion_list.pop(0)
+            
             if self.current_motion == 'forward':
                 self.vx = self.motion_speed['forward'][0]
                 self.wz = self.motion_speed['forward'][1]            
                 self.timestamp_next = self.time_curr + self.target_duration
 
-                self.is_all_done = False
+                self.is_target_set = True
             elif self.current_motion == 'right_turn':
                 self.vx = self.motion_speed['right_turn'][0]
                 self.wz = self.motion_speed['right_turn'][1]            
                 self.timestamp_next = self.time_curr + self.motion_duration['right_turn']
 
-                self.is_all_done = False
+                self.is_target_set = True
             elif self.current_motion == 'left_turn':
                 self.vx = self.motion_speed['left_turn'][0]
                 self.wz = self.motion_speed['left_turn'][1]            
                 self.timestamp_next = self.time_curr + self.motion_duration['left_turn']
 
-                self.is_all_done = False
+                self.is_target_set = True
             elif self.current_motion == 'u_turn':
                 self.vx = self.motion_speed['u_turn'][0]
                 self.wz = self.motion_speed['u_turn'][1]            
                 self.timestamp_next = self.time_curr + self.motion_duration['u_turn']
 
-                self.is_all_done = False
+                self.is_target_set = True
             elif self.current_motion == 'wait':
                 self.vx = self.motion_speed['wait'][0]
                 self.wz = self.motion_speed['wait'][1]            
                 self.timestamp_next = self.time_curr + self.target_duration
 
-                self.is_all_done = False
+                self.is_target_set = True
             else:
                 self.vx = self.motion_speed['standby'][0]
                 self.wz = self.motion_speed['standby'][1]            
                 self.timestamp_next = self.time_curr
 
-                self.is_all_done = True
+                self.is_target_set = False
 
         if self.timestamp_next >= self.time_curr:
             self.update_target_vel(self.vx, self.wz)
@@ -135,7 +135,7 @@ class turtlebot(object):
             self.wz = self.motion_speed['standby'][1]              
 
             self.update_target_vel(self.vx, self.wz)
-            self.is_all_done = True
+            self.is_target_set = False
 
     def update_target_vel(self, v, w):
         move_cmd = Twist()
@@ -171,10 +171,11 @@ class turtlebot(object):
         else:
             return False
         '''
-    def add_motion(self, motion, duration = 1):
-        #self.current_motion = 
-        pass
-        #motion_ref = ['right_turn', 'left_turn', 'u_turn', 'forward', 'wait', 'standby']
+    def add_motion(self, motion, duration = None):
+        assert motion in motion_ref
+        assert motion != 'right_turn' or motion != 'left_turn' or motion != 'u_turn' or motion != 'wait' or duration != None    # forward and wait needs duration
+
+        self.next_motion_list.append([motion, duration])
 
     def add_waypoint(self, x, y, yaw = None):
         pass
