@@ -46,19 +46,19 @@ class turtlebot(object):
 
 
         # control lib varibles
-        self.motion_duration = {'right_turn' : 2.,                         # should be tuned with POSE in GAZEBO
-                                'left_turn'  : 2.,
-                                'u_turn'     : 4.,
+        self.motion_duration = {'right_turn' : 3.,                         # should be tuned with POSE in GAZEBO
+                                'left_turn'  : 3.,
+                                'u_turn'     : 6.,
                                 'forward'    : None,
                                 'wait'       : None,
                                 'standby'    : None}
-        self.motion_speed    = {'right_turn' : [0., -pi / 4 * 1.10],       # [vx, wz]
-                                'left_turn'  : [0.,  pi / 4 * 1.10],
-                                'u_turn'     : [0.,  pi / 4 * 1.05],
-                                'forward'    : [0.5, 0.],
-                                'wait'       : [0.,  0.],
-                                'standby'    : [0.,  0.]}
-
+        self.motion_speed    = {'right_turn' : [0.,  -pi / 4 * 1.045],      # [vx, wz]
+                                'left_turn'  : [0.,   pi / 4 * 1.045],
+                                'u_turn'     : [0.,   pi / 4 * 0.84],
+                                'forward'    : [0.15, 0.],
+                                'wait'       : [0.,   0.],
+                                'standby'    : [0.,   0.]}
+        self.motion_cooldown_time = 1.
 
     def odom_cb(self, data):
         # about 10Hz
@@ -126,8 +126,11 @@ class turtlebot(object):
 
                 self.is_target_set = False
 
-        if self.timestamp_next >= self.time_curr:
-            self.update_target_vel(self.vx, self.wz)
+        if self.timestamp_next > self.time_curr:
+            if self.time_curr <= self.timestamp_next - self.motion_cooldown_time:
+                self.update_target_vel(self.vx, self.wz)            # normal movement
+            else:
+                self.update_target_vel(0, 0)                        # let the vehicle slip
         else:
             self.current_motion = 'standby'
 

@@ -14,7 +14,7 @@
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.0001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>0.5</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -25,7 +25,7 @@
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.0001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>0.5</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -37,7 +37,7 @@
     <kd>100.0</kd>
     <!-- modified -->
     <minDepth>0.0001</minDepth>
-    <maxVel>1.0</maxVel>
+    <maxVel>2.0</maxVel>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
@@ -47,7 +47,7 @@
     <kp>1000000.0</kp>
     <kd>100.0</kd>
     <minDepth>0.0001</minDepth>
-    <maxVel>1.0</maxVel>
+    <maxVel>2.0</maxVel>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
@@ -78,7 +78,7 @@
       <wheelDiameter>0.066</wheelDiameter>
       <wheelAcceleration>1</wheelAcceleration>
       <!-- Adjusted, 0.1 times -->
-      <wheelTorque>1</wheelTorque>
+      <wheelTorque>0.75</wheelTorque>
       <rosDebugLevel>na</rosDebugLevel>
     </plugin>
   </gazebo>
