@@ -12,6 +12,9 @@ import numpy as np
 global ros_rate
 odom_cb_rate = 120       # read from gazebo, in hz
 
+global motion_ref
+motion_ref = ['right_turn', 'left_turn', 'u_turn', 'forward', 'wait', 'standby']
+
 class turtlebot(object):
     def __init__(self, name='amigobot_1', model=None, x = 0, y = 0, yaw = 0, time_to_wait = 1):
         self.name = name
@@ -39,32 +42,31 @@ class turtlebot(object):
 
         self.is_all_done = False
 
-        # v-w controller target
-        self.yaw_setpoint = 0
-        #self.dist_setpoint = 0
+        # timer varibles
+        self.timestamp_last = 0     # timestamp for last motion compeletion
+        self.timestamp_next = 0     # timestamp for next motion
+        self.time_curr = 0          # current time
+        self.init_time()
+       
+        # wait varibles
+        self.current_motion = 'standby'
+        self.target_duration = 0.
 
-        self.yaw_setpt_threshold  = 0.05         # deg, ref: 5
-        self.dist_setpt_threshold = 0.1          # meter
 
-        # yaw PI controller
-        self.yaw_kp = 2.25
-        self.yaw_ki = 0.15
-        self.yaw_increment  = 0
-        self.yaw_inc_max = 0.15
-        self.u_yaw_max = 180         # deg/s
+        # control lib varibles
+        self.motion_duration = {'right_turn' : 2.,                         # should be tuned with POSE in GAZEBO
+                                'left_turn'  : 2.,
+                                'u_turn'     : 4.,
+                                'forward'    : None,
+                                'wait'       : None,
+                                'standby'    : None}
+        self.motion_speed    = {'right_turn' : [0., -pi / 4 * 1.10],       # [vx, wz]
+                                'left_turn'  : [0.,  pi / 4 * 1.10],
+                                'u_turn'     : [0.,  pi / 4 * 1.05],
+                                'forward'    : [0.5, 0.],
+                                'wait'       : [0.,  0.],
+                                'standby'    : [0.,  0.]}
 
-        # dist PI controller
-        self.dist_kp = 0.3
-        self.dist_ki = 0.15
-        self.dist_increment  = 0
-        self.dist_inc_max = 0.2
-        self.u_dist_max = 0.25        # m/s, maximum speed with no slide in startup: 0.3 (about)
-
-        self.is_steer_completed = False
-        self.is_wait = False          # symbol for waiting
-
-        self.time_to_wait = time_to_wait
-        self.wait_index = 0
 
     def odom_cb(self, data):
         # about 10Hz
@@ -76,158 +78,69 @@ class turtlebot(object):
         self.x   = data.pose.pose.position.x
         self.y   = data.pose.pose.position.y
 
+        self.update_time()
         self.motion_control()
         self.publish_tf_4_rviz()
 
     def motion_control(self):
 
-        # obtain yaw error for final turn first
-        yaw_err_final = None                                  # for desired yaw after arriving
-        if self.target_yaw != None:
-            yaw_err_final = self.target_yaw - self.yaw
-            while yaw_err_final >= 180.:
-                yaw_err_final -= 360.
-            while yaw_err_final < -180.:
-                yaw_err_final += 360.
+        # if time ended, pop next motion out
 
-        # first check if arrived next waypoint
-        if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
-           (self.target_yaw == None or fabs(yaw_err_final) <=self.yaw_setpt_threshold):
+        if self.is_all_done == True:
+            self.timestamp_last = self.timestamp_next
 
-            # send a break
-            self.update_target_vel(0, 0)
-            self.is_steer_completed = False
+            if self.current_motion == 'forward':
+                self.vx = self.motion_speed['forward'][0]
+                self.wz = self.motion_speed['forward'][1]            
+                self.timestamp_next = self.time_curr + self.target_duration
 
-            # no next points
-            if self.waypt.__len__() == 0:
+                self.is_all_done = False
+            elif self.current_motion == 'right_turn':
+                self.vx = self.motion_speed['right_turn'][0]
+                self.wz = self.motion_speed['right_turn'][1]            
+                self.timestamp_next = self.time_curr + self.motion_duration['right_turn']
 
-                #print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' finished!: (' + str(self.x) + ', ' + str(self.y) + ')')
-                
-                self.is_all_done = True
-            
-            # next point exists
-            elif self.is_wait == False:
+                self.is_all_done = False
+            elif self.current_motion == 'left_turn':
+                self.vx = self.motion_speed['left_turn'][0]
+                self.wz = self.motion_speed['left_turn'][1]            
+                self.timestamp_next = self.time_curr + self.motion_duration['left_turn']
 
-                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ')')
+                self.is_all_done = False
+            elif self.current_motion == 'u_turn':
+                self.vx = self.motion_speed['u_turn'][0]
+                self.wz = self.motion_speed['u_turn'][1]            
+                self.timestamp_next = self.time_curr + self.motion_duration['u_turn']
 
-                self.target_x_last   = self.target_x
-                self.target_y_last   = self.target_y
-                self.target_yaw_last = self.target_yaw
+                self.is_all_done = False
+            elif self.current_motion == 'wait':
+                self.vx = self.motion_speed['wait'][0]
+                self.wz = self.motion_speed['wait'][1]            
+                self.timestamp_next = self.time_curr + self.target_duration
 
-                [self.target_x, self.target_y, self.target_yaw] = self.waypt.pop(0)
-
-                self.yaw_setpoint  = atan2(self.target_y - self.y, self.target_x - self.x) * 180 / pi
-                #self.dist_setpoint = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)
-
-                # if waypoint is the same, wait
-                if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:
-                    
-                    print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' waiting: (' + str(self.x) + ', ' + str(self.y) + ')')
-
-                    self.wait_index = 0
-                    self.is_wait = True
-
-            # waiting
-            elif self.is_wait == True and self.wait_index <= odom_cb_rate * self.time_to_wait:
-                self.wait_index += 1
-                if self.wait_index >= odom_cb_rate * self.time_to_wait:
-                    self.wait_index = 0
-                    self.is_wait = False
-
-        # target arrived but not turn to corresponding heading
-        elif self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
-             self.target_yaw != None and fabs(yaw_err_final) >= self.yaw_setpt_threshold:
-
-            yaw_err = self.target_yaw - self.yaw        # yaw_err_final
-            while yaw_err >= 180.:
-                yaw_err -= 360.
-            while yaw_err < -180.:
-                yaw_err += 360.
-
-            # PI control w saturation               
-            self.yaw_increment += yaw_err
-            if self.yaw_increment > self.yaw_inc_max:
-                self.yaw_increment = self.yaw_inc_max
-            elif self.yaw_increment < -self.yaw_inc_max:
-                self.yaw_increment = -self.yaw_inc_max
-
-            u_yaw = self.yaw_kp * yaw_err + self.yaw_ki * self.yaw_increment
-            if u_yaw > self.u_yaw_max:
-                u_yaw = self.u_yaw_max
-            elif u_yaw < -self.u_yaw_max:
-                u_yaw = -self.u_yaw_max
-
-            if fabs(yaw_err) <= self.yaw_setpt_threshold + 0.1:         # for easy to stop steering
-                self.is_steer_completed = True
-
-            self.update_target_vel(0, u_yaw * pi / 180)
-
-        #
-        else:
-
-            # calculate errors
-            yaw_err = atan2(self.target_y - self.y, self.target_x - self.x) * 180 / pi - self.yaw
-            dist_err = sqrt((self.target_y - self.y)**2 + (self.target_x - self.x)**2)            
-            while yaw_err >= 180.:
-                yaw_err -= 360.
-            while yaw_err < -180.:
-                yaw_err += 360.
-
-            # turn first
-            if fabs(yaw_err) >= self.yaw_setpt_threshold and self.is_steer_completed == False:
-                # PI control w saturation               
-                self.yaw_increment += yaw_err
-                if self.yaw_increment > self.yaw_inc_max:
-                    self.yaw_increment = self.yaw_inc_max
-                elif self.yaw_increment < -self.yaw_inc_max:
-                    self.yaw_increment = -self.yaw_inc_max
-
-                u_yaw = self.yaw_kp * yaw_err + self.yaw_ki * self.yaw_increment
-                if u_yaw > self.u_yaw_max:
-                    u_yaw = self.u_yaw_max
-                elif u_yaw < -self.u_yaw_max:
-                    u_yaw = -self.u_yaw_max
-
-                if fabs(yaw_err) <= self.yaw_setpt_threshold + 0.1:         # for easy to stop steering
-                    self.is_steer_completed = True
-
-                self.update_target_vel(0, u_yaw * pi / 180)
-
+                self.is_all_done = False
             else:
+                self.vx = self.motion_speed['standby'][0]
+                self.wz = self.motion_speed['standby'][1]            
+                self.timestamp_next = self.time_curr
 
-                # PI control w saturation
-                # dist
-                self.dist_increment += dist_err
-                if self.dist_increment > self.dist_inc_max:
-                    self.dist_increment = self.dist_inc_max
-                elif self.dist_increment < -self.dist_inc_max:
-                    self.dist_increment = -self.dist_inc_max
+                self.is_all_done = True
 
-                u_dist = self.dist_kp * dist_err + self.dist_ki * self.dist_increment
-                if u_dist > self.u_dist_max:
-                    u_dist = self.u_dist_max
-                elif u_dist < -self.u_dist_max:
-                    u_dist = -self.u_dist_max
+        if self.timestamp_next >= self.time_curr:
+            self.update_target_vel(self.vx, self.wz)
+        else:
+            self.current_motion = 'standby'
 
-                # yaw P controller
-                u_yaw = self.yaw_kp * yaw_err
-                if u_yaw > self.u_yaw_max:
-                    u_yaw = self.u_yaw_max
-                elif u_yaw < -self.u_yaw_max:
-                    u_yaw = -self.u_yaw_max
+            self.vx = self.motion_speed['standby'][0]
+            self.wz = self.motion_speed['standby'][1]              
 
-                #
-                self.update_target_vel(u_dist, u_yaw * pi / 180 * 0.066)
-                #self.update_target_vel(u_dist, 0)
-
+            self.update_target_vel(self.vx, self.wz)
+            self.is_all_done = True
 
     def update_target_vel(self, v, w):
-        self.vx = v
-        self.wz = w
-
         move_cmd = Twist()
-        move_cmd.linear.x = self.vx
-        move_cmd.angular.z =self.wz
+        move_cmd.linear.x = v
+        move_cmd.angular.z =w
         self.twist_pub.publish(move_cmd)
 
     def publish_tf_4_rviz(self):
@@ -237,16 +150,32 @@ class turtlebot(object):
                                            self.name + "/base_link",
                                            "map")
         
+    def init_time(self):
+        t_sec  = rospy.Time.now().secs
+        t_nsec = rospy.Time.now().nsecs
+        self.timestamp_last = float(t_sec) + float(t_nsec) / 1.e9
+        self.timestamp_next = self.timestamp_last
+        self.time_curr      = self.timestamp_last
+
+    def update_time(self):
+        t_sec  = rospy.Time.now().secs
+        t_nsec = rospy.Time.now().nsecs
+        self.time_curr = float(t_sec) + float(t_nsec) / 1.e9
 
     def is_vertex_arrived(self, x, y, threshold = 0.05):
+        pass
+        '''
         dist = sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
         if dist <= threshold:
             return True
         else:
             return False
+        '''
+    def add_motion(self, motion, duration = 1):
+        #self.current_motion = 
+        pass
+        #motion_ref = ['right_turn', 'left_turn', 'u_turn', 'forward', 'wait', 'standby']
 
     def add_waypoint(self, x, y, yaw = None):
-            self.waypt.append([x, y, yaw])
-            self.is_all_done = False
-
+        pass
 
