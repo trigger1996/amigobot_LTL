@@ -16,7 +16,7 @@ global motion_ref
 motion_ref = ['right_turn', 'left_turn', 'u_turn', 'forward', 'wait', 'standby']
 
 class turtlebot(object):
-    def __init__(self, name='amigobot_1', model=None, x = 0, y = 0, yaw = 0, time_to_wait = 1):
+    def __init__(self, name='amigobot_1', x = 0, y = 0, yaw = 0):
         self.name = name
 
         self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
@@ -42,7 +42,6 @@ class turtlebot(object):
         self.target_duration = 0.
         self.next_motion_list = []  # [['motion', target_duration], ...]
         self.is_target_set = False
-        self.is_all_done   = False
 
 
         # control lib varibles
@@ -54,14 +53,14 @@ class turtlebot(object):
                                 'standby'    : None}
         self.motion_speed    = {'right_turn' : [0.,  -pi / 4 * 1.045],      # [vx, wz]
                                 'left_turn'  : [0.,   pi / 4 * 1.045],
-                                'u_turn'     : [0.,   pi / 4 * 0.84],
+                                'u_turn'     : [0.,   pi / 4 * 0.83],
                                 'forward'    : [0.15, 0.],
                                 'wait'       : [0.,   0.],
                                 'standby'    : [0.,   0.]}
         self.motion_cooldown_time = 1.
 
     def odom_cb(self, data):
-        # about 10Hz
+        # 120Hz
         (roll, pitch, yaw) = euler_from_quaternion([data.pose.pose.orientation.x, 
                                                     data.pose.pose.orientation.y, 
                                                     data.pose.pose.orientation.z, 
@@ -76,8 +75,6 @@ class turtlebot(object):
 
     def motion_control(self):
 
-        # if time ended, pop next motion out
-
         if self.is_target_set == False:
 
             # target arrived
@@ -89,6 +86,7 @@ class turtlebot(object):
                 else:
                     [self.current_motion, self.target_duration] = self.next_motion_list.pop(0)
             
+            # next motion
             if self.current_motion == 'forward':
                 self.vx = self.motion_speed['forward'][0]
                 self.wz = self.motion_speed['forward'][1]            
@@ -132,6 +130,7 @@ class turtlebot(object):
             else:
                 self.update_target_vel(0, 0)                        # let the vehicle slip
         else:
+            # if time is up, stop moving
             self.current_motion = 'standby'
 
             self.vx = self.motion_speed['standby'][0]
@@ -165,21 +164,9 @@ class turtlebot(object):
         t_nsec = rospy.Time.now().nsecs
         self.time_curr = float(t_sec) + float(t_nsec) / 1.e9
 
-    def is_vertex_arrived(self, x, y, threshold = 0.05):
-        pass
-        '''
-        dist = sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
-        if dist <= threshold:
-            return True
-        else:
-            return False
-        '''
     def add_motion(self, motion, duration = None):
         assert motion in motion_ref
         assert motion != 'right_turn' or motion != 'left_turn' or motion != 'u_turn' or motion != 'wait' or duration != None    # forward and wait needs duration
 
         self.next_motion_list.append([motion, duration])
-
-    def add_waypoint(self, x, y, yaw = None):
-        pass
 
