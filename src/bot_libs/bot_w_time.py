@@ -107,6 +107,10 @@ class turtlebot(object):
         # goto next waypoint ASAP
         if self.timestamp_next != None and self.time_curr >= self.timestamp_next:
 
+            # send a break
+            self.update_target_vel(0, 0)
+            self.is_steer_completed = False
+
             # no next points
             if self.waypt.__len__() == 0:
 
@@ -140,6 +144,11 @@ class turtlebot(object):
                     self.is_wait = False
 
         else:
+
+            # obtain yaw error for final turn first
+            yaw_err_final = None                                  # for desired yaw after arriving
+            if self.target_yaw != None:
+                yaw_err_final = normalize_angle(self.target_yaw - self.yaw)
 
             # if waiting
             if self.is_wait == True:
