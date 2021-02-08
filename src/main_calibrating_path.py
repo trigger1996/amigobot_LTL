@@ -54,7 +54,7 @@ def main():
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
     '''
     
-    '''
+    
     # inner loop
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('4')
@@ -80,8 +80,8 @@ def main():
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('u1')    
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
-    '''
 
+    '''
     # etc
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('4')
@@ -101,6 +101,7 @@ def main():
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('u1')    
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
+    '''
 
     while not rospy.is_shutdown():
         if index >= 5:

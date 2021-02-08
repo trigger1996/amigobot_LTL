@@ -120,7 +120,7 @@ class turtlebot(object):
             # next point exists
             else:
 
-                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ') due to start / waiting / exceeding maximum time')
+                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ')') # 'due to start / waiting / exceeding maximum time'
 
                 self.target_x_last   = self.target_x
                 self.target_y_last   = self.target_y
