@@ -44,14 +44,14 @@ class turtlebot(object):
         self.wz = 0
 
         # waypoint varibles
-        self.target_x = self.x      # current target
+        self.target_x = self.x                              # current target
         self.target_y = self.y
         self.target_yaw = None
         self.target_t_max = None
         self.target_x_last = None
         self.target_y_last = None
         self.target_yaw_last = None
-        self.waypt = []             # next target list [[x, y, yaw, maximum_time]]
+        self.waypt = []                                     # next target list [[x, y, yaw, maximum_time]]
 
         self.is_all_done = False
 
@@ -59,32 +59,33 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.05         # deg, ref: 5
-        self.dist_setpt_threshold = 0.1          # meter
+        self.yaw_setpt_threshold  = 0.05                    # deg, ref: 5
+        self.dist_setpt_threshold = 0.1                     # meter
 
         # yaw PI controller
         self.yaw_kp = 2.25
         self.yaw_ki = 0.15
         self.yaw_increment  = 0
         self.yaw_inc_max = 0.15
-        self.u_yaw_max = 180                # deg/s
+        self.u_yaw_max = 180                                # deg/s
 
         # dist PI controller
         self.dist_kp = 0.3
         self.dist_ki = 0.15
         self.dist_increment  = 0
         self.dist_inc_max = 0.2
-        self.u_dist_max = 0.25              # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_max = 0.25                              # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
-        self.is_wait = False                # symbol for waiting
+        self.is_wait = False                                # symbol for waiting
 
         self.time_to_wait = time_to_wait
+        self.time_to_wait_errval =  1.5 / odom_cb_rate      # error value, theory value: 1. / odom_cb_rate, NEED TUNING
 
         # timer varibles
-        self.timestamp_last = 0             # timestamp for last motion compeletion
-        self.timestamp_next = 0             # timestamp for next motion
-        self.time_curr = 0                  # current time
+        self.timestamp_last = 0                             # timestamp for last motion compeletion
+        self.timestamp_next = 0                             # timestamp for next motion
+        self.time_curr = 0                                  # current time
         self.init_time()
 
     def odom_cb(self, data):
@@ -119,7 +120,7 @@ class turtlebot(object):
             # next point exists
             else:
 
-                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ')')
+                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ') due to start / waiting / exceeding maximum time')
 
                 self.target_x_last   = self.target_x
                 self.target_y_last   = self.target_y
@@ -129,7 +130,7 @@ class turtlebot(object):
                 if self.target_t_max == None:
                     self.timestamp_next = None
                 else:
-                    self.timestamp_next = self.time_curr + self.target_t_max - 1. / odom_cb_rate
+                    self.timestamp_next = self.time_curr + self.target_t_max - self.time_to_wait_errval
 
                 # if wait at the same point
                 if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:
@@ -137,7 +138,7 @@ class turtlebot(object):
                     print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' waiting: (' + str(self.x) + ', ' + str(self.y) + ')')
 
                     self.is_wait = True
-                    self.timestamp_next = self.time_curr + self.time_to_wait - 1. / odom_cb_rate
+                    self.timestamp_next = self.time_curr + self.time_to_wait - self.time_to_wait_errval
 
                 # else 
                 else:
@@ -191,7 +192,7 @@ class turtlebot(object):
                         if self.target_t_max == None:
                             self.timestamp_next = None
                         else:
-                            self.timestamp_next = self.time_curr + self.target_t_max - 1. / odom_cb_rate
+                            self.timestamp_next = self.time_curr + self.target_t_max - self.time_to_wait_errval
 
                         # if waypoint is the same, wait
                         if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:
@@ -199,7 +200,7 @@ class turtlebot(object):
                             print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' waiting: (' + str(self.x) + ', ' + str(self.y) + ')')
 
                             self.is_wait = True
-                            self.timestamp_next = self.time_curr + self.time_to_wait - 1. / odom_cb_rate                            
+                            self.timestamp_next = self.time_curr + self.time_to_wait - self.time_to_wait_errval
         
                 # target arrived but not turn to corresponding heading
                 elif self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \

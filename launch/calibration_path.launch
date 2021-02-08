@@ -31,7 +31,7 @@
     <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_calibrating_path.py" output="screen">
     </node>
 
-    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ghost/catkin_ws_ros/src/amigobot_LTL/launch/rviz/multi_turtlebot3.rviz">
+    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ghost/catkin_ws_ros/src/amigobot_LTL/launch/rviz/turtlebot3_ts_calibration_path.rviz">
     </node>
 
     <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster" args="0 0 0 0 0 0 /map /$(arg first_tb3)/odom 5" />

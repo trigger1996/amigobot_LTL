@@ -10,12 +10,12 @@ except ImportError: # else use default PyYAML loader and dumper
     from yaml import Loader, Dumper
 
 import math
-from bot import turtlebot
+from bot_w_time import turtlebot
 from lomap import Model
 from lomap import Ts
 
 class turtlebot_TS(turtlebot, Ts):
-    def __init__(self, name='amigobot_1', model=None, x = None, y = None, yaw = None, time_to_wait = 1, yaml_file='robot.yaml', map_file='map.yaml'):
+    def __init__(self, name='amigobot_1', x = None, y = None, yaw = None, time_to_wait = 1, yaml_file='robot.yaml', map_file='map.yaml'):
         super(Ts, self).__init__()
         super(turtlebot_TS, self).__init__(name, time_to_wait=time_to_wait)
 
@@ -37,6 +37,9 @@ class turtlebot_TS(turtlebot, Ts):
         #
         self.last_target_waypt = None
         self.next_target_waypt = list(self.init)[0]
+
+        #
+        self.goback_additional_time = 5     # src
 
         # override waypoint varibles
         if x == None or y == None:
@@ -64,12 +67,12 @@ class turtlebot_TS(turtlebot, Ts):
         x = self.waypoint_dict[waypt_name][0]
         y = self.waypoint_dict[waypt_name][1]
         yaw = self.find_motion_target_yaw(self.last_target_waypt, self.next_target_waypt)
+        t_max = self.find_motion_target_weight(self.last_target_waypt, self.next_target_waypt)
 
-        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ", " + str(yaw) + ")")
-        self.add_waypoint(x, y, yaw)
+        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ", " + str(yaw) + "),\t t_max: " + str(t_max))
+        self.add_waypoint(x, y, yaw, maximum_time=t_max)
 
     def find_motion_target_yaw(self, src, dst):
-
         for index in self.final_yaw_tab:
             # find the corresponding final yaw for each motion
             if src == index[0]:
@@ -85,4 +88,19 @@ class turtlebot_TS(turtlebot, Ts):
                     return index[2]['yaw']      
                     
         # if motion does not found, do not restrict the final yaw
+        return None
+
+    def find_motion_target_weight(self, src, dst):
+        for index in self.g.edge:
+            if src == index:
+                for index_dst in self.g.edge[index]:
+                    if dst == index_dst:
+                        return self.g.edge[index][index_dst][0]['weight']
+
+        for index in self.g.edge:
+            if dst == index:
+                for index_dst in self.g.edge[index]:
+                    if src == index_dst:
+                        return self.g.edge[index][index_dst][0]['weight'] + self.goback_additional_time
+
         return None
