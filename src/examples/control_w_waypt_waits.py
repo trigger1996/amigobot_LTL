@@ -204,10 +204,10 @@ def main():
     # x, y must be the same as in the gazebo launch files
     bot_1 = turtlebot(x=0, y=3.2, name='amigobot_1', model=None)
     
-    bot_1.add_waypoint( 0,  0)    
+    bot_1.add_waypoint( 0,  0)
     bot_1.add_waypoint(-3,  0)
     bot_1.add_waypoint(-3, -3)
-    bot_1.add_waypoint(-3, -3)    
+    bot_1.add_waypoint(-3, -3)
     bot_1.add_waypoint( 0, -3)
     bot_1.add_waypoint( 0,  0)
 
