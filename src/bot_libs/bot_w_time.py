@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 #encoding=utf-8
 import rospy
-from geometry_msgs.msg import Twist, Point, Quaternion
-from nav_msgs.msg import Odometry
+from geometry_msgs.msg import Twist, Point, PoseStamped, Quaternion
+from nav_msgs.msg import Odometry, Path
 import tf
 from math import radians, copysign, sqrt, pow, pi, atan2, fabs
-from tf.transformations import euler_from_quaternion
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from tf import TransformBroadcaster
 import numpy as np
 
@@ -31,10 +31,12 @@ class turtlebot(object):
     def __init__(self, name='amigobot_1', x = 0, y = 0, yaw = 0, time_to_wait = 1):
         self.name = name
 
-        self.twist_pub = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
-        self.pose_sub  = rospy.Subscriber('/' + self.name + '/odom', Odometry, self.odom_cb)
+        self.twist_pub        = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
+        self.pose_sub         = rospy.Subscriber('/' + self.name + '/odom', Odometry, self.odom_cb)
 
-        self.tf_basefootprint_odom = TransformBroadcaster()        
+        self.robot_traj_pub   = rospy.Publisher('/' + self.name + '/path', Path, queue_size = 1)
+        self.tf_baselink_odom = TransformBroadcaster()
+        self.robot_traj = Path()
 
         self.x = x
         self.y = y
@@ -86,6 +88,9 @@ class turtlebot(object):
         self.timestamp_last = 0                             # timestamp for last motion compeletion
         self.timestamp_next = 0                             # timestamp for next motion
         self.time_curr = 0                                  # current time
+        self.odom_cb_index = 0
+        
+        #
         self.init_time()
 
     def odom_cb(self, data):
@@ -101,6 +106,13 @@ class turtlebot(object):
         self.update_time()
         self.motion_control()
         self.publish_tf_4_rviz()
+
+        if self.odom_cb_index % 12 == 0:
+            self.publish_path_4_rviz()      # 10Hz
+
+        self.odom_cb_index += 1
+        if self.odom_cb_index > 1000:
+            self.odom_cb_index = 0
 
     def motion_control(self):
 
@@ -271,11 +283,26 @@ class turtlebot(object):
         self.twist_pub.publish(move_cmd)
 
     def publish_tf_4_rviz(self):
-        self.tf_basefootprint_odom.sendTransform((self.x, self.y, 0),
+        self.tf_baselink_odom.sendTransform((self.x, self.y, 0),
                                            tf.transformations.quaternion_from_euler(0, 0, self.yaw * pi / 180.),
                                            rospy.Time.now(),
                                            self.name + "/base_link",
                                            "map")
+    
+    def publish_path_4_rviz(self):
+            bot_pose_t = PoseStamped()
+
+            bot_pose_t.header.stamp = rospy.Time.now()
+            bot_pose_t.header.frame_id = '/amigobot_1/odom'
+            bot_pose_t.pose.position.x = self.x
+            bot_pose_t.pose.position.y = self.y
+            bot_pose_t.pose.position.z = 0
+            [bot_pose_t.pose.orientation.x, bot_pose_t.pose.orientation.y, bot_pose_t.pose.orientation.z, bot_pose_t.pose.orientation.w] = quaternion_from_euler(0., 0., self.yaw * pi / 180.)
+
+            self.robot_traj.poses.append(bot_pose_t)
+            self.robot_traj.header.stamp = rospy.Time.now()            
+            self.robot_traj.header.frame_id = '/amigobot_1/odom'
+            self.robot_traj_pub.publish(self.robot_traj)        
 
     def init_time(self):
         t_sec  = rospy.Time.now().secs

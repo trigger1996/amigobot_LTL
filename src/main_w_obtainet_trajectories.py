@@ -8,11 +8,6 @@ import rospy
 import bot_libs.bot as bot
 import bot_libs.bot_ts as bot_ts
 
-from math import pi
-from geometry_msgs.msg import PoseStamped
-from nav_msgs.msg import Path
-from tf.transformations import quaternion_from_euler
-
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait
 time_to_wait = 10        # seconds
@@ -32,6 +27,12 @@ suffix_cycles = [['1', '2', '21', '22', 'g1', '22', '23', '9', '10', 'u2', '10',
 # CASE 4
 '''
 
+def calculate_final_time(bot_w_ts):
+    total_time = 0
+    for index in bot_w_ts.waypt:
+        if index[3] != None:
+            total_time += index[3]  # [x, y, yaw, maximum_time]
+    return total_time
 
 def main():
     rospy.init_node('ijrr2013_ca_improv', anonymous=False)
@@ -49,10 +50,7 @@ def main():
                                                    map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait)
 
-    robot_traj_pub = rospy.Publisher('/amigobot_1/path', Path, queue_size = 1)
-    robot_traj = Path()
-    index = 0
-
+    # add prefix
     for i in range(0, prefixes[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(prefixes[0][i])
     for i in range(0, prefixes[1].__len__()):
@@ -60,6 +58,7 @@ def main():
     for i in range(0, prefixes[2].__len__()):
         bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
 
+    # add suffix
     for i in range(0, suffix_cycles[0].__len__()):
         bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
     for i in range(0, suffix_cycles[1].__len__()):
@@ -67,7 +66,13 @@ def main():
     for i in range(0, suffix_cycles[2].__len__()):                      # range(0, ...)
         bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
+    # print total cost
+    print('[total cost]' + bot_1.name + 'total cost: ' + str(calculate_final_time(bot_1)))
+    print('[total cost]' + bot_2.name + 'total cost: ' + str(calculate_final_time(bot_2)))
+    print('[total cost]' + bot_3.name + 'total cost: ' + str(calculate_final_time(bot_3)) )   
+
     while not rospy.is_shutdown():
+        # add suffix-cycles
         '''
         if bot_1.is_all_done == True:
             for i in range(0, suffix_cycles[0].__len__()):
@@ -82,23 +87,6 @@ def main():
                 bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
         '''
 
-        if index >= 5:
-            bot_pose_t = PoseStamped()
-            bot_pose_t.header.stamp = rospy.Time.now()
-            bot_pose_t.header.frame_id = '/amigobot_1/odom'
-            bot_pose_t.pose.position.x = bot_1.x
-            bot_pose_t.pose.position.y = bot_1.y
-            bot_pose_t.pose.position.z = 0
-            [bot_pose_t.pose.orientation.x, bot_pose_t.pose.orientation.y, bot_pose_t.pose.orientation.z, bot_pose_t.pose.orientation.w] = quaternion_from_euler(0., 0., bot_1.yaw * pi / 180.)
-
-            robot_traj.poses.append(bot_pose_t)
-            robot_traj.header.stamp = rospy.Time.now()            
-            robot_traj.header.frame_id = '/amigobot_1/odom'
-            robot_traj_pub.publish(robot_traj)
-
-            index = 0
-
-        index += 1
         rate.sleep()
 
     print("Finished!")

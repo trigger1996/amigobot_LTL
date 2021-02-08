@@ -28,10 +28,6 @@ def main():
                                                    map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait)
 
-    robot_traj_pub = rospy.Publisher('/amigobot_1/path', Path, queue_size = 1)
-    robot_traj = Path()
-    index = 0
-
     '''
     # outer loop
     bot_1.add_waypoint_from_waypt_list('4')
@@ -104,23 +100,7 @@ def main():
     '''
 
     while not rospy.is_shutdown():
-        if index >= 5:
-            bot_pose_t = PoseStamped()
-            bot_pose_t.header.stamp = rospy.Time.now()
-            bot_pose_t.header.frame_id = '/amigobot_1/odom'
-            bot_pose_t.pose.position.x = bot_1.x
-            bot_pose_t.pose.position.y = bot_1.y
-            bot_pose_t.pose.position.z = 0
-            [bot_pose_t.pose.orientation.x, bot_pose_t.pose.orientation.y, bot_pose_t.pose.orientation.z, bot_pose_t.pose.orientation.w] = quaternion_from_euler(0., 0., bot_1.yaw * pi / 180.)
 
-            robot_traj.poses.append(bot_pose_t)
-            robot_traj.header.stamp = rospy.Time.now()            
-            robot_traj.header.frame_id = '/amigobot_1/odom'
-            robot_traj_pub.publish(robot_traj)
-
-            index = 0
-
-        index += 1
         rate.sleep()
 
     print("Finished!")
