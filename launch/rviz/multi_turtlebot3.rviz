@@ -38,7 +38,7 @@ Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
-      Cell Size: 1
+      Cell Size: 0.5
       Class: rviz/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -48,11 +48,11 @@ Visualization Manager:
       Name: Grid
       Normal Cell Count: 0
       Offset:
-        X: 0
-        Y: 0
+        X: 5
+        Y: -5
         Z: 0
       Plane: XY
-      Plane Cell Count: 34
+      Plane Cell Count: 53
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz/TF
@@ -200,6 +200,29 @@ Visualization Manager:
                   {}
       Update Interval: 0
       Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /amigobot_1/path
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -228,25 +251,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 55.64219665527344
+      Distance: 35.58788299560547
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 2.562690019607544
-        Y: -0.26848945021629333
-        Z: -3.977796792984009
+        X: 5.759435176849365
+        Y: -0.7337690591812134
+        Z: -0.4045736789703369
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7903978824615479
+      Pitch: 0.9803977012634277
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.028580188751221
+      Yaw: 4.378577709197998
     Saved: ~
 Window Geometry:
   Displays:
@@ -264,5 +287,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1389
-  X: -681
-  Y: 61
+  X: -602
+  Y: 27
