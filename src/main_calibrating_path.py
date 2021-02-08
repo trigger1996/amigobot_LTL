@@ -21,12 +21,13 @@ def main():
 
     bot_1 = bot_w_time.turtlebot(x=0, y=6.8, name='amigobot_1', time_to_wait=time_to_wait)                                                           
 
-    bot_1.add_waypoint( 0,  0, yaw = 0, maximum_time=25)    
-    bot_1.add_waypoint(-3,  0, yaw = 0, maximum_time=15)
+    bot_1.add_waypoint( 0,  0, yaw = 0, maximum_time=40)    
+    bot_1.add_waypoint(-3,  0, yaw = 0, maximum_time=10)
     bot_1.add_waypoint(-3, -3, yaw = 0)
     bot_1.add_waypoint(-3, -3)    
-    bot_1.add_waypoint( 0, -3, yaw=-90)
+    bot_1.add_waypoint( 0, -3, yaw=-90, maximum_time=20)
     bot_1.add_waypoint( 0,  0, yaw=-180)
+    bot_1.add_waypoint( 0,  6, yaw=-180)    
 
     while not rospy.is_shutdown():
         rate.sleep()

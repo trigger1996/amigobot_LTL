@@ -67,24 +67,24 @@ class turtlebot(object):
         self.yaw_ki = 0.15
         self.yaw_increment  = 0
         self.yaw_inc_max = 0.15
-        self.u_yaw_max = 180         # deg/s
+        self.u_yaw_max = 180                # deg/s
 
         # dist PI controller
         self.dist_kp = 0.3
         self.dist_ki = 0.15
         self.dist_increment  = 0
         self.dist_inc_max = 0.2
-        self.u_dist_max = 0.25        # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_max = 0.25              # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
-        self.is_wait = False          # symbol for waiting
+        self.is_wait = False                # symbol for waiting
 
         self.time_to_wait = time_to_wait
 
         # timer varibles
-        self.timestamp_last = 0     # timestamp for last motion compeletion
-        self.timestamp_next = 0     # timestamp for next motion
-        self.time_curr = 0          # current time
+        self.timestamp_last = 0             # timestamp for last motion compeletion
+        self.timestamp_next = 0             # timestamp for next motion
+        self.time_curr = 0                  # current time
         self.init_time()
 
     def odom_cb(self, data):
@@ -119,7 +119,7 @@ class turtlebot(object):
             # next point exists
             else:
 
-                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ') due to start / waiting / exceeding maximum time')
+                print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived: (' + str(self.x) + ', ' + str(self.y) + ')')
 
                 self.target_x_last   = self.target_x
                 self.target_y_last   = self.target_y
@@ -152,15 +152,26 @@ class turtlebot(object):
 
             # if waiting
             if self.is_wait == True:
+
                 self.update_target_vel(0, 0)
 
             else:
+
+                # if arrived
                 if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
                     (self.target_yaw == None or fabs(yaw_err_final) <=self.yaw_setpt_threshold):
 
                     # send a break
                     self.update_target_vel(0, 0)
                     self.is_steer_completed = False
+
+                    # if arrived in advance
+                    if self.timestamp_next != None and self.time_curr <= self.timestamp_next:
+
+                        print('[' + str(rospy.Time.now().secs) + " " + str(rospy.Time.now().nsecs) + '] ' + self.name + ' arrived IN ADVANCE, waiting: (' + str(self.x) + ', ' + str(self.y) + ')')
+                        
+                        self.is_wait = True
+                        return
 
                     # no next points
                     if self.waypt.__len__() == 0:
