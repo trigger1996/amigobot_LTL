@@ -39,7 +39,7 @@ class turtlebot_TS(turtlebot, Ts):
         self.next_target_waypt = list(self.init)[0]
 
         #
-        self.goback_additional_time = 5     # src
+        self.goback_additional_time = 10     # seconds
 
         # override waypoint varibles
         if x == None or y == None:
