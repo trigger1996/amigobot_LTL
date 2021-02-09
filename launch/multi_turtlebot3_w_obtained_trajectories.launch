@@ -21,6 +21,7 @@
     <arg name="third_tb3_yaw"   default=" 3.14"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <!--arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/-->
       <arg name="world_name" value="$(find amigobot_LTL)/gazebo/test_field.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
