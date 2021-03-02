@@ -79,10 +79,10 @@
       <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg fourth_tb3) -x $(arg fourth_tb3_x_pos) -y $(arg fourth_tb3_y_pos) -z $(arg fourth_tb3_z_pos) -Y $(arg fourth_tb3_yaw) -param robot_description" />
     </group>
 
-    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtainet_trajectories 4_vehicles.py" output="screen">
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories_4_vehicles.py" output="screen">
     </node>
 
-    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ghost/catkin_ws_ros/src/amigobot_LTL/launch/rviz/multi_turtlebot3_4_vehicles.rviz">
+    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ubuntu484/catkin_ws/src/amigobot_LTL/launch/rviz/multi_turtlebot3_4_vehicles.rviz">
     </node>
 
     <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster"  args="0 0 0 0 0 0 /map /$(arg first_tb3)/odom 5" />
