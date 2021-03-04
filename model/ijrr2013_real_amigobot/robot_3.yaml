@@ -1,0 +1,51 @@
+!Ts
+name: amigobot_3
+multi: true
+directed: true
+init: ['11']
+final: []
+graph:
+  nodes:
+    '1': {}
+    '10': {}
+    '11': {}
+    '12': {}
+    '2': {}
+    '21': {}
+    '22': {}
+    '23': {}
+    '24': {}
+    '25': {}
+    '26': {}
+    '27': {}
+    '28': {}
+    '3': {}
+    '4': {}
+    '5': {}
+    '6': {}
+    '7': {}
+    '8': {}
+    '9': {}
+    g1:
+      prop: !!set {gather: null, gather1: null, r3gather: null, r3gather1: null}
+    g2:
+      prop: !!set {gather: null, gather2: null, r3gather: null, r3gather2: null}
+    g3:
+      prop: !!set {gather: null, gather3: null, r3gather: null, r3gather3: null}
+    g4:
+      prop: !!set {gather: null, gather4: null, r3gather: null, r3gather4: null}
+    u1:
+      prop: !!set {r3upload: null, r3upload1: null, upload: null, upload1: null}
+    u2:
+      prop: !!set {r3upload: null, r3upload2: null, upload: null, upload2: null}
+
+  edges:
+  - ['2',  '21', {control: rfr, weight: 2}]
+  - ['21', '22', {control: lf,  weight: 4}]
+  - ['22', '23', {control: f,   weight: 4}]
+  - ['23', '9',  {control: f,   weight: 8}]
+  - ['9',  '10', {control: f,   weight: 8}]
+  - ['10', '11', {control: rf,  weight: 2}]
+  - ['11', '12', {control: f,   weight: 8}]
+  - ['12', '1',  {control: f,   weight: 8}]
+  - ['1',  '2',  {control: rf,  weight: 8}]

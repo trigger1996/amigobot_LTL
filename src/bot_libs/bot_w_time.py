@@ -4,13 +4,14 @@ import rospy
 from geometry_msgs.msg import Twist, Point, PoseStamped, Quaternion
 from nav_msgs.msg import Odometry, Path
 import tf
-from math import radians, copysign, sqrt, pow, pi, atan2, fabs
+from math import radians, copysign, sqrt, pow, pi, atan2, fabs, sin, cos
+import tf
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
-from tf import TransformBroadcaster
+from tf import TransformBroadcaster, TransformListener
 import numpy as np
 
 global ros_rate
-odom_cb_rate = 120       # read from gazebo, in hz
+odom_cb_rate = 10       # read from gazebo, in hz, gazebo: 120
 
 def data_saturation(data, max, min):
     if data > max:
@@ -36,6 +37,7 @@ class turtlebot(object):
 
         self.robot_traj_pub   = rospy.Publisher('/' + self.name + '/path', Path, queue_size = 1)
         self.tf_baselink_odom = TransformBroadcaster()
+        self.tf_baselink_map_listener = TransformListener()
         self.robot_traj = Path()
 
         self.x = x
@@ -44,6 +46,11 @@ class turtlebot(object):
 
         self.vx = 0
         self.wz = 0
+
+        # coordinates in tf: map->odom
+        self.tf_x   = 0
+        self.tf_y   = 0
+        self.tf_yaw = 0
 
         # waypoint varibles
         self.target_x = self.x                              # current target
@@ -61,22 +68,22 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.05                    # deg, ref: 5
-        self.dist_setpt_threshold = 0.125                   # meter
+        self.yaw_setpt_threshold  = 0.15                    # deg, ref: 5
+        self.dist_setpt_threshold = 0.085                   # meter
 
         # yaw PI controller
         self.yaw_kp = 2.45
         self.yaw_ki = 0.15
         self.yaw_increment  = 0
-        self.yaw_inc_max = 0.25
-        self.u_yaw_max = 180                                # deg/s
+        self.yaw_inc_max = 1.25
+        self.u_yaw_max = 180 / 6                            # deg/s
 
         # dist PI controller
-        self.dist_kp = 0.3
-        self.dist_ki = 0.15
+        self.dist_kp = 0.35
+        self.dist_ki = 0.25
         self.dist_increment  = 0
-        self.dist_inc_max = 0.2
-        self.u_dist_max = 0.32                              # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.dist_inc_max = 0.095
+        self.u_dist_max = 0.15                              # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
         self.is_wait = False                                # symbol for waiting
@@ -94,18 +101,29 @@ class turtlebot(object):
         self.init_time()
 
     def odom_cb(self, data):
-        # about 120Hz
+        # about 10Hz for real robot
+        # 120Hz in Gazebo
         (roll, pitch, yaw) = euler_from_quaternion([data.pose.pose.orientation.x, 
                                                     data.pose.pose.orientation.y, 
                                                     data.pose.pose.orientation.z, 
                                                     data.pose.pose.orientation.w])
-        self.yaw = yaw * 180. / pi
-        self.x   = data.pose.pose.position.x
-        self.y   = data.pose.pose.position.y
+        try:
+            (trans,rot) = self.tf_baselink_map_listener.lookupTransform('map', '/' + self.name + '/odom', rospy.Time(0))
+
+            (tf_pitch, tf_roll, self.tf_yaw) = euler_from_quaternion(rot)
+            self.tf_x = trans[0]
+            self.tf_y = trans[1]
+
+        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+            return
+
+        self.yaw = (yaw + self.tf_yaw) * 180. / pi
+        self.x   = data.pose.pose.position.x * cos(self.tf_yaw) + data.pose.pose.position.y * -sin(self.tf_yaw) + self.tf_x
+        self.y   = data.pose.pose.position.x * sin(self.tf_yaw) + data.pose.pose.position.y *  cos(self.tf_yaw) + self.tf_y
 
         self.update_time()
         self.motion_control()
-        self.publish_tf_4_rviz()
+        #self.publish_tf_4_rviz()           # conflict with static_tf publisher
 
         if self.odom_cb_index % 12 == 0:
             self.publish_path_4_rviz()      # 10Hz
@@ -172,7 +190,7 @@ class turtlebot(object):
 
                 # if arrived
                 if self.is_vertex_arrived(self.target_x, self.target_y, self.dist_setpt_threshold) and \
-                    (self.target_yaw == None or fabs(yaw_err_final) <=self.yaw_setpt_threshold):
+                    (self.target_yaw == None or fabs(yaw_err_final) <= self.yaw_setpt_threshold):
 
                     # send a break
                     self.update_target_vel(0, 0)
@@ -242,7 +260,7 @@ class turtlebot(object):
 
                     # turn first
                     if fabs(yaw_err) >= self.yaw_setpt_threshold and self.is_steer_completed == False:
-                        # PI control w saturation               
+                        # PI control w saturation
                         self.yaw_increment += yaw_err
                         self.yaw_increment = data_saturation(self.yaw_increment, self.yaw_inc_max, -self.yaw_inc_max)
 
@@ -284,25 +302,25 @@ class turtlebot(object):
 
     def publish_tf_4_rviz(self):
         self.tf_baselink_odom.sendTransform((self.x, self.y, 0),
-                                           tf.transformations.quaternion_from_euler(0, 0, self.yaw * pi / 180.),
+                                           tf.transformations.quaternion_from_euler(0, 0, (self.yaw) * pi / 180.),
                                            rospy.Time.now(),
                                            self.name + "/base_link",
-                                           "map")
+                                           "/map")        # self.name + "/odom"
     
     def publish_path_4_rviz(self):
             bot_pose_t = PoseStamped()
 
             bot_pose_t.header.stamp = rospy.Time.now()
-            bot_pose_t.header.frame_id = '/amigobot_1/odom'
+            bot_pose_t.header.frame_id = '/map'
             bot_pose_t.pose.position.x = self.x
             bot_pose_t.pose.position.y = self.y
             bot_pose_t.pose.position.z = 0
             [bot_pose_t.pose.orientation.x, bot_pose_t.pose.orientation.y, bot_pose_t.pose.orientation.z, bot_pose_t.pose.orientation.w] = quaternion_from_euler(0., 0., self.yaw * pi / 180.)
 
             self.robot_traj.poses.append(bot_pose_t)
-            self.robot_traj.header.stamp = rospy.Time.now()            
-            self.robot_traj.header.frame_id = '/amigobot_1/odom'
-            self.robot_traj_pub.publish(self.robot_traj)        
+            self.robot_traj.header.stamp = rospy.Time.now()
+            self.robot_traj.header.frame_id = '/map'
+            self.robot_traj_pub.publish(self.robot_traj)
 
     def init_time(self):
         t_sec  = rospy.Time.now().secs

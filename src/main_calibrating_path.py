@@ -14,7 +14,7 @@ from nav_msgs.msg import Path
 from tf.transformations import quaternion_from_euler
 
 global time_to_wait
-time_to_wait = 10        # seconds
+time_to_wait = 5        # seconds
 
 def main():
     rospy.init_node('ijrr2013_ca_improv', anonymous=False)
@@ -24,8 +24,8 @@ def main():
     rospy.sleep(8)
 
  
-    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_1.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_1.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
                                                    time_to_wait = time_to_wait)
 
     '''
@@ -50,7 +50,6 @@ def main():
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
     '''
     
-    '''
     # inner loop
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('4')
@@ -76,13 +75,13 @@ def main():
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('u1')    
     bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
-    '''
+    
     
     # etc
+    '''
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('4')
     bot_1.add_waypoint_from_waypt_list('5')
-    '''
     bot_1.add_waypoint_from_waypt_list('27')
     bot_1.add_waypoint_from_waypt_list('28')
     bot_1.add_waypoint_from_waypt_list('21')
