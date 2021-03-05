@@ -1,52 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-    <arg name="robot_ip_1" default="10.0.126.35" />
-    <node pkg="rosaria"
-          type="RosAria"
-          name="amigobot_1"
-          args="_port:=$(arg robot_ip_1):8101"
-          output="screen">
+    <arg name="first_tb3"  default="amigobot_1"/>
+    <arg name="second_tb3" default="amigobot_2"/>
+    <arg name="third_tb3"  default="amigobot_3"/>    
+
+    <arg name="first_tb3_x_pos" default=" 0.0"/>
+    <arg name="first_tb3_y_pos" default=" 6.8"/>
+    <arg name="first_tb3_z_pos" default=" 0.0"/>
+    <arg name="first_tb3_yaw"   default="-1.57"/>
+
+    <arg name="second_tb3_x_pos" default=" 15.2"/>
+    <arg name="second_tb3_y_pos" default="-16.2"/>
+    <arg name="second_tb3_z_pos" default=" 0.0"/>
+    <arg name="second_tb3_yaw"   default=" 1.57"/>
+
+    <arg name="third_tb3_x_pos" default="  12.0"/>
+    <arg name="third_tb3_y_pos" default=" -12.2"/>
+    <arg name="third_tb3_z_pos" default=" 0.0"/>
+    <arg name="third_tb3_yaw"   default=" 3.14"/>
+
+
+    <arg name="robot_ip" default="10.0.126.11" />
+    <node pkg="rosaria" 
+          type="RosAria" 
+          name="$(arg first_tb3)" 
+          args="_port:=$(arg robot_ip):8101"
+          output="log">
+        <remap from="/$(arg first_tb3)/pose" to="/$(arg first_tb3)/odom"/>
         <param name="DriftFactor" value="0"/>
         <param name="TicksMM"     value="123"/>
-        <param name="RevCount"    value="11548"/>
-        <param name="odom_frame"      value="/amigobot_1/odom"/>
-        <param name="base_link_frame" value="/amigobot_1/base_link"/>
+        <param name="RevCount"    value="11548"/>        
+        <param name="odom_frame"      value="/$(arg first_tb3)/odom"/>
+        <param name="base_link_frame" value="/$(arg first_tb3)/base_link"/>
     </node>
 
     <arg name="robot_ip_2" default="10.0.126.36" />
     <node pkg="rosaria"
           type="RosAria"
-          name="amigobot_2"
+          name="$(arg second_tb3)"
           args="_port:=$(arg robot_ip_2):8101"
-          output="screen">
+          output="log">
+        <remap from="/$(arg second_tb3)/pose" to="/$(arg second_tb3)/odom"/>          
         <param name="DriftFactor" value="0"/>
         <param name="TicksMM"     value="123"/>
         <param name="RevCount"    value="11548"/>
-        <param name="odom_frame"      value="/amigobot_2/odom"/>
-        <param name="base_link_frame" value="/amigobot_2/base_link"/>        
+        <param name="odom_frame"      value="/$(arg second_tb3)/odom"/>
+        <param name="base_link_frame" value="/$(arg second_tb3)/base_link"/>
     </node>
 
-    <!--arg name="robot_ip_3" default="10.0.126.32" />
+    <arg name="robot_ip_3" default="10.0.126.33" />
     <node pkg="rosaria"
           type="RosAria"
-          name="amigobot_3"
+          name="$(arg third_tb3)"
           args="_port:=$(arg robot_ip_3):8101"
-          output="screen">
+          output="log">
+        <remap from="/$(arg third_tb3)/pose" to="/$(arg third_tb3)/odom"/>          
         <param name="DriftFactor" value="0"/>
         <param name="TicksMM"     value="123"/>
         <param name="RevCount"    value="11548"/>
-    </node-->
+        <param name="odom_frame"      value="/$(arg third_tb3)/odom"/>
+        <param name="base_link_frame" value="/$(arg third_tb3)/base_link"/>
+    </node>
 
-    <!--node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories.py" output="screen">
-    </node-->
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories.py" output="screen">
+    </node>
 
     <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ubuntu484/catkin_ws/src/amigobot_LTL/launch/rviz/multi_turtlebot3.rviz">
     </node>
 
-    <!--3.2 0-->
-    <node pkg="tf" type="static_transform_publisher" name="amigobot_1_map_odom_broadcaster" args="0 0 0 0 0 0 /map /amigobot_1/odom 5" />
-    <node pkg="tf" type="static_transform_publisher" name="amigobot_2_map_odom_broadcaster" args="0 0 0 0 0 0 /map /amigobot_2/odom 5" />
-
+    <!-- x y z yaw roll pitch, should remain the SAME as map.yaml -->
+    <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster"  args="0    3.6 0 -1.57 0 0 /map /$(arg first_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg second_tb3)_map_odom_broadcaster" args="2.0 -0.2 0  1.57 0 0 /map /$(arg second_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg third_tb3)_map_odom_broadcaster"  args="1.6  0.4 0 -3.14 0 0 /map /$(arg third_tb3)/odom 5" />
 
 </launch>

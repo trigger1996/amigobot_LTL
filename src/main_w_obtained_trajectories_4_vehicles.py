@@ -36,17 +36,17 @@ def main():
     rate = rospy.Rate(50)	# 50Hz
     rospy.sleep(10)
 
-    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_1.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_1.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_2.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_2.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_3.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_3.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_4.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_4.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
                                                    time_to_wait = time_to_wait)
 
     # add prefix
