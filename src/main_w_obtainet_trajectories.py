@@ -2,7 +2,7 @@
 #encoding=utf-8
 
 import sys
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
 
 import rospy
 import bot_libs.bot as bot
