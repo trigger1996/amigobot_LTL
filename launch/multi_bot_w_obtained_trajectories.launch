@@ -35,7 +35,7 @@
         <param name="base_link_frame" value="/$(arg first_tb3)/base_link"/>
     </node>
 
-    <arg name="robot_ip_2" default="10.0.126.36" />
+    <arg name="robot_ip_2" default="10.0.126.35" />
     <node pkg="rosaria"
           type="RosAria"
           name="$(arg second_tb3)"
@@ -49,7 +49,7 @@
         <param name="base_link_frame" value="/$(arg second_tb3)/base_link"/>
     </node>
 
-    <arg name="robot_ip_3" default="10.0.126.33" />
+    <arg name="robot_ip_3" default="10.0.126.32" />
     <node pkg="rosaria"
           type="RosAria"
           name="$(arg third_tb3)"
@@ -71,7 +71,7 @@
 
     <!-- x y z yaw roll pitch, should remain the SAME as map.yaml -->
     <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster"  args="0    3.6 0 -1.57 0 0 /map /$(arg first_tb3)/odom 5" />
-    <node pkg="tf" type="static_transform_publisher" name="$(arg second_tb3)_map_odom_broadcaster" args="2.0 -0.2 0  1.57 0 0 /map /$(arg second_tb3)/odom 5" />
-    <node pkg="tf" type="static_transform_publisher" name="$(arg third_tb3)_map_odom_broadcaster"  args="1.6  0.4 0 -3.14 0 0 /map /$(arg third_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg second_tb3)_map_odom_broadcaster" args="2.4  0.0 0  1.57 0 0 /map /$(arg second_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg third_tb3)_map_odom_broadcaster"  args="1.8  0.6 0 -3.14 0 0 /map /$(arg third_tb3)/odom 5" />
 
 </launch>
