@@ -7,27 +7,27 @@
     <arg name="fourth_tb3" default="amigobot_4"/>
 
     <arg name="first_tb3_x_pos" default=" 0.0"/>
-    <arg name="first_tb3_y_pos" default=" 3.2"/>
+    <arg name="first_tb3_y_pos" default=" 3.6"/>
     <arg name="first_tb3_z_pos" default=" 0.0"/>
     <arg name="first_tb3_yaw"   default="-1.57"/>
 
-    <arg name="second_tb3_x_pos" default=" 2.0"/>
+    <arg name="second_tb3_x_pos" default=" 2.4"/>
     <arg name="second_tb3_y_pos" default=" 0.0"/>
     <arg name="second_tb3_z_pos" default=" 0.0"/>
     <arg name="second_tb3_yaw"   default=" 1.57"/>
 
     <arg name="third_tb3_x_pos" default="  0.0"/>
-    <arg name="third_tb3_y_pos" default="  0.4"/>
+    <arg name="third_tb3_y_pos" default="  1.2"/>
     <arg name="third_tb3_z_pos" default="  0.0"/>
     <arg name="third_tb3_yaw"   default="  1.57"/>
 
-    <arg name="fourth_tb3_x_pos" default=" 1.6"/>
-    <arg name="fourth_tb3_y_pos" default=" 2.8"/>
+    <arg name="fourth_tb3_x_pos" default=" 1.8"/>
+    <arg name="fourth_tb3_y_pos" default=" 3.0"/>
     <arg name="fourth_tb3_z_pos" default=" 0.0"/>
     <arg name="fourth_tb3_yaw"   default=" 0.0"/>    
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/test_field.world"/>
+      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/empty_world.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
       <arg name="gui" value="true"/>
