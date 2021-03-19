@@ -19,7 +19,7 @@
     <arg name="third_tb3_yaw"   default=" 3.14"/>
 
 
-    <arg name="robot_ip" default="10.0.126.35" />
+    <arg name="robot_ip" default="10.0.126.33" />
     <node pkg="rosaria" 
           type="RosAria" 
           name="$(arg first_tb3)" 

@@ -79,11 +79,11 @@ class turtlebot(object):
         self.u_yaw_max = 180 / 2                            # deg/s
 
         # dist PI controller
-        self.dist_kp = 0.3
+        self.dist_kp = 0.45
         self.dist_ki = 0.15
         self.dist_increment  = 0
         self.dist_inc_max = 0.05
-        self.u_dist_max = 0.15                              # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_max = 0.175                             # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
         self.is_wait = False                                # symbol for waiting
