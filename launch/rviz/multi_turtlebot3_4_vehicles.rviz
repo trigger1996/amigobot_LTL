@@ -256,7 +256,7 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.029999999329447746
+      Line Width: 0.05000000074505806
       Name: Path
       Offset:
         X: 0
@@ -279,7 +279,7 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.029999999329447746
+      Line Width: 0.05000000074505806
       Name: Path
       Offset:
         X: 0
@@ -302,7 +302,7 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.029999999329447746
+      Line Width: 0.05000000074505806
       Name: Path
       Offset:
         X: 0
@@ -325,7 +325,7 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.029999999329447746
+      Line Width: 0.05000000074505806
       Name: Path
       Offset:
         X: 0
@@ -367,25 +367,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 39.25356674194336
+      Distance: 32.12663650512695
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 5.216418743133545
-        Y: -4.905810356140137
-        Z: -2.558546304702759
+        X: 5.121507167816162
+        Y: -3.22253680229187
+        Z: -1.4815047979354858
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5047963857650757
+      Pitch: 1.49979567527771
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.39857816696167
+      Yaw: 4.583583354949951
     Saved: ~
 Window Geometry:
   Displays:
@@ -403,5 +403,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 841
-  X: -5
+  X: 67
   Y: 27

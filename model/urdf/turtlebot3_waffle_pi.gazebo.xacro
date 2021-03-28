@@ -71,7 +71,8 @@
       <publishTf>true</publishTf>
       <publishWheelJointState>true</publishWheelJointState>
       <legacyMode>false</legacyMode>
-      <updateRate>120</updateRate>
+      <updateRate>15</updateRate>
+      <!--updateRate>120</updateRate-->
       <leftJoint>wheel_left_joint</leftJoint>
       <rightJoint>wheel_right_joint</rightJoint>
       <wheelSeparation>0.287</wheelSeparation>

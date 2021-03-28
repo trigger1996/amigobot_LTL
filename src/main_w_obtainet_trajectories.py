@@ -2,7 +2,7 @@
 #encoding=utf-8
 
 import sys
-sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
 
 import rospy
 import bot_libs.bot as bot
@@ -24,7 +24,6 @@ suffix_cycles = [['1', '2', '21', '22', 'g1', '22', '23', '9', '10', 'u2', '10',
 '''
 # CASE 3
 '''
-'''
 prefixes = [['u1', '4', '5', '27', '28', '28', '21', '21', '12'],
             ['u2', 'u2', 'u2', '10', 'u2', '10', '10', '10', '10', 'u2', 'u2', 'u2'],
             ['11', '12', '1', '2', '21', '22', '23']]
@@ -32,9 +31,8 @@ suffix_cycles = [['1', '2', '21', '22', 'g1', '22', '23', '9', '10', 'u2', '10',
                  ['10', '11', '23', '24', '24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '28', '21', '22', '22', '23', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', '28', 'g4', '28', '21', '22', '23', '23', '9', '10', 'u2'],
                  ['9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23']]
 '''
-
-'''
 # CASE 4
+'''
 '''
 prefixes = [['u1', '4', '5', '27', '3', '3', '4', 'u1'],
             ['u2', '10', 'u2', '10', 'u2', 'u2', 'u2', 'u2', 'u2'],
@@ -42,7 +40,7 @@ prefixes = [['u1', '4', '5', '27', '3', '3', '4', 'u1'],
 suffix_cycles = [['4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', '28', 'g4', '28', '28', '21', '12', '1', '2', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '3', '4', 'u1'],
                  ['10', '11', '23', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '8', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2'],
                  ['23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22']]
-
+'''
 
 def calculate_final_time(bot_w_ts):
     total_time = 0
@@ -57,14 +55,14 @@ def main():
     rate = rospy.Rate(50)	# 50Hz
     rospy.sleep(10)
 
-    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_1.yaml',
-                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_2.yaml',
-                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_2.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/robot_3.yaml',
-                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_3.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait)
 
     # add prefix

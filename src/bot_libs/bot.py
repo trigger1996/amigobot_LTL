@@ -10,7 +10,7 @@ from tf import TransformBroadcaster
 import numpy as np
 
 global ros_rate
-odom_cb_rate = 120       # read from gazebo, in hz
+odom_cb_rate = 15       # read from gazebo, in hz, turtlebot3_waffle_pi.gazebo.xacro
 
 class turtlebot(object):
     def __init__(self, name='amigobot_1', model=None, x = 0, y = 0, yaw = 0, time_to_wait = 1):

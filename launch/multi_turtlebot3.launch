@@ -21,7 +21,8 @@
     <arg name="third_tb3_yaw"   default=" 3.14"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/test_field.world"/>
+      <!--arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/test_field.world"/-->
+      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/empty.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
       <arg name="gui" value="true"/>
@@ -65,7 +66,7 @@
     <node pkg="amigobot_LTL" name="amigobot_LTL" type="main.py" output="screen">
     </node>
 
-    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ghost/catkin_ws_ros/src/amigobot_LTL/launch/rviz/multi_turtlebot3.rviz">
+    <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ubuntu484/catkin_ws/src/amigobot_LTL/launch/rviz/multi_turtlebot3.rviz">
     </node>
 
     <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster" args="0 0 0 0 0 0 /map /$(arg first_tb3)/odom 5" />

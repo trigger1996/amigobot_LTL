@@ -10,7 +10,7 @@ from tf import TransformBroadcaster
 import numpy as np
 
 global ros_rate
-odom_cb_rate = 120       # read from gazebo, in hz
+odom_cb_rate = 15       # read from gazebo, in hz, turtlebot3_waffle_pi.gazebo.xacro
 
 def data_saturation(data, max, min):
     if data > max:
@@ -61,11 +61,11 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.05                    # deg, ref: 5
-        self.dist_setpt_threshold = 0.125                   # meter
+        self.yaw_setpt_threshold  = 0.15                    # deg, ref: 5
+        self.dist_setpt_threshold = 0.15                    # meter
 
         # yaw PI controller
-        self.yaw_kp = 2.45
+        self.yaw_kp = 3.25
         self.yaw_ki = 0.15
         self.yaw_increment  = 0
         self.yaw_inc_max = 0.25
