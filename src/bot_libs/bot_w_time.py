@@ -72,11 +72,11 @@ class turtlebot(object):
         self.u_yaw_max = 180                                # deg/s
 
         # dist PI controller
-        self.dist_kp = 0.3
-        self.dist_ki = 0.15
+        self.dist_kp = 0.45
+        self.dist_ki = 0.2
         self.dist_increment  = 0
         self.dist_inc_max = 0.2
-        self.u_dist_max = 0.32                              # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_max = 0.35                              # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
         self.is_wait = False                                # symbol for waiting
@@ -300,9 +300,9 @@ class turtlebot(object):
             [bot_pose_t.pose.orientation.x, bot_pose_t.pose.orientation.y, bot_pose_t.pose.orientation.z, bot_pose_t.pose.orientation.w] = quaternion_from_euler(0., 0., self.yaw * pi / 180.)
 
             self.robot_traj.poses.append(bot_pose_t)
-            self.robot_traj.header.stamp = rospy.Time.now()            
+            self.robot_traj.header.stamp = rospy.Time.now()
             self.robot_traj.header.frame_id = '/amigobot_1/odom'
-            self.robot_traj_pub.publish(self.robot_traj)        
+            self.robot_traj_pub.publish(self.robot_traj)
 
     def init_time(self):
         t_sec  = rospy.Time.now().secs

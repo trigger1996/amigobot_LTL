@@ -28,52 +28,43 @@ def main():
                                                                map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                                time_to_wait = time_to_wait)
 
-    
-    bot_1.add_waypoint_from_waypt_list('4')
-    bot_1.add_waypoint_from_waypt_list('4')
-    bot_1.add_waypoint_from_waypt_list('5')
-    bot_1.add_waypoint_from_waypt_list('6')
-    bot_1.add_waypoint_from_waypt_list('7')
-    bot_1.add_waypoint_from_waypt_list('8')
-    bot_1.add_waypoint_from_waypt_list('9')
-    bot_1.add_waypoint_from_waypt_list('10')
-    bot_1.add_waypoint_from_waypt_list('u2')
-    bot_1.add_waypoint_from_waypt_list('10')   
-    bot_1.add_waypoint_from_waypt_list('11')
-    bot_1.add_waypoint_from_waypt_list('12')
-    bot_1.add_waypoint_from_waypt_list('1')
-    bot_1.add_waypoint_from_waypt_list('2')
-    bot_1.add_waypoint_from_waypt_list('3')
-    bot_1.add_waypoint_from_waypt_list('4')
-    bot_1.add_waypoint_from_waypt_list('u1')    
-    bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
-    
-    '''
-    bot_1.add_waypoint_from_waypt_list('4')
-    bot_1.add_waypoint_from_waypt_list('4')
-    bot_1.add_waypoint_from_waypt_list('5')
-    bot_1.add_waypoint_from_waypt_list('27')
-    bot_1.add_waypoint_from_waypt_list('28')
-    bot_1.add_waypoint_from_waypt_list('g4')
-    bot_1.add_waypoint_from_waypt_list('28')
-    bot_1.add_waypoint_from_waypt_list('21')
-    bot_1.add_waypoint_from_waypt_list('22')
-    bot_1.add_waypoint_from_waypt_list('g1')
-    bot_1.add_waypoint_from_waypt_list('22')
-    bot_1.add_waypoint_from_waypt_list('23')
-    bot_1.add_waypoint_from_waypt_list('24')
-    bot_1.add_waypoint_from_waypt_list('g2')
-    bot_1.add_waypoint_from_waypt_list('24')
-    bot_1.add_waypoint_from_waypt_list('25')
-    bot_1.add_waypoint_from_waypt_list('26')
-    bot_1.add_waypoint_from_waypt_list('g3')
-    bot_1.add_waypoint_from_waypt_list('26')
-    bot_1.add_waypoint_from_waypt_list('27')
-    bot_1.add_waypoint_from_waypt_list('3')    
-    bot_1.add_waypoint_from_waypt_list('4')
-    bot_1.add_waypoint_from_waypt_list('u1')    
-    bot_1.add_waypoint_from_waypt_list('u1')    # for showing arriving time
-    '''
+    is_modifible = [True, True, False]
+    prefix_length, prefixes, suffix_cycle_cost, suffix_cycles, team_prefix, team_suffix_cycle = \
+        ca.multi_agent_optimal_run_ca(ts_tuple, formula, opt_prop, is_modifible, is_pp=False)
+
+    logger.info('Cost: %d', suffix_cycle_cost)
+    logger.info('Prefix length: %d', prefix_length)
+    # Find the controls that will produce this run
+    control_prefixes = []
+    control_suffix_cycles = []
+    for i in range(0, len(ts_tuple)):
+        ts = ts_tuple[i]
+        control_prefixes.append(ts.controls_from_run(prefixes[i]))
+        control_suffix_cycles.append(ts.controls_from_run(suffix_cycles[i]))
+        logger.info('%s run prefix: %s', ts.name, prefixes[i])
+        logger.info('%s control perfix: %s', ts.name, control_prefixes[i])
+        logger.info('%s suffix cycle: %s', ts.name, suffix_cycles[i])
+        logger.info('%s control suffix cycle: %s', ts.name,
+                                                    control_suffix_cycles[i])    
+
+        if suffix_cycles[i][0] == prefix[i][prefix.__len__() - 1]:
+            suffix_cycles[i].pop(0)
+
+    # add prefix
+    for i in range(0, prefixes[0].__len__()):
+        bot_1.add_waypoint_from_waypt_list(prefixes[0][i])
+    for i in range(0, prefixes[1].__len__()):
+        bot_2.add_waypoint_from_waypt_list(prefixes[1][i])
+    for i in range(0, prefixes[2].__len__()):
+        bot_3.add_waypoint_from_waypt_list(prefixes[2][i])
+
+    # add suffix
+    for i in range(0, suffix_cycles[0].__len__()):
+        bot_1.add_waypoint_from_waypt_list(suffix_cycles[0][i])
+    for i in range(0, suffix_cycles[1].__len__()):
+        bot_2.add_waypoint_from_waypt_list(suffix_cycles[1][i])
+    for i in range(0, suffix_cycles[2].__len__()):                      # range(0, ...)
+        bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
     while not rospy.is_shutdown():
         rate.sleep()

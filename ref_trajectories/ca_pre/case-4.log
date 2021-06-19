@@ -1,0 +1,160 @@
+INFO __main__ - Formula: []<>gather && [](gather->(r1gather4 && r2gather2)) && [](r1gather -> X(!r1gather U r1upload)) && [](r2gather -> X(!r2gather U r2upload))
+INFO __main__ - opt_prop: set(['r2gather2', 'r1gather4'])
+INFO lomap.algorithms.optimal_run - T has 13236 states
+INFO lomap.algorithms.optimal_run - B has 12 states
+INFO lomap.algorithms.optimal_run - P has 31738 states
+INFO lomap.algorithms.optimal_run - Set F has 7 states
+INFO lomap.algorithms.optimal_run - Set S has 7 states
+INFO pp - Creating server instance (pp-1.6.5)
+INFO pp - Running on Python 2.7.17 linux2
+INFO pp - pp local server started with 16 workers
+INFO lomap.algorithms.optimal_run - S->S+F
+INFO pp - Task 0 started
+INFO pp - Task 1 started
+INFO pp - Task 2 started
+INFO pp - Task 3 started
+INFO pp - Task 4 started
+INFO pp - Task 5 started
+INFO pp - Task 6 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55762)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55766)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55764)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55782)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55776)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55778)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 55780)
+INFO lomap.algorithms.optimal_run - Collected results for S->S+F
+INFO lomap.algorithms.optimal_run - F->S
+INFO pp - Task 7 started
+INFO pp - Task 8 started
+INFO pp - Task 9 started
+INFO pp - Task 10 started
+INFO pp - Task 11 started
+INFO pp - Task 12 started
+INFO pp - Task 13 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55786)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55792)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55804)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55802)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55808)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55810)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 55806)
+INFO lomap.algorithms.optimal_run - Collected results for F->S
+INFO lomap.algorithms.optimal_run - S-bottleneck
+INFO pp - Task 14 started
+INFO pp - Task 15 started
+INFO pp - Task 16 started
+INFO pp - Task 17 started
+INFO pp - Task 18 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55814)
+INFO pp - Task 19 started
+INFO pp - Task 20 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55820)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55822)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55828)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55830)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55836)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 55838)
+INFO lomap.algorithms.optimal_run - Collected results for S-bottleneck
+INFO lomap.algorithms.optimal_run - Path*
+INFO pp - Task 21 started
+INFO pp - Task 22 started
+INFO pp - Task 23 started
+INFO pp - Task 24 started
+INFO pp - Task 25 started
+INFO pp - Task 26 started
+INFO pp - Task 27 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55846)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55844)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55854)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55856)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55858)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55864)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 55866)
+INFO lomap.algorithms.optimal_run - Collected results for Path*
+INFO lomap.algorithms.optimal_run - Cost*: 42, Len*: 110, Cycle*: ((('g4', 'g2', '21'), u'accept_S3'), (('g4', 'g2', '21'), u'accept_S3'), (('g4', 'g2', '21'), u'accept_S3'))
+INFO lomap.algorithms.optimal_run - Extracting Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Robot-1             Robot-2             Robot-3             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - -------             -------             -------             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Prefix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Suffix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('2', '21', 1)      
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('21', '22', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     ('24', '25', 2)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('21', '22', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 1)     ('23', '24', 1)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('22', '23', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('23', '9', 1)      
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '22', 2)     ('25', '26', 2)     11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  26                  ('11', '12', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  27                  12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   3                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  u1                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   ('21', '22', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('10', '11', 1)     ('4', '5', 1)       22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  5                   ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 2)     ('5', '6', 2)       23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('22', '23', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('11', '12', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       12                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   1                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  2                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  21                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('21', '22', 2)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('4', 'u1', 1)      ('10', 'u2', 1)     22                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  ('22', '23', 1)     
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  23                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  9                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  10                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   11                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('11', '12', 2)     
+INFO __main__ - Cost: 42
+INFO __main__ - Prefix length: 2
+INFO __main__ - amigobot_1 run prefix: ['u1', '4']
+INFO __main__ - amigobot_1 control perfix: ['ufl']
+INFO __main__ - amigobot_1 suffix cycle: ['4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '12', '1', '2', '3', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', 'u1', '4', '5', '27', '3', '4']
+INFO __main__ - amigobot_1 control suffix cycle: ['rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'lf', 'f', 'f', 'f', 'f', 'ufl', 'rf', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'f', 'ufl', 'rf', 'rfr', 'fr', 'f']
+INFO __main__ - amigobot_2 run prefix: ['u2', '10']
+INFO __main__ - amigobot_2 control perfix: ['ufl']
+INFO __main__ - amigobot_2 suffix cycle: ['10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '9', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', 'u2', '10', '11', '23', '9', '10']
+INFO __main__ - amigobot_2 control suffix cycle: ['rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'lf', 'f', 'fr', 'f', 'f', 'ufl', 'rf', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'f', 'ufl', 'rf', 'rfr', 'f', 'f']
+INFO __main__ - amigobot_3 run prefix: ['11']
+INFO __main__ - amigobot_3 control perfix: []
+INFO __main__ - amigobot_3 suffix cycle: ['12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11', '12', '1', '2', '21', '22', '23', '9', '10', '11']
+INFO __main__ - amigobot_3 control suffix cycle: ['f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f', 'f', 'f', 'rf']
+INFO lomap.classes.timer - IJRR 2013 Case-Study 2 took 9646.217 ms.
+INFO __main__ - <><><> <><><> <><><>

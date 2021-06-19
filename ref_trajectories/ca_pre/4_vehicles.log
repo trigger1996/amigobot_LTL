@@ -1,0 +1,206 @@
+INFO __main__ - Formula: []<>gather && [](gather->(r1gather && r2gather)) && [](r1gather -> X(!r1gather U r1upload)) && [](r2gather -> X(!r2gather U r2upload))
+INFO __main__ - opt_prop: set(['r2gather', 'r1gather'])
+INFO lomap.algorithms.optimal_run - T has 3724 states
+INFO lomap.algorithms.optimal_run - B has 5 states
+INFO lomap.algorithms.optimal_run - P has 4224 states
+INFO lomap.algorithms.optimal_run - Set F has 16 states
+INFO lomap.algorithms.optimal_run - Set S has 16 states
+INFO pp - Creating server instance (pp-1.6.5)
+INFO pp - Running on Python 2.7.17 linux2
+INFO pp - pp local server started with 16 workers
+INFO lomap.algorithms.optimal_run - S->S+F
+INFO pp - Task 0 started
+INFO pp - Task 1 started
+INFO pp - Task 2 started
+INFO pp - Task 3 started
+INFO pp - Task 4 started
+INFO pp - Task 5 started
+INFO pp - Task 6 started
+INFO pp - Task 7 started
+INFO pp - Task 8 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57430)
+INFO pp - Task 9 started
+INFO pp - Task 10 started
+INFO pp - Task 11 started
+INFO pp - Task 12 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57440)
+INFO pp - Task 13 started
+INFO pp - Task 14 started
+INFO pp - Task 15 started
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57446)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57448)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57450)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57456)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57474)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57476)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57478)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57484)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57482)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57480)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57464)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57486)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57488)
+INFO lomap.algorithms.optimal_run - Served dataset 0 to ('127.0.0.1', 57490)
+INFO lomap.algorithms.optimal_run - Collected results for S->S+F
+INFO lomap.algorithms.optimal_run - F->S
+INFO pp - Task 16 started
+INFO pp - Task 17 started
+INFO pp - Task 18 started
+INFO pp - Task 19 started
+INFO pp - Task 20 started
+INFO pp - Task 21 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57496)
+INFO pp - Task 22 started
+INFO pp - Task 23 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57500)
+INFO pp - Task 24 started
+INFO pp - Task 25 started
+INFO pp - Task 26 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57506)
+INFO pp - Task 27 started
+INFO pp - Task 28 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57512)
+INFO pp - Task 29 started
+INFO pp - Task 30 started
+INFO pp - Task 31 started
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57516)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57522)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57540)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57542)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57544)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57546)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57548)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57528)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57550)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57552)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57554)
+INFO lomap.algorithms.optimal_run - Served dataset 1 to ('127.0.0.1', 57556)
+INFO lomap.algorithms.optimal_run - Collected results for F->S
+INFO lomap.algorithms.optimal_run - S-bottleneck
+INFO pp - Task 32 started
+INFO pp - Task 33 started
+INFO pp - Task 34 started
+INFO pp - Task 35 started
+INFO pp - Task 36 started
+INFO pp - Task 37 started
+INFO pp - Task 38 started
+INFO pp - Task 39 started
+INFO pp - Task 40 started
+INFO pp - Task 41 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57564)
+INFO pp - Task 42 started
+INFO pp - Task 43 started
+INFO pp - Task 44 started
+INFO pp - Task 45 started
+INFO pp - Task 46 started
+INFO pp - Task 47 started
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57572)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57576)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57582)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57586)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57598)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57604)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57606)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57608)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57594)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57610)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57612)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57614)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57618)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57616)
+INFO lomap.algorithms.optimal_run - Served dataset 2 to ('127.0.0.1', 57620)
+INFO lomap.algorithms.optimal_run - Collected results for S-bottleneck
+INFO lomap.algorithms.optimal_run - Path*
+INFO pp - Task 48 started
+INFO pp - Task 49 started
+INFO pp - Task 50 started
+INFO pp - Task 51 started
+INFO pp - Task 52 started
+INFO pp - Task 53 started
+INFO pp - Task 54 started
+INFO pp - Task 55 started
+INFO pp - Task 56 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57628)
+INFO pp - Task 57 started
+INFO pp - Task 58 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57634)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57636)
+INFO pp - Task 59 started
+INFO pp - Task 60 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57644)
+INFO pp - Task 61 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57648)
+INFO pp - Task 62 started
+INFO pp - Task 63 started
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57652)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57656)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57660)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57664)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57672)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57674)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57676)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57678)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57680)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57682)
+INFO lomap.algorithms.optimal_run - Served dataset 3 to ('127.0.0.1', 57684)
+INFO lomap.algorithms.optimal_run - Collected results for Path*
+INFO lomap.algorithms.optimal_run - Cost*: 32, Len*: 32, Cycle*: ((('g1', 'g4', '21', '7'), u'accept_S2'), (('g1', 'g4', '21', '7'), u'accept_S2'), (('g1', 'g4', '21', '7'), u'accept_S2'))
+INFO lomap.algorithms.optimal_run - Extracting Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Robot-1             Robot-2             Robot-3             Robot-4             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - -------             -------             -------             -------             
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Prefix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  11                  12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   ('11', '12', 2)     1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   12                  2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('5', '6', 2)       1                   21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 6                   2                   12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 7                   ('2', '3', 2)       1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 8                   3                   2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('8', '9', 2)       4                   21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   5                   12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  27                  1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  3                   2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  u1                  12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Suffix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  u1                  12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('11', '12', 2)     4                   1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  u1                  2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   4                   21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   5                   12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  27                  1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '22', 2)     ('27', '28', 2)     2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  28                  ('2', '21', 1)      ('6', '7', 1)       
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g1                  g4                  21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 22                  28                  ('21', '12', 1)     ('7', '8', 1)       
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('22', '23', 1)     ('28', '21', 1)     12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 23                  21                  1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 9                   12                  2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  1                   21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  2                   12                  8                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  ('2', '3', 2)       1                   25                  
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u2                  3                   2                   6                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 10                  4                   21                  7                   
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 11                  u1                  12                  8                   
+INFO __main__ - Cost: 32
+INFO __main__ - Prefix length: 28
+INFO __main__ - amigobot_1 run prefix: ['u1', '4', 'u1', '4', '5', '6', '7', '8', '9', '10', 'u2', '10', '11']
+INFO __main__ - amigobot_1 control perfix: ['ufl', 'f', 'ufl', 'rf', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf']
+INFO __main__ - amigobot_1 suffix cycle: ['11', '12', '1', '2', '21', '22', 'g1', '22', '23', '9', '10', 'u2', '10', 'u2', '10', '11']
+INFO __main__ - amigobot_1 control suffix cycle: ['f', 'f', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'f', 'ufl', 'f', 'ufl', 'rf']
+INFO __main__ - amigobot_2 run prefix: ['u2', '10', '11', '12', '1', '2', '3', '4', '5', '27', '3', '4', 'u1']
+INFO __main__ - amigobot_2 control perfix: ['ufl', 'rf', 'f', 'f', 'rf', 'f', 'f', 'rf', 'rfr', 'fr', 'f', 'f']
+INFO __main__ - amigobot_2 suffix cycle: ['u1', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1']
+INFO __main__ - amigobot_2 control suffix cycle: ['ufl', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f']
+INFO __main__ - robot_3 run prefix: ['2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12']
+INFO __main__ - robot_3 control perfix: ['rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr']
+INFO __main__ - robot_3 suffix cycle: ['12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12']
+INFO __main__ - robot_3 control suffix cycle: ['f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr', 'f', 'rf', 'rfr', 'fr']
+INFO __main__ - amigobot_4 run prefix: ['6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8']
+INFO __main__ - amigobot_4 control perfix: ['f', 'rf', 'rfr', 'f', 'f', 'rf', 'rfr', 'f', 'f', 'rf', 'rfr', 'f', 'f', 'rf']
+INFO __main__ - amigobot_4 suffix cycle: ['8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8']
+INFO __main__ - amigobot_4 control suffix cycle: ['rfr', 'f', 'f', 'rf', 'rfr', 'f', 'f', 'rf', 'rfr', 'f', 'f', 'rf', 'rfr', 'f', 'f', 'rf']
+INFO lomap.classes.timer - IJRR 2013 Case-Study 2 took 7114.655 ms.
+INFO __main__ - <><><> <><><> <><><>
