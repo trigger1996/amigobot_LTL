@@ -4,13 +4,15 @@ import rospy
 from geometry_msgs.msg import Twist, Point, PoseStamped, Quaternion
 from nav_msgs.msg import Odometry, Path
 import tf
-from math import radians, copysign, sqrt, pow, pi, atan2, fabs
+from math import radians, copysign, sqrt, pow, pi, atan2, fabs, sin, cos
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from tf import TransformBroadcaster
 import numpy as np
 
-global ros_rate
+global ros_rate, u_dist_max
 odom_cb_rate = 15       # read from gazebo, in hz, turtlebot3_waffle_pi.gazebo.xacro
+u_dist_max = 0.185
+
 
 def data_saturation(data, max, min):
     if data > max:
@@ -28,7 +30,7 @@ def normalize_angle(yaw):
     return yaw
 
 class turtlebot(object):
-    def __init__(self, name='amigobot_1', x = 0, y = 0, yaw = 0, time_to_wait = 1):
+    def __init__(self, name='amigobot_1', x = 0, y = 0, yaw = 0, time_to_wait = 1, u_dist_max = u_dist_max):
         self.name = name
 
         self.twist_pub        = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
@@ -71,12 +73,16 @@ class turtlebot(object):
         self.yaw_inc_max = 0.25
         self.u_yaw_max = 180                                # deg/s
 
+        # yaw nonlinear controller
+        self.yaw_c2 = 1.25
+        self.yaw_c3 = 0.35
+
         # dist PI controller
         self.dist_kp = 0.45
         self.dist_ki = 0.2
         self.dist_increment  = 0
         self.dist_inc_max = 0.2
-        self.u_dist_max = 0.35                              # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_max = u_dist_max                        # m/s, maximum speed with no slide in startup: 0.3 (about)
 
         self.is_steer_completed = False
         self.is_wait = False                                # symbol for waiting
@@ -258,14 +264,31 @@ class turtlebot(object):
 
                         # PI control w saturation
                         # dist
-                        self.dist_increment += dist_err
-                        self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
+                        #self.dist_increment += dist_err
+                        #self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
 
-                        u_dist = self.dist_kp * dist_err + self.dist_ki * self.dist_increment
-                        u_dist = data_saturation(u_dist, self.u_dist_max, -self.u_dist_max)
+                        #u_dist = self.dist_kp * dist_err + self.dist_ki * self.dist_increment
+                        #u_dist = data_saturation(u_dist, self.u_dist_max, -self.u_dist_max)
 
                         # yaw P controller
-                        u_yaw = self.yaw_kp * yaw_err
+                        #u_yaw = self.yaw_kp * yaw_err
+                        #u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
+
+
+                        # controller from Yu 2015
+                        vr = 0
+                        wr = 0
+
+                        xe = (self.target_x - self.x) *  cos(self.yaw * pi / 180) + (self.target_y - self.y) * sin(self.yaw * pi / 180)
+                        ye = (self.target_x - self.x) * -sin(self.yaw * pi / 180) + (self.target_y - self.y) * cos(self.yaw * pi / 180)
+
+                        self.dist_increment += xe
+                        self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
+
+                        u_dist = vr + self.dist_kp * xe + self.dist_ki * self.dist_increment
+                        u_yaw  = wr + self.yaw_c2 * (ye * cos(yaw_err / 2 * pi / 180) - xe * sin(yaw_err / 2 * pi / 180)) + self.yaw_c3 * sin(yaw_err / 2 * pi / 180)
+
+                        u_dist = data_saturation(u_dist, self.u_dist_max, -self.u_dist_max)
                         u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
 
                         #

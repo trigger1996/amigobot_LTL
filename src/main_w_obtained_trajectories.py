@@ -9,8 +9,10 @@ import bot_libs.bot as bot
 import bot_libs.bot_ts as bot_ts
 
 # uncomment the correspongding case to represent run by amigobot
-global time_to_wait
+global time_to_wait, v_max
 time_to_wait = 10        # seconds
+v_max_1_2 = 0.195        # m/s
+v_max_3   = 0.205        # 0.245 m/s if craching        default: 0.205 m/s
 
 # CASE 2 INV
 '''
@@ -21,7 +23,6 @@ suffix_cycles = [['g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '2
                  ['g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26'],
                  ['10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11']]
 '''
-
 
 # CASE 4 INV
 '''
@@ -34,6 +35,7 @@ suffix_cycles = [['5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '3', '
 '''
 
 # CASE 4 INV LARGER
+# Check .yaml before launching
 prefixes = [['u1', '4', '5', '5', '5', '5'],
             ['u2', '10', '11', '11', '11', '11'],
             ['23', '22', '21']]
@@ -57,13 +59,15 @@ def main():
 
     bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
-                                                   time_to_wait = time_to_wait)
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
     bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_2.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
-                                                   time_to_wait = time_to_wait)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_3.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
-                                                   time_to_wait = time_to_wait)
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3)
+    # robot_3_inv_larger.yaml
+    # robot_3_inv.yaml
 
     # add prefix
     for i in range(0, prefixes[0].__len__()):

@@ -9,8 +9,10 @@ import bot_libs.bot as bot
 import bot_libs.bot_ts as bot_ts
 
 # uncomment the correspongding case to represent run by amigobot
-global time_to_wait
+global time_to_wait, v_max
 time_to_wait = 10        # seconds
+v_max_1_2 = 0.215        # m/s
+v_max_3_4 = 0.245
 
 # CASE 2
 prefixes = [['u1', '4', '5', '27', '28', '21', '22', '23'],
@@ -38,16 +40,16 @@ def main():
 
     bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
-                                                   time_to_wait = time_to_wait)
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
     bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_2.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
-                                                   time_to_wait = time_to_wait)
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
     bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_3.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
-                                                   time_to_wait = time_to_wait)
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
     bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_4.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
-                                                   time_to_wait = time_to_wait)
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
 
     # add prefix
     for i in range(0, prefixes[0].__len__()):

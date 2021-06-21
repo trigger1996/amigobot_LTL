@@ -14,10 +14,12 @@ from bot_w_time import turtlebot
 from lomap import Model
 from lomap import Ts
 
+goback_additional_time = 10    # seconds
+
 class turtlebot_TS(turtlebot, Ts):
-    def __init__(self, name='amigobot_1', x = None, y = None, yaw = None, time_to_wait = 1, yaml_file='robot.yaml', map_file='map.yaml'):
+    def __init__(self, name='amigobot_1', x = None, y = None, yaw = None, time_to_wait = 1, u_dist_max = 0.2, yaml_file='robot.yaml', map_file='map.yaml'):
         super(Ts, self).__init__()
-        super(turtlebot_TS, self).__init__(name, time_to_wait=time_to_wait)
+        super(turtlebot_TS, self).__init__(name, time_to_wait=time_to_wait, u_dist_max=u_dist_max)
 
         # import data from TS
         ts_raw = self.load(yaml_file)
@@ -39,7 +41,7 @@ class turtlebot_TS(turtlebot, Ts):
         self.next_target_waypt = list(self.init)[0]
 
         #
-        self.goback_additional_time = 10     # seconds
+        self.goback_additional_time = goback_additional_time     # seconds
 
         # override waypoint varibles
         if x == None or y == None:

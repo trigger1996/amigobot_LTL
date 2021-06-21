@@ -40,12 +40,11 @@ graph:
       prop: !!set {r3upload: null, r3upload2: null, upload: null, upload2: null}
 
   edges:
-  - ['2',  '21', {control: rfr, weight: 20}]
+  - ['28', '21', {control: f,   weight: 30}]
+  - ['24', '25', {control: f,   weight: 30}]
+  - ['25', '26', {control: lf,  weight: 30}]
+  - ['26', '27', {control: f,   weight: 30}]
+  - ['27', '28', {control: lf,  weight: 30}]
   - ['21', '22', {control: lf,  weight: 30}]
   - ['22', '23', {control: f,   weight: 30}]
-  - ['23', '9',  {control: f,   weight: 20}]
-  - ['9',  '10', {control: f,   weight: 20}]
-  - ['10', '11', {control: rf,  weight: 20}]
-  - ['11', '12', {control: f,   weight: 40}]
-  - ['12', '1',  {control: f,   weight: 20}]
-  - ['1',  '2',  {control: rf,  weight: 20}]
+  - ['23', '24', {control: lf,  weight: 30}]

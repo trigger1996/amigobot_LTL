@@ -124,6 +124,29 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
+      Line Width: 0.10000000149011612
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /amigobot_1/path
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
       Line Width: 0.029999999329447746
       Name: Path
       Offset:
@@ -166,25 +189,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 32.83042907714844
+      Distance: 33.130123138427734
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 4.743362903594971
-        Y: 1.0226185321807861
-        Z: -2.6855807304382324
+        X: 6.367739677429199
+        Y: 5.94511079788208
+        Z: 0.26007652282714844
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8697969913482666
+      Pitch: 1.1047967672348022
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.163576602935791
+      Yaw: 5.183576583862305
     Saved: ~
 Window Geometry:
   Displays:

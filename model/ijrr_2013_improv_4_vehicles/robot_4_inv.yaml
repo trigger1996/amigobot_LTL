@@ -2,7 +2,7 @@
 name: robot_4
 multi: true
 directed: true
-init: ['6']
+init: ['9']
 final: []
 graph:
   nodes:
@@ -39,12 +39,7 @@ graph:
     u2:
       prop: !!set {r2upload: null, r2upload2: null, upload: null, upload2: null}
   edges:
-  - ['4',  '5',  {control: rf,  weight: 20}]
-  - ['5',  '6',  {control: f,   weight: 40}]
-  - ['7',  '8',  {control: rf,  weight: 20}]
-  - ['6',  '7',  {control: f,   weight: 20}]
-  - ['8',  '25', {control: rfr, weight: 20}]
-  - ['25', '26', {control: lf,  weight: 30}]
-  - ['26', '27', {control: f,   weight: 30}]
-  - ['27', '3',  {control: fr,  weight: 20}]
-  - ['3',  '4',  {control: f,   weight: 20}]
+  - ['9',  '23',  {control: f,   weight: 20}]
+  - ['10', '9', {control: f,   weight: 20}]
+  - ['23', '11', {control: rfr, weight: 20}]
+  - ['11', '10', {control: rf,  weight: 20}]
