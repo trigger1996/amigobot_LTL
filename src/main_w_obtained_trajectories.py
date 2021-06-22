@@ -86,9 +86,9 @@ def main():
         bot_3.add_waypoint_from_waypt_list(suffix_cycles[2][i])
 
     # print total cost
-    print('[total cost]' + bot_1.name + 'total cost: ' + str(calculate_final_time(bot_1)))
-    print('[total cost]' + bot_2.name + 'total cost: ' + str(calculate_final_time(bot_2)))
-    print('[total cost]' + bot_3.name + 'total cost: ' + str(calculate_final_time(bot_3)) )   
+    print('[total cost]' + bot_1.name + ' total cost: ' + str(calculate_final_time(bot_1)))
+    print('[total cost]' + bot_2.name + ' total cost: ' + str(calculate_final_time(bot_2)))
+    print('[total cost]' + bot_3.name + ' total cost: ' + str(calculate_final_time(bot_3)) )   
 
     while not rospy.is_shutdown():
         # add suffix-cycles

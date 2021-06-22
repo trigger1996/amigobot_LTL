@@ -67,18 +67,18 @@ class turtlebot(object):
         self.dist_setpt_threshold = 0.15                    # meter
 
         # yaw PI controller
-        self.yaw_kp = 3.25
+        self.yaw_kp = 2.75
         self.yaw_ki = 0.15
         self.yaw_increment  = 0
         self.yaw_inc_max = 0.25
         self.u_yaw_max = 180                                # deg/s
 
         # yaw nonlinear controller
-        self.yaw_c2 = 1.25
-        self.yaw_c3 = 0.35
+        self.yaw_c2 = 6.75
+        self.yaw_c3 = 1.25
 
         # dist PI controller
-        self.dist_kp = 0.45
+        self.dist_kp = 0.85
         self.dist_ki = 0.2
         self.dist_increment  = 0
         self.dist_inc_max = 0.2

@@ -16,15 +16,15 @@
     <arg name="second_tb3_z_pos" default=" 0.0"/>
     <arg name="second_tb3_yaw"   default=" 1.57"/>
 
-    <arg name="third_tb3_x_pos" default="  0.0"/>
+    <arg name="third_tb3_x_pos" default=" 12.0"/>
     <arg name="third_tb3_y_pos" default=" -9.0"/>
     <arg name="third_tb3_z_pos" default="  0.0"/>
     <arg name="third_tb3_yaw"   default="  1.57"/>
 
-    <arg name="fourth_tb3_x_pos" default=" 12.0"/>
-    <arg name="fourth_tb3_y_pos" default="  2.8"/>
+    <arg name="fourth_tb3_x_pos" default=" 15.2"/> <!---->
+    <arg name="fourth_tb3_y_pos" default=" -9.0"/>
     <arg name="fourth_tb3_z_pos" default="  0.0"/>
-    <arg name="fourth_tb3_yaw"   default="  0.0"/>    
+    <arg name="fourth_tb3_yaw"   default=" -1.57"/> <!---->
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
       <!--arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/test_field.world"/-->
