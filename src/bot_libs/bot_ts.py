@@ -43,6 +43,9 @@ class turtlebot_TS(turtlebot, Ts):
         #
         self.goback_additional_time = goback_additional_time     # seconds
 
+        #
+        self.t_to_spend = 0
+
         # override waypoint varibles
         if x == None or y == None:
             self.x = self.waypoint_dict[list(self.init)[0]][0]
@@ -69,10 +72,23 @@ class turtlebot_TS(turtlebot, Ts):
         x = self.waypoint_dict[waypt_name][0]
         y = self.waypoint_dict[waypt_name][1]
         yaw = self.find_motion_target_yaw(self.last_target_waypt, self.next_target_waypt)
-        t_max = self.find_motion_target_weight(self.last_target_waypt, self.next_target_waypt)
+        [t_max, is_go_back] = self.find_motion_target_weight(self.last_target_waypt, self.next_target_waypt)
 
-        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + ", " + str(yaw) + "),\t t_max: " + str(t_max))
-        self.add_waypoint(x, y, yaw, maximum_time=t_max)
+
+        # calculate spent time
+        if t_max == None:
+            self.t_to_spend = self.t_to_spend + self.time_to_wait
+        else:
+            self.t_to_spend = self.t_to_spend + t_max
+
+        # set desired v for go-back, lowering the speed
+        desired_v = self.u_dist_max
+        if is_go_back:
+            desired_v = desired_v * 0.66
+
+        print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + \
+              ", " + str(yaw) + "),\t t_max: " + str(t_max) + ",\t t: " + str(self.t_to_spend) + ",\t vel: " + str(desired_v))
+        self.add_waypoint(x, y, yaw, maximum_time=t_max, desired_vel=desired_v)
 
     def find_motion_target_yaw(self, src, dst):
         for index in self.final_yaw_tab:
@@ -93,16 +109,19 @@ class turtlebot_TS(turtlebot, Ts):
         return None
 
     def find_motion_target_weight(self, src, dst):
+        # 
+        # return: [weight, is_go_back]
+
         for index in self.g.edge:
             if src == index:
                 for index_dst in self.g.edge[index]:
                     if dst == index_dst:
-                        return self.g.edge[index][index_dst][0]['weight']
+                        return [self.g.edge[index][index_dst][0]['weight'], False]
 
         for index in self.g.edge:
             if dst == index:
                 for index_dst in self.g.edge[index]:
                     if src == index_dst:
-                        return self.g.edge[index][index_dst][0]['weight'] + self.goback_additional_time
+                        return [self.g.edge[index][index_dst][0]['weight'] + self.goback_additional_time, True]
 
-        return None
+        return [None, False]

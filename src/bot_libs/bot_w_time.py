@@ -83,6 +83,7 @@ class turtlebot(object):
         self.dist_increment  = 0
         self.dist_inc_max = 0.2
         self.u_dist_max = u_dist_max                        # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_desired = self.u_dist_max               # added for go-back reducing speed
 
         self.is_steer_completed = False
         self.is_wait = False                                # symbol for waiting
@@ -144,11 +145,17 @@ class turtlebot(object):
                 self.target_y_last   = self.target_y
                 self.target_yaw_last = self.target_yaw
 
-                [self.target_x, self.target_y, self.target_yaw, self.target_t_max] = self.waypt.pop(0)
+                [self.target_x, self.target_y, self.target_yaw, self.target_t_max, self.u_dist_desired] = self.waypt.pop(0)
+
                 if self.target_t_max == None:
                     self.timestamp_next = None
                 else:
                     self.timestamp_next = self.time_curr + self.target_t_max - self.time_to_wait_errval
+
+                if self.u_dist_desired == None:
+                    self.u_dist_desired = self.u_dist_max
+                self.u_dist_desired = data_saturation(self.u_dist_desired, self.u_dist_max, -self.u_dist_max)
+
 
                 # if wait at the same point
                 if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:
@@ -206,7 +213,12 @@ class turtlebot(object):
                         self.target_y_last   = self.target_y
                         self.target_yaw_last = self.target_yaw
 
-                        [self.target_x, self.target_y, self.target_yaw, self.target_t_max] = self.waypt.pop(0)
+                        [self.target_x, self.target_y, self.target_yaw, self.target_t_max, self.u_dist_desired] = self.waypt.pop(0)
+
+                        if self.u_dist_desired == None:
+                            self.u_dist_desired = self.u_dist_max
+                        self.u_dist_desired = data_saturation(self.u_dist_desired, self.u_dist_max, -self.u_dist_max)
+
                         if self.target_t_max == None:
                             self.timestamp_next = None
                         else:
@@ -288,7 +300,7 @@ class turtlebot(object):
                         u_dist = vr + self.dist_kp * xe + self.dist_ki * self.dist_increment
                         u_yaw  = wr + self.yaw_c2 * (ye * cos(yaw_err / 2 * pi / 180) - xe * sin(yaw_err / 2 * pi / 180)) + self.yaw_c3 * sin(yaw_err / 2 * pi / 180)
 
-                        u_dist = data_saturation(u_dist, self.u_dist_max, -self.u_dist_max)
+                        u_dist = data_saturation(u_dist, self.u_dist_desired, -self.u_dist_desired)
                         u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
 
                         #
@@ -346,8 +358,8 @@ class turtlebot(object):
         else:
             return False
 
-    def add_waypoint(self, x, y, yaw = None, maximum_time=None):
-            self.waypt.append([x, y, yaw, maximum_time])
+    def add_waypoint(self, x, y, yaw = None, maximum_time=None, desired_vel=None):
+            self.waypt.append([x, y, yaw, maximum_time, desired_vel])
             self.is_all_done = False
 
 
