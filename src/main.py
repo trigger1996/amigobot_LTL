@@ -66,10 +66,13 @@ def main():
 
     is_modifible = [True, True, False]
     prefix_length, prefixes, suffix_cycle_cost, suffix_cycles, team_prefix, team_suffix_cycle = \
-        ca.multi_agent_optimal_run_ca(ts_tuple, formula, opt_prop, is_modifible, is_pp=True)
+        ca.multi_agent_optimal_run_ca(ts_tuple, formula, opt_prop, is_modifible, is_pp=False)
 
     logger.info('Cost: %d', suffix_cycle_cost)
     logger.info('Prefix length: %d', prefix_length)
+    print('Cost: ', suffix_cycle_cost)
+    print('Prefix length: ', prefix_length)
+
     # Find the controls that will produce this run
     control_prefixes = []
     control_suffix_cycles = []
@@ -82,6 +85,10 @@ def main():
         logger.info('%s suffix cycle: %s', ts.name, suffix_cycles[i])
         logger.info('%s control suffix cycle: %s', ts.name,
                                                    control_suffix_cycles[i])    
+        print(ts.name, ' run prefix: '  prefixes[i])
+        print(ts.name, ' control perfix: ',  control_prefixes[i])
+        print(ts.name, ' suffix cycle: ',  ts.name, suffix_cycles[i])
+        print(ts.name, ' control suffix cycle: ', ts.name,
 
         if suffix_cycles[i][0] == prefix[i][prefix.__len__() - 1]:
             suffix_cycles[i].pop(0)
