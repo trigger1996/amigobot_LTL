@@ -85,10 +85,9 @@ def main():
         logger.info('%s suffix cycle: %s', ts.name, suffix_cycles[i])
         logger.info('%s control suffix cycle: %s', ts.name,
                                                    control_suffix_cycles[i])    
-        print(ts.name, ' run prefix: '  prefixes[i])
-        print(ts.name, ' control perfix: ',  control_prefixes[i])
-        print(ts.name, ' suffix cycle: ',  ts.name, suffix_cycles[i])
-        print(ts.name, ' control suffix cycle: ', ts.name,
+                                                   
+        print(ts.name, ' run prefix: ',  prefixes[i])
+        print(ts.name, ' suffix cycle: ',  suffix_cycles[i])
 
         if suffix_cycles[i][0] == prefix[i][prefix.__len__() - 1]:
             suffix_cycles[i].pop(0)
