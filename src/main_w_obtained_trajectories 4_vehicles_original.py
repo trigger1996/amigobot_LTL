@@ -11,18 +11,30 @@ import bot_libs.bot_ts as bot_ts
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait, v_max
 time_to_wait = 10        # seconds
-v_max_1_2 = 0.215        # m/s
-v_max_3_4 = 0.245
+v_max_1_2 = 0.195        # m/s
+v_max_3_4 = 0.195        # 0.245 m/s if craching        default: 0.205 m/s
 
 # CASE 2
-prefixes = [['u1', '4', '5', '27', '28', '21', '22', '23'],
-            ['u2', '10', 'u2', '10', '11', '23', '9', '10', '11', '23'],
-            ['2', '21', '12', '1', '2', '21', '12', '1', '2', '21'],
-            ['6', '7', '8', '25', '6', '7', '8', '25', '6', '7']]
-suffix_cycles = [['24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23'],
-                 ['24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23'],
-                 ['12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21', '12', '1', '2', '21'],
-                 ['8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7', '8', '25', '6', '7']]
+'''
+
+'''
+
+# CASE 4
+'''
+
+'''
+
+# CASE 4 INV LARGER
+# Remember to change .yaml and .launch (initial position in Gazebo)
+prefixes = [['u1', '4', '5', '6', '7', '8', '25', '26', '27'],
+            ['u2', '10', '11', '12', '1', '2', '21', '22', '23'],
+            ['23', '22', '21', '28', '27', '26', '25'],
+            ['9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11']]
+suffix_cycles = [['28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27'],
+                 ['24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23'],
+                 ['24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25'],
+                 ['10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11']]
+
 
 
 def calculate_final_time(bot_w_ts):
@@ -44,10 +56,10 @@ def main():
     bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_2.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_3.yaml',
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_3_inv_larger.yaml',        # robot_3.yaml  robot_3_inv_larger.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
-    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_4.yaml',
+    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_4_inv.yaml',               # robot_4.yaml  robot_4_inv.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
 
@@ -72,10 +84,10 @@ def main():
         bot_4.add_waypoint_from_waypt_list(suffix_cycles[3][i])
 
     # print total cost
-    print('[total cost]' + bot_1.name + 'total cost: ' + str(calculate_final_time(bot_1)))
-    print('[total cost]' + bot_2.name + 'total cost: ' + str(calculate_final_time(bot_2)))
-    print('[total cost]' + bot_3.name + 'total cost: ' + str(calculate_final_time(bot_3)))
-    print('[total cost]' + bot_4.name + 'total cost: ' + str(calculate_final_time(bot_4)))
+    print('[total cost]' + bot_1.name + ' total cost: ' + str(calculate_final_time(bot_1)))
+    print('[total cost]' + bot_2.name + ' total cost: ' + str(calculate_final_time(bot_2)))
+    print('[total cost]' + bot_3.name + ' total cost: ' + str(calculate_final_time(bot_3)))
+    print('[total cost]' + bot_4.name + ' total cost: ' + str(calculate_final_time(bot_4)))
 
     while not rospy.is_shutdown():
         # add suffix-cycles

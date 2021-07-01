@@ -74,8 +74,8 @@ class turtlebot(object):
         self.u_yaw_max = 180                                # deg/s
 
         # yaw nonlinear controller
-        self.yaw_c2 = 6.75
-        self.yaw_c3 = 1.25
+        self.yaw_c2 = 18.75
+        self.yaw_c3 = 6.25
 
         # dist PI controller
         self.dist_kp = 0.85
@@ -155,7 +155,6 @@ class turtlebot(object):
                 if self.u_dist_desired == None:
                     self.u_dist_desired = self.u_dist_max
                 self.u_dist_desired = data_saturation(self.u_dist_desired, self.u_dist_max, -self.u_dist_max)
-
 
                 # if wait at the same point
                 if self.target_x_last  == self.target_x and self.target_y_last == self.target_y:

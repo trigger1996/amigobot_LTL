@@ -1,0 +1,235 @@
+        # norminal
+        r1 = Ts.load('./robot_1.yaml')
+        r2 = Ts.load('./robot_2.yaml')
+        r3 = Ts.load('./robot_3_inv_larger.yaml')       # robot_3.yaml
+        r4 = Ts.load('./robot_4_inv.yaml')              # robot_4.yaml
+
+        # CASE 4
+        #ts_tuple = (r1, r2)
+        ts_tuple = (r1, r2, r3, r4)
+        formula = ('[]<>gather && [](gather->(r1gather4 && r2gather2)) '
+                   '&& [](r1gather -> X(!r1gather U r1upload)) '
+                   '&& [](r2gather -> X(!r2gather U r2upload))')
+        opt_prop = set(['r1gather4','r2gather2'])
+
+/home/ubuntu484/src/YWZheng/LOMAP-Custom/venv/bin/python /home/ubuntu484/src/YWZheng/LOMAP-Custom/user/ijrr2013_ca2_knownfoe_4_vehicles/ijrr2013_ca2-4_vehicles.py
+INFO __main__ - Formula: []<>gather && [](gather->(r1gather4 && r2gather2)) && [](r1gather -> X(!r1gather U r1upload)) && [](r2gather -> X(!r2gather U r2upload))
+INFO __main__ - opt_prop: set(['r2gather2', 'r1gather4'])
+INFO lomap.algorithms.multi_agent_optimal_run_ca - T has 22704 states
+INFO lomap.algorithms.multi_agent_optimal_run_ca - B has 12 states
+INFO lomap.algorithms.multi_agent_optimal_run_ca - P has 74188 states
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Set F has 12 states
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Set S has 12 states
+INFO lomap.algorithms.multi_agent_optimal_run_ca - S->S+F
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Collected results for S->S+F
+INFO lomap.algorithms.multi_agent_optimal_run_ca - F->S
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Collected results for F->S
+INFO lomap.algorithms.multi_agent_optimal_run_ca - S-bottleneck
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Collected results for S-bottleneck
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Collected results for Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Cost*: 28, Len*: 168, Cycle*: ((('g4', 'g2', '23', '9'), u'accept_S3'), (('g4', 'g2', '23', '9'), u'accept_S3'), (('g4', 'g2', '23', '9'), u'accept_S3'))
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Extracting Path*
+INFO lomap.algorithms.multi_agent_optimal_run_ca - Robot-1             Robot-2             Robot-3             Robot-4
+INFO lomap.algorithms.multi_agent_optimal_run_ca - -------             -------             -------             -------
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Prefix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('4', '5', 1)       ('10', '11', 1)     22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('5', '6', 2)       ('11', '12', 2)     21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 6                   12                  ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('6', '7', 1)       ('12', '1', 1)      28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 7                   1                   ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 8                   2                   27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 25                  21                  ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('25', '26', 1)     ('21', '22', 1)     26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('25', '26', 2)     ('21', '22', 2)     ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 26                  22                  ('26', '25', 2)     ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('26', '27', 1)     ('22', '23', 1)     25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - *** Suffix: ***
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 1)     ('23', '24', 1)     24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('24', '23', 2)     ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('23', '22', 1)     ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     ('24', '25', 2)     22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('1', '2', 1)       ('7', '8', 1)       28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('3', '4', 1)       ('9', '10', 1)      26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('4', '5', 1)       ('10', '11', 1)     24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('22', '21', 2)     ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '12', 1)     ('25', '6', 1)      28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 1)       ('8', '9', 1)       26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('4', 'u1', 1)      ('10', 'u2', 1)     24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('5', '27', 1)      ('11', '23', 1)     22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('21', '28', 1)     ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('12', '1', 1)      ('6', '7', 1)       26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 3)       ('8', '9', 3)       24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u1', '4', 1)      ('u2', '10', 1)     22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 1)     ('23', '24', 1)     28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('28', '27', 2)     ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('27', '26', 1)     ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 2)     ('24', '25', 2)     26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('1', '2', 1)       ('7', '8', 1)       24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('3', '4', 1)       ('9', '10', 1)      22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('4', '5', 1)       ('10', '11', 1)     28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('26', '25', 2)     ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('21', '12', 1)     ('25', '6', 1)      24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 1)       ('8', '9', 1)       22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('4', 'u1', 1)      ('10', 'u2', 1)     28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('5', '27', 1)      ('11', '23', 1)     26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('27', '28', 2)     ('23', '24', 2)     25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  ('25', '24', 1)     ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - g4                  g2                  ('25', '24', 2)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 28                  24                  24                  ('11', '10', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('28', '21', 1)     ('24', '25', 1)     ('24', '23', 1)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 21                  25                  23                  9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 12                  6                   ('23', '22', 2)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('12', '1', 1)      ('6', '7', 1)       22                  ('23', '11', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 1                   7                   ('22', '21', 1)     11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 2                   8                   21                  10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 2)       ('8', '9', 2)       ('21', '28', 2)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('2', '3', 3)       ('8', '9', 3)       28                  ('9', '23', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 3                   9                   ('28', '27', 1)     23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  27                  11
+INFO lomap.algorithms.multi_agent_optimal_run_ca - u1                  u2                  ('27', '26', 2)     10
+INFO lomap.algorithms.multi_agent_optimal_run_ca - ('u1', '4', 1)      ('u2', '10', 1)     26                  ('10', '9', 1)
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 4                   10                  ('26', '25', 1)     9
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 5                   11                  25                  23
+INFO lomap.algorithms.multi_agent_optimal_run_ca - 27                  23                  ('25', '24', 2)     11
+INFO __main__ - Cost: 28
+INFO __main__ - Prefix length: 20
+INFO __main__ - robot_1 run prefix: ['u1', '4', '5', '6', '7', '8', '25', '26', '27']
+INFO __main__ - robot_1 control perfix: ['ufl', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f']
+INFO __main__ - robot_1 suffix cycle: ['27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27']
+INFO __main__ - robot_1 control suffix cycle: ['lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'fr', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr']
+INFO __main__ - robot_2 run prefix: ['u2', '10', '11', '12', '1', '2', '21', '22', '23']
+INFO __main__ - robot_2 control perfix: ['ufl', 'rf', 'f', 'f', 'rf', 'rfr', 'lf', 'f']
+INFO __main__ - robot_2 suffix cycle: ['23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23']
+INFO __main__ - robot_2 control suffix cycle: ['lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr', 'lf', 'lf', 'ufl', 'f', 'f', 'f', 'rf', 'f', 'f', 'f', 'ufl', 'rf', 'rfr']
+INFO __main__ - robot_3 run prefix: ['23', '22', '21', '28', '27', '26', '25']
+INFO __main__ - robot_3 control perfix: ['f', 'lf', 'f', 'lf', 'f', 'lf']
+INFO __main__ - robot_3 suffix cycle: ['24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25']
+INFO __main__ - robot_3 control suffix cycle: ['lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf', 'f', 'lf']
+INFO __main__ - robot_4 run prefix: ['9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11']
+INFO __main__ - robot_4 control perfix: ['f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr']
+INFO __main__ - robot_4 suffix cycle: ['11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11']
+INFO __main__ - robot_4 control suffix cycle: ['rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr', 'rf', 'f', 'f', 'rfr']
+INFO lomap.classes.timer - IJRR 2013 Case-Study 2 took 26956.500 ms.
+/home/ubuntu484/.local/lib/python2.7/site-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  warnings.warn(message, mplDeprecation, stacklevel=1)
+/home/ubuntu484/.local/lib/python2.7/site-packages/networkx/drawing/nx_pylab.py:126: MatplotlibDeprecationWarning: pyplot.hold is deprecated.
+    Future behavior will be consistent with the long-time default:
+    plot commands add elements without first clearing the
+    Axes and/or Figure.
+  b = plt.ishold()
+/home/ubuntu484/.local/lib/python2.7/site-packages/networkx/drawing/nx_pylab.py:522: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if not cb.is_string_like(edge_color) \
+/home/ubuntu484/.local/lib/python2.7/site-packages/networkx/drawing/nx_pylab.py:543: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if cb.is_string_like(edge_color) or len(edge_color) == 1:
+/home/ubuntu484/.local/lib/python2.7/site-packages/networkx/drawing/nx_pylab.py:138: MatplotlibDeprecationWarning: pyplot.hold is deprecated.
+    Future behavior will be consistent with the long-time default:
+    plot commands add elements without first clearing the
+    Axes and/or Figure.
+  plt.hold(b)
+/home/ubuntu484/.local/lib/python2.7/site-packages/matplotlib/__init__.py:910: MatplotlibDeprecationWarning: axes.hold is deprecated. Please remove it from your matplotlibrc and/or style files.
+  mplDeprecation)
+/home/ubuntu484/.local/lib/python2.7/site-packages/matplotlib/rcsetup.py:156: MatplotlibDeprecationWarning: axes.hold is deprecated, will be removed in 3.0
+  mplDeprecation)
+/home/ubuntu484/.local/lib/python2.7/site-packages/networkx/drawing/nx_pylab.py:724: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if not cb.is_string_like(label):
+/home/ubuntu484/.local/lib/python2.7/site-packages/networkx/drawing/nx_pylab.py:861: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if not cb.is_string_like(label):
+Traceback (most recent call last):
+  File "/home/ubuntu484/src/YWZheng/LOMAP-Custom/user/ijrr2013_ca2_knownfoe_4_vehicles/ijrr2013_ca2-4_vehicles.py", line 150, in <module>
+    main()
+  File "/home/ubuntu484/src/YWZheng/LOMAP-Custom/user/ijrr2013_ca2_knownfoe_4_vehicles/ijrr2013_ca2-4_vehicles.py", line 121, in main
+    view.visualize_animation_w_team_run(ts_tuple, team_suffix_cycle)
+  File "/home/ubuntu484/src/YWZheng/LOMAP-Custom/user/ijrr2013_ca2_knownfoe_4_vehicles/view.py", line 352, in visualize_animation_w_team_run
+    plt.show()
+  File "/home/ubuntu484/.local/lib/python2.7/site-packages/matplotlib/pyplot.py", line 253, in show
+    return _show(*args, **kw)
+  File "/home/ubuntu484/.local/lib/python2.7/site-packages/matplotlib/backend_bases.py", line 208, in show
+    cls.mainloop()
+  File "/home/ubuntu484/.local/lib/python2.7/site-packages/matplotlib/backends/_backend_tk.py", line 1075, in mainloop
+    Tk.mainloop()
+  File "/usr/lib/python2.7/lib-tk/Tkinter.py", line 425, in mainloop
+    _default_root.tk.mainloop(n)
+  File "/usr/lib/python2.7/lib-tk/Tkinter.py", line 1545, in __call__
+    def __call__(self, *args):
+KeyboardInterrupt
+
+Process finished with exit code 1

@@ -25,24 +25,24 @@ suffix_cycles = [['g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '2
 '''
 
 # CASE 4 INV
-'''
 prefixes = [['u1', '4', '5', '27', '3', '3', '4'],
             ['u2', '10', '10', '10', 'u2', '10', '10', '10', '10'],
             ['23', '22', '21', '2', '1']]
 suffix_cycles = [['5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '3', '4', 'u1', '4', '5', '27', '28', '28', 'g4', '28', '21', '21', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4'],
                  ['11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '9', '10', 'u2', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '8', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10'],
                  ['12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1']]
-'''
+
 
 # CASE 4 INV LARGER
 # Check .yaml before launching
+'''
 prefixes = [['u1', '4', '5', '5', '5', '5'],
             ['u2', '10', '11', '11', '11', '11'],
             ['23', '22', '21']]
 suffix_cycles = [['27', '3', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '3', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5'],
                  ['23', '9', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '9', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11'],
                  ['28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21']]
-
+'''
 
 def calculate_final_time(bot_w_ts):
     total_time = 0
@@ -63,7 +63,7 @@ def main():
     bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_2.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/robot_3_inv.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
     # robot_3_inv_larger.yaml
