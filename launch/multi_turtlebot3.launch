@@ -16,13 +16,13 @@
     <arg name="second_tb3_yaw"   default=" 1.57"/>
 
     <arg name="third_tb3_x_pos" default="  12.0"/>
-    <arg name="third_tb3_y_pos" default=" -12.2"/>
-    <arg name="third_tb3_z_pos" default=" 0.0"/>
-    <arg name="third_tb3_yaw"   default=" 3.14"/>
+    <arg name="third_tb3_y_pos" default=" -9.0"/>
+    <arg name="third_tb3_z_pos" default="  0.0"/>
+    <arg name="third_tb3_yaw"   default="  0.0"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <!--arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/test_field.world"/-->
-      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/empty.world"/>
+      <!--arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/-->
+      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/test_field.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
       <arg name="gui" value="true"/>
@@ -31,7 +31,7 @@
     </include>  
 
     <group ns = "$(arg first_tb3)">
-      <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+      <param name="robot_description" command="$(find xacro)/xacro --inorder $(find amigobot_LTL)/model/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
       <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
         <param name="publish_frequency" type="double" value="50.0" />
@@ -42,25 +42,25 @@
     </group>
 
     <group ns = "$(arg second_tb3)">
-      <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+      <param name="robot_description" command="$(find xacro)/xacro --inorder $(find amigobot_LTL)/model/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
-      <!--node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+      <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
         <param name="publish_frequency" type="double" value="50.0" />
         <param name="tf_prefix" value="$(arg second_tb3)" />
-      </node-->
+      </node>
 
-      <!--node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg second_tb3) -x $(arg second_tb3_x_pos) -y $(arg second_tb3_y_pos) -z $(arg second_tb3_z_pos) -Y $(arg second_tb3_yaw) -param robot_description" /-->
+      <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg second_tb3) -x $(arg second_tb3_x_pos) -y $(arg second_tb3_y_pos) -z $(arg second_tb3_z_pos) -Y $(arg second_tb3_yaw) -param robot_description" />
     </group>
 
     <group ns = "$(arg third_tb3)">
-      <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+      <param name="robot_description" command="$(find xacro)/xacro --inorder $(find amigobot_LTL)/model/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
-      <!--node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+      <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
         <param name="publish_frequency" type="double" value="50.0" />
         <param name="tf_prefix" value="$(arg third_tb3)" />
-      </node-->
+      </node>
 
-      <!--node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg third_tb3) -x $(arg third_tb3_x_pos) -y $(arg third_tb3_y_pos) -z $(arg third_tb3_z_pos) -Y $(arg third_tb3_yaw) -param robot_description" /-->
+      <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg third_tb3) -x $(arg third_tb3_x_pos) -y $(arg third_tb3_y_pos) -z $(arg third_tb3_z_pos) -Y $(arg third_tb3_yaw) -param robot_description" />
     </group>
 
     <node pkg="amigobot_LTL" name="amigobot_LTL" type="main.py" output="screen">
