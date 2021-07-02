@@ -64,15 +64,17 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        amigobot_1/base_link:
+          Value: true
         amigobot_1/odom:
           Value: false
+        amigobot_2/base_link:
+          Value: true
         amigobot_2/odom:
           Value: true
+        amigobot_3/base_link:
+          Value: true
         amigobot_3/odom:
-          Value: true
-        amigobot_4/base_link:
-          Value: true
-        amigobot_4/odom:
           Value: true
         map:
           Value: true
@@ -84,13 +86,13 @@ Visualization Manager:
       Tree:
         map:
           amigobot_1/odom:
-            {}
+            amigobot_1/base_link:
+              {}
           amigobot_2/odom:
-            {}
+            amigobot_2/base_link:
+              {}
           amigobot_3/odom:
-            {}
-          amigobot_4/odom:
-            amigobot_4/base_link:
+            amigobot_3/base_link:
               {}
       Update Interval: 0
       Value: true
@@ -214,25 +216,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 9.78732681274414
+      Distance: 7.470163345336914
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.3348757028579712
-        Y: 1.5724058151245117
-        Z: -1.7606027126312256
+        X: 1.786794662475586
+        Y: 1.52265465259552
+        Z: -1.7453410625457764
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.484796404838562
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.19357967376709
+      Yaw: 4.683579444885254
     Saved: ~
 Window Geometry:
   Displays:

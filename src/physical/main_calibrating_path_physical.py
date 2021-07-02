@@ -3,10 +3,10 @@
 
 import sys
 sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/") 
 
 import rospy
-import bot_libs.bot as bot
-import bot_libs.bot_ts as bot_ts
+import bot_libs.amigobot_ts as amigobot_TS
 
 from math import pi
 from geometry_msgs.msg import PoseStamped
@@ -24,9 +24,9 @@ def main():
     rospy.sleep(8)
 
  
-    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_1.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
-                                                   time_to_wait = time_to_wait)
+    bot_1 = amigobot_TS.amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
+                                    time_to_wait = time_to_wait)
 
     '''
     # outer loop

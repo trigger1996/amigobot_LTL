@@ -39,7 +39,7 @@ Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
-      Cell Size: 0.5
+      Cell Size: 0.25
       Class: rviz/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -53,7 +53,7 @@ Visualization Manager:
         Y: -5
         Z: 0
       Plane: XY
-      Plane Cell Count: 54
+      Plane Cell Count: 128
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz/TF
@@ -61,58 +61,22 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        amigobot_1/base_footprint:
-          Value: false
         amigobot_1/base_link:
           Value: true
-        amigobot_1/base_scan:
-          Value: false
-        amigobot_1/camera_link:
-          Value: false
-        amigobot_1/camera_rgb_frame:
-          Value: false
-        amigobot_1/camera_rgb_optical_frame:
-          Value: false
-        amigobot_1/caster_back_left_link:
-          Value: false
-        amigobot_1/caster_back_right_link:
-          Value: false
-        amigobot_1/imu_link:
-          Value: false
         amigobot_1/odom:
-          Value: false
-        amigobot_1/wheel_left_link:
-          Value: false
-        amigobot_1/wheel_right_link:
           Value: false
         map:
           Value: true
-      Marker Scale: 5
+      Marker Scale: 2
       Name: TF
-      Show Arrows: true
+      Show Arrows: false
       Show Axes: true
       Show Names: true
       Tree:
         map:
           amigobot_1/odom:
-            amigobot_1/base_footprint:
-              amigobot_1/base_link:
-                amigobot_1/base_scan:
-                  {}
-                amigobot_1/camera_link:
-                  amigobot_1/camera_rgb_frame:
-                    amigobot_1/camera_rgb_optical_frame:
-                      {}
-                amigobot_1/caster_back_left_link:
-                  {}
-                amigobot_1/caster_back_right_link:
-                  {}
-                amigobot_1/imu_link:
-                  {}
-                amigobot_1/wheel_left_link:
-                  {}
-                amigobot_1/wheel_right_link:
-                  {}
+            amigobot_1/base_link:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -166,25 +130,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 32.83042907714844
+      Distance: 7.335628986358643
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 4.743362903594971
-        Y: 1.0226185321807861
-        Z: -2.6855807304382324
+        X: 2.4197545051574707
+        Y: 2.1183664798736572
+        Z: -1.2719626426696777
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8697969913482666
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.163576602935791
+      Yaw: 4.678571701049805
     Saved: ~
 Window Geometry:
   Displays:
