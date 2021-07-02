@@ -1,0 +1,2 @@
+rosbag record /amigobot_1/odom /amigobot_1/path /amigobot_1/cmd_vel  /amigobot_2/odom /amigobot_2/path /amigobot_2/cmd_vel /amigobot_3/odom /amigobot_3/path /amigobot_3/cmd_vel
+rosbag record /amigobot_1/odom /amigobot_1/path /amigobot_1/cmd_vel  /amigobot_2/odom /amigobot_2/path /amigobot_2/cmd_vel /amigobot_3/odom /amigobot_3/path /amigobot_4/cmd_vel /amigobot_4/odom /amigobot_4/path /amigobot_4/cmd_vel

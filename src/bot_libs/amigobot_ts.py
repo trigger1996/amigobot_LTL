@@ -19,13 +19,54 @@ class amigobot_TS(turtlebot_TS):
     def __init__(self, name='amigobot_1', x = None, y = None, yaw = None, time_to_wait = 1, u_dist_max = 0.2, yaml_file='robot.yaml', map_file='map.yaml'):
         super(amigobot_TS, self).__init__(name, x, y, yaw, time_to_wait, u_dist_max, yaml_file, map_file)
 
-        self.twist_pub        = rospy.Publisher('/' + self.name + '/cmd_vel', Twist, queue_size = 1)
-        self.pose_sub         = rospy.Subscriber('/' + self.name + '/odom', Odometry, self.odom_cb)
-
-        self.robot_traj_pub   = rospy.Publisher('/' + self.name + '/path', Path, queue_size = 1)
-
-        self.tf_baselink_odom = TransformBroadcaster()
         self.tf_map_odom = TransformListener()
+
+        '''
+            Parameters can be tuned here only for physical setup
+        '''
+        # waypoint varibles
+        self.target_x = self.x                              # current target
+        self.target_y = self.y
+        self.target_yaw = None
+        self.target_t_max = None
+        self.target_x_last = None
+        self.target_y_last = None
+        self.target_yaw_last = None
+        self.waypt = []                                     # next target list [[x, y, yaw, maximum_time]]
+
+        self.is_all_done = False
+
+        # v-w controller target
+        self.yaw_setpoint = 0
+        #self.dist_setpoint = 0
+
+        self.yaw_setpt_threshold  = 0.15                    # deg, ref: 5
+        self.dist_setpt_threshold = 0.15                    # meter
+
+        # yaw PI controller
+        self.yaw_kp = 2.75
+        self.yaw_ki = 0.15
+        self.yaw_increment  = 0
+        self.yaw_inc_max = 0.25
+        self.u_yaw_max = 180                                # deg/s
+
+        # yaw nonlinear controller
+        self.yaw_c2 = 18.75
+        self.yaw_c3 = 6.25
+
+        # dist PI controller
+        self.dist_kp = 0.85
+        self.dist_ki = 0.2
+        self.dist_increment  = 0
+        self.dist_inc_max = 0.2
+        self.u_dist_max = u_dist_max                        # m/s, maximum speed with no slide in startup: 0.3 (about)
+        self.u_dist_desired = self.u_dist_max               # added for go-back reducing speed
+
+        self.is_steer_completed = False
+        self.is_wait = False                                # symbol for waiting
+
+        self.time_to_wait = time_to_wait
+        self.time_to_wait_errval =  1.5 / odom_cb_rate      # error value, theory value: 1. / odom_cb_rate, NEED TUNING
 
     def odom_cb(self, data):
 

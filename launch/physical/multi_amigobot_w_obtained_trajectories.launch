@@ -62,7 +62,7 @@
         <param name="base_link_frame" value="/$(arg third_tb3)/base_link"/>
     </node>
 
-    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories.py" output="screen">
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories_physical.py" output="screen">
     </node>
 
     <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ubuntu484/catkin_ws/src/amigobot_LTL/launch/physical/rviz/multi_turtlebot3.rviz">
