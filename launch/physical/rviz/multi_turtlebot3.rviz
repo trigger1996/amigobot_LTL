@@ -8,7 +8,6 @@ Panels:
         - /Status1
         - /Grid1
         - /TF1
-        - /TF1/Status1
         - /TF1/Frames1
         - /Path1
         - /Path2
@@ -217,7 +216,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 7.89497709274292
+      Distance: 8.715044021606445
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

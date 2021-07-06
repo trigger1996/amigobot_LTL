@@ -62,11 +62,6 @@ class amigobot_TS(turtlebot_TS):
         self.u_dist_max = u_dist_max                        # m/s, maximum speed with no slide in startup: 0.3 (about)
         self.u_dist_desired = self.u_dist_max               # added for go-back reducing speed
 
-        self.is_steer_completed = False
-        self.is_wait = False                                # symbol for waiting
-
-        self.time_to_wait = time_to_wait
-        self.time_to_wait_errval =  1.5 / odom_cb_rate      # error value, theory value: 1. / odom_cb_rate, NEED TUNING
 
     def odom_cb(self, data):
 
