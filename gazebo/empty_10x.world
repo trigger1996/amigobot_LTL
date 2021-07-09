@@ -1,0 +1,181 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>5</real_time_factor>
+      <real_time_update_rate>5000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <state world_name='default'>
+      <sim_time>348 269000000</sim_time>
+      <real_time>349 200702231</real_time>
+      <wall_time>1625810010 908897134</wall_time>
+      <iterations>348269</iterations>
+      <model name='amigobot_1'>
+        <pose frame=''>0.000346 1.43866 -0.000109 -1.1e-05 -0.001994 1.52408</pose>
+        <scale>1 1 1</scale>
+        <link name='base_footprint'>
+          <pose frame=''>0.000346 1.43866 -0.000109 -1.1e-05 -0.001994 1.52408</pose>
+          <velocity>-2.1e-05 -4e-05 3.1e-05 9.4e-05 -6.8e-05 -0.001422</velocity>
+          <acceleration>-9e-06 -1e-05 -1e-06 1e-06 -6.1e-05 2.6e-05</acceleration>
+          <wrench>-1.3e-05 -1.5e-05 -2e-06 0 -0 0</wrench>
+        </link>
+        <link name='wheel_left_link'>
+          <pose frame=''>-0.143499 1.44532 0.032893 1.56527 -1.45804 -1.61203</pose>
+          <velocity>-1.1e-05 0.000166 2e-06 -0.004427 6.7e-05 -0.001422</velocity>
+          <acceleration>1.1e-05 -1.4e-05 0 0.000235 0.000203 0.000536</acceleration>
+          <wrench>0 -0 0 0 -0 0</wrench>
+        </link>
+        <link name='wheel_right_link'>
+          <pose frame=''>0.144187 1.43187 0.032893 -1.57011 -0.2778 1.52391</pose>
+          <velocity>-3.2e-05 -0.000251 4.5e-05 0.007304 -0.000471 -0.001416</velocity>
+          <acceleration>-9e-06 -9e-06 1.2e-05 7.8e-05 -0.00024 -1.8e-05</acceleration>
+          <wrench>-0 -0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='amigobot_2'>
+        <pose frame=''>4.19719 1.08703 -0.00011 -1.1e-05 -0.001988 -1.54823</pose>
+        <scale>1 1 1</scale>
+        <link name='base_footprint'>
+          <pose frame=''>4.19719 1.08703 -0.00011 -1.1e-05 -0.001988 -1.54823</pose>
+          <velocity>-7e-06 0.000668 2.9e-05 -8.5e-05 5.9e-05 -9.8e-05</velocity>
+          <acceleration>5e-06 -1.3e-05 3e-06 -4.4e-05 -4.5e-05 -0.000353</acceleration>
+          <wrench>7e-06 -2e-05 5e-06 0 -0 0</wrench>
+        </link>
+        <link name='wheel_left_link'>
+          <pose frame=''>4.34115 1.09034 0.032894 -1.56869 -1.32505 -1.55025</pose>
+          <velocity>-5.8e-05 0.00066 1.8e-05 -0.018081 -0.00184 -0.001537</velocity>
+          <acceleration>8.4e-05 -5.9e-05 -7e-06 0.000738 0.001887 0.003613</acceleration>
+          <wrench>2e-06 -2e-06 -0 0 -0 0</wrench>
+        </link>
+        <link name='wheel_right_link'>
+          <pose frame=''>4.05323 1.08385 0.032893 -1.56997 -0.613422 -1.54866</pose>
+          <velocity>-8e-06 0.000692 3.9e-05 -0.019749 -0.00036 -0.000302</velocity>
+          <acceleration>-1e-06 3.9e-05 -0 -0.000631 6.8e-05 -0.000736</acceleration>
+          <wrench>-0 1e-06 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='amigobot_3'>
+        <pose frame=''>0.290347 0.527447 -0.000112 -1.2e-05 -0.001979 -0.080111</pose>
+        <scale>1 1 1</scale>
+        <link name='base_footprint'>
+          <pose frame=''>0.290347 0.527447 -0.000112 -1.2e-05 -0.001979 -0.080111</pose>
+          <velocity>0.03519 -0.002871 3.2e-05 -2.8e-05 -0.000115 -0.003496</velocity>
+          <acceleration>-0.007659 0.001222 0.000337 -6.9e-05 -0.00229 -0.085759</acceleration>
+          <wrench>-0.011464 0.001829 0.000505 0 -0 0</wrench>
+        </link>
+        <link name='wheel_left_link'>
+          <pose frame=''>0.301805 0.670991 0.032894 -1.56203 1.49889 -0.071383</pose>
+          <velocity>0.0357 -0.002913 1e-06 0.086134 1.06261 -0.002531</velocity>
+          <acceleration>0.004564 -0.00037 -0.000119 -0.003122 -0.050787 -0.158742</acceleration>
+          <wrench>0.00013 -1.1e-05 -3e-06 0 -0 0</wrench>
+        </link>
+        <link name='wheel_right_link'>
+          <pose frame=''>0.278758 0.383914 0.032893 -1.55707 1.51782 -0.066403</pose>
+          <velocity>0.034691 -0.002859 -1.2e-05 0.086922 1.059 -0.002397</velocity>
+          <acceleration>-0.019796 0.005794 -0.000896 -0.123986 -0.022188 -0.219352</acceleration>
+          <wrench>-0.000564 0.000165 -2.6e-05 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>10.2986 -9.01447 11.6221 0 0.695643 2.37619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

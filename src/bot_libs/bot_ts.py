@@ -34,6 +34,7 @@ class turtlebot_TS(turtlebot, Ts):
         # import data from map
         self.waypoint_dict = dict()
         self.final_yaw_tab = dict()
+        self.vel_dict = None
         self.load_from_map(map_file)
 
         #
@@ -64,6 +65,14 @@ class turtlebot_TS(turtlebot, Ts):
 
         self.waypoint_dict = data['waypoint']
         self.final_yaw_tab  = data['initial_yaw']
+        
+        print(data)
+
+        try:
+            self.vel_dict = data['desired_vel']
+        except:
+            print(self.name, ' No desired vel found!')
+            pass
 
     def add_waypoint_from_waypt_list(self, waypt_name):
         self.last_target_waypt = self.next_target_waypt
@@ -82,9 +91,14 @@ class turtlebot_TS(turtlebot, Ts):
             self.t_to_spend = self.t_to_spend + t_max
 
         # set desired v for go-back, lowering the speed
-        desired_v = self.u_dist_max
-        if is_go_back:
-            desired_v = desired_v * 0.66
+        if self.vel_dict == None:
+            desired_v = self.u_dist_max
+            if is_go_back:
+                desired_v = desired_v * 0.66
+        else:
+            desired_v = self.find_motion_desired_vel(self.last_target_waypt, self.next_target_waypt)
+            if is_go_back:
+                desired_v = desired_v * 0.05
 
         print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + \
               ", " + str(yaw) + "),\t t_max: " + str(t_max) + ",\t t: " + str(self.t_to_spend) + ",\t vel: " + str(desired_v))
@@ -125,3 +139,11 @@ class turtlebot_TS(turtlebot, Ts):
                         return [self.g.edge[index][index_dst][0]['weight'] + self.goback_additional_time, True]
 
         return [None, False]
+
+    def find_motion_desired_vel(self, src, dst):
+        for index in self.vel_dict:
+            if src == index[0]:
+                if dst == index[1]:
+                    return index[2]['vel']
+
+        return self.u_dist_max
