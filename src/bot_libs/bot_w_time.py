@@ -63,7 +63,7 @@ class turtlebot(object):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.15                    # deg, ref: 5
+        self.yaw_setpt_threshold  = 0.075                   # deg, ref: 5
         self.dist_setpt_threshold = 0.075                   # meter
 
         # yaw PI controller
@@ -74,14 +74,14 @@ class turtlebot(object):
         self.u_yaw_max = 180                                # deg/s
 
         # yaw nonlinear controller
-        self.yaw_c2 = 18.75
+        self.yaw_c2 = 64.75
         self.yaw_c3 = 6.25
 
         # dist PI controller
-        self.dist_kp = 0.85
+        self.dist_kp = 4.25
         self.dist_ki = 0.2
         self.dist_increment  = 0
-        self.dist_inc_max = 0.2
+        self.dist_inc_max = 0.05
         self.u_dist_max = u_dist_max                        # m/s, maximum speed with no slide in startup: 0.3 (about)
         self.u_dist_desired = self.u_dist_max               # added for go-back reducing speed
 
@@ -296,7 +296,7 @@ class turtlebot(object):
                         self.dist_increment += xe
                         self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
 
-                        u_dist = vr + self.dist_kp * xe + self.dist_ki * self.dist_increment
+                        u_dist = vr + self.dist_kp * xe #+ self.dist_ki * self.dist_increment
                         u_yaw  = wr + self.yaw_c2 * (ye * cos(yaw_err / 2 * pi / 180) - xe * sin(yaw_err / 2 * pi / 180)) + self.yaw_c3 * sin(yaw_err / 2 * pi / 180)
 
                         u_dist = data_saturation(u_dist, self.u_dist_desired, -self.u_dist_desired)

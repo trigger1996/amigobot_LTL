@@ -7,27 +7,28 @@
     <arg name="fourth_tb3" default="amigobot_4"/>
 
     <arg name="first_tb3_x_pos" default=" 0.0"/>
-    <arg name="first_tb3_y_pos" default=" 4.2"/>
+    <arg name="first_tb3_y_pos" default=" 7.2"/>
     <arg name="first_tb3_z_pos" default=" 0.0"/>
     <arg name="first_tb3_yaw"   default="-1.57"/>
 
-    <arg name="second_tb3_x_pos" default=" 2.4"/>
-    <arg name="second_tb3_y_pos" default="-0.6"/>
+    <arg name="second_tb3_x_pos" default=" 4.5"/>
+    <arg name="second_tb3_y_pos" default=" 0.0"/>
     <arg name="second_tb3_z_pos" default=" 0.0"/>
     <arg name="second_tb3_yaw"   default=" 1.57"/>
 
-    <arg name="third_tb3_x_pos"  default=" 1.9"/>
-    <arg name="third_tb3_y_pos"  default=" 1.2"/>
+    <arg name="third_tb3_x_pos"  default=" 3.5"/>
+    <arg name="third_tb3_y_pos"  default=" 2.4"/>
     <arg name="third_tb3_z_pos"  default=" 0.0"/>
     <arg name="third_tb3_yaw"    default=" 0.0"/>
 
-    <arg name="fourth_tb3_x_pos" default="  2.4"/> <!---->
-    <arg name="fourth_tb3_y_pos" default="  1.2"/>
+    <arg name="fourth_tb3_x_pos" default="  4.5"/> <!---->
+    <arg name="fourth_tb3_y_pos" default="  2.4"/>
     <arg name="fourth_tb3_z_pos" default="  0.0"/>
     <arg name="fourth_tb3_yaw"   default=" -1.57"/> <!---->
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find amigobot_LTL)/gazebo/empty.world"/>
+      <!--arg name="world_name" value="$(find amigobot_LTL)/gazebo/empty.world"/-->
+      <arg name="world_name" value="/home/ubuntu484/catkin_ws/src/amigobot_LTL/gazebo/empty_10x.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
       <arg name="gui" value="true"/>

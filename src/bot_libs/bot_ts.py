@@ -94,11 +94,11 @@ class turtlebot_TS(turtlebot, Ts):
         if self.vel_dict == None:
             desired_v = self.u_dist_max
             if is_go_back:
-                desired_v = desired_v * 0.66
+                desired_v = desired_v * 0.15
         else:
             desired_v = self.find_motion_desired_vel(self.last_target_waypt, self.next_target_waypt)
             if is_go_back:
-                desired_v = desired_v * 0.05
+                desired_v = desired_v * 0.15
 
         print('[Command]: ' + self.name + ": " + str(waypt_name) + "  (" + str(x) + ", " + str(y) + \
               ", " + str(yaw) + "),\t t_max: " + str(t_max) + ",\t t: " + str(self.t_to_spend) + ",\t vel: " + str(desired_v))
