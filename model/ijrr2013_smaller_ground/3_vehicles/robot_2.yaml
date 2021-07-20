@@ -1,5 +1,5 @@
 !Ts
-name: amigobot_2
+name: robot_2
 multi: true
 directed: true
 init: [u2]
@@ -7,7 +7,7 @@ final: []
 graph:
   nodes:
     '1': {}
-    '10': {}
+    '20': {}
     '11': {}
     '12': {}
     '2': {}
@@ -39,43 +39,36 @@ graph:
     u2:
       prop: !!set {r2upload: null, r2upload2: null, upload: null, upload2: null}
   edges:
-  - ['28',  g4,  {control: lf,  weight: 30}]
-  - ['28', '21', {control: f,   weight: 90}]
-  - ['24', '25', {control: f,   weight: 90}]
-  - ['24',  g2,  {control: lf,  weight: 30}]
-  - ['25', '26', {control: lf,  weight: 90}]
-  - ['25', '6',  {control: f,   weight: 60}]
-  - ['26', '27', {control: f,   weight: 90}]
-  - ['26',  g3,  {control: lf,  weight: 30}]
-  - ['27', '3',  {control: fr,  weight: 60}]
-  - ['27', '28', {control: lf,  weight: 90}]
-  - ['21', '12', {control: fr,  weight: 60}]
-  - ['21', '22', {control: lf,  weight: 90}]
-  - ['22',  g1,  {control: lf,  weight: 30}]
-  - ['22', '23', {control: f,   weight: 90}]
-  - ['23', '9',  {control: f,   weight: 60}]
-  - ['23', '24', {control: lf,  weight: 90}]
-  - [u1,   '4',  {control: ufl, weight: 60}]
-  - [u2,   '10', {control: ufl, weight: 60}]
-  - ['1',  '2',  {control: rf,  weight: 60}]
-  - ['3',  '4',  {control: f,   weight: 60}]
-  - ['2',  '3',  {control: f,   weight: 120}]
-  - ['2',  '21', {control: rfr, weight: 60}]
-  - ['5',  '27', {control: rfr, weight: 60}]
-  - ['5',  '6',  {control: f,   weight: 120}]
-  - ['4',   u1,  {control: f,   weight: 60}]
-  - ['4',  '5',  {control: rf,  weight: 60}]
-  - ['7',  '8',  {control: rf,  weight: 60}]
-  - ['6',  '7',  {control: f,   weight: 60}]
-  - ['9',  '10', {control: f,   weight: 60}]
-  - ['8',  '9',  {control: f,   weight: 120}]
-  - ['8',  '25', {control: rfr, weight: 60}]
-  - [g4,   '28', {control: ufl, weight: 30}]
-  - [g3,   '26', {control: ufl, weight: 30}]
-  - [g2,   '24', {control: ufl, weight: 30}]
-  - [g1,   '22', {control: ufl, weight: 30}]
-  - ['11', '12', {control: f,   weight: 120}]
-  - ['11', '23', {control: rfr, weight: 60}]
-  - ['10', '11', {control: rf,  weight: 60}]
-  - ['10',  u2,  {control: f,   weight: 60}]
-  - ['12', '1',  {control: f,   weight: 60}]
+  - [u1,   '27',  {control: ufl, weight: 20}]
+  - [u2,   '23',  {control: ufl, weight: 20}]
+  - ['23',  u2,   {control: f,   weight: 20}]
+  - ['27',  u1,   {control: f,   weight: 20}]
+
+  - ['21', '22', {control: lf,  weight: 20}]
+  - ['22', '23', {control: f,   weight: 20}]
+  - ['23', '24', {control: lf,  weight: 20}]
+  - ['24', '25', {control: f,   weight: 20}]
+  - ['25', '26', {control: lf,  weight: 20}]
+  - ['26', '27', {control: f,   weight: 20}]
+  - ['27', '28', {control: lf,  weight: 20}]
+  - ['28', '21', {control: f,   weight: 20}]
+
+  - ['21', '28',  {control: f,   weight: 20}]
+  - ['28', '27',  {control: lf,  weight: 20}]
+  #- ['27', '26', {control: f,   weight: 20}]
+  - ['26', '25',  {control: lf,  weight: 20}]
+  - ['25', '24',  {control: f,   weight: 20}]
+  - ['24', '23',  {control: lf,  weight: 20}]
+  #- ['23', '22', {control: f,   weight: 20}]
+  - ['22', '21',  {control: lf,  weight: 20}]
+
+
+  - ['22',  g1,  {control: lf,  weight: 10}]
+  - ['24',  g2,  {control: lf,  weight: 10}]
+  - ['26',  g3,  {control: lf,  weight: 10}]
+  - ['28',  g4,  {control: lf,  weight: 10}]
+  - [g4,   '28', {control: ufl, weight: 10}]
+  - [g3,   '26', {control: ufl, weight: 10}]
+  - [g2,   '24', {control: ufl, weight: 10}]
+  - [g1,   '22', {control: ufl, weight: 10}]
+
