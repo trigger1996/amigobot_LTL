@@ -17,14 +17,14 @@ v_max_3_4 = 0.195        # 0.245 m/s if craching        default: 0.205 m/s
 
 # CASE 4 INV LARGER
 # Remember to change .yaml and .launch (initial position in Gazebo)
-prefixes = [['u1', '4', '5', '27', '3', '4', '5', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27', '27'],
-            ['u2', '10', '10', 'u2', '10', '11', '11', '12', '12', '12', '12', '12', '12', '12', '12', '1', '2', '3', '4', 'u1'],
-            ['23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28'],
-            ['9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9']]
-suffix_cycles = [['27', '27', '5', '5', '5', '5', '5', '5', '5', '5', '5', '27', '27', '27', '27', '27', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27'],
-                 ['4', '5', '6', '7', '8', '9', '23', '23', '24', 'g2', '24', '25', '6', '7', '8', '25', '26', '27', '3', '4', 'u1'],
-                 ['27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28'],
-                 ['23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9', '23', '11', '10', '9']]
+prefixes = [['u1', '27'],
+            ['u2', '23', '23'],
+            ['g3', '26', 'g3', '26'],
+            ['22', 'g1', '22', 'g1']]
+suffix_cycles = [['28', '21', '21', '22', '23', '23', '24', 'g2', '24', '25', '26', '27', 'u1', '27'],
+                 ['23', '24', '25', '26', '27', '28', 'g4', '28', '21', '21', '22', '23', 'u2', '23'],
+                 ['g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26'],
+                 ['22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1']]
 
 def calculate_final_time(bot_w_ts):
     total_time = 0
@@ -45,10 +45,10 @@ def main():
     bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_2.yaml',
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_3_inv_larger.yaml',        # robot_3.yaml  robot_3_inv_larger.yaml
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_3.yaml',        # robot_3.yaml  robot_3_inv_larger.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
-    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_4_inv.yaml',               # robot_4.yaml  robot_4_inv.yaml
+    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_4.yaml',               # robot_4.yaml  robot_4_inv.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
 
