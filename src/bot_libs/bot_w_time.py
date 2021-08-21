@@ -360,5 +360,3 @@ class turtlebot(object):
     def add_waypoint(self, x, y, yaw = None, maximum_time=None, desired_vel=None):
             self.waypt.append([x, y, yaw, maximum_time, desired_vel])
             self.is_all_done = False
-
-

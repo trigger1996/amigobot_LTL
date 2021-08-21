@@ -10,38 +10,9 @@ from bot_libs.amigobot_ts import amigobot_TS
 
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait, v_max
-time_to_wait = 10       # seconds
-v_max_1_2 = 0.055       # m/s
-v_max_3   = 0.055       # 0.245 m/s if craching        default: 0.205 m/s
-
-# CASE 2 INV
-'''
-prefixes = [['u1', '4', '5', '27', '28', '28', '28', '28', '28', '28', '28', '28'],
-            ['u2', '10', '11', '23', '24', '24', '25', '26'],
-            ['23', '22', '21', '2', '1', '12', '11']]
-suffix_cycles = [['g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '28', '28', '21', '22', '23', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '24', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '22', '23', '9', '10', 'u2', '10', '10', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '24', '24', '25', '26', '27', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28'],
-                 ['g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26', 'g3', '26', '27', '3', '4', 'u1', '4', '5', '6', '7', '8', '25', '26'],
-                 ['10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11']]
-'''
-
-# CASE 4 INV
-'''
-prefixes = [['u1', '4', '5', '27', '3', '3', '4'],
-            ['u2', '10', '10', '10', 'u2', '10', '10', '10', '10'],
-            ['23', '22', '21', '2', '1']]
-suffix_cycles = [['5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '3', '4', 'u1', '4', '5', '27', '28', '28', 'g4', '28', '21', '21', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4'],
-                 ['11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '9', '10', 'u2', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '8', '8', '9', '10', 'u2', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10'],
-                 ['12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1', '12', '11', '10', '9', '23', '22', '21', '2', '1']]
-'''
-
-# CASE 4 INV LARGER
-# Check .yaml before launching
-prefixes = [['u1', '4', '5', '5', '5', '5'],
-            ['u2', '10', '11', '11', '11', '11'],
-            ['23', '22', '21']]
-suffix_cycles = [['27', '3', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5', '27', '3', '4', '5', '27', '28', 'g4', '28', '21', '12', '1', '2', '3', '4', 'u1', '4', '5'],
-                 ['23', '9', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11', '23', '9', '10', '11', '23', '24', 'g2', '24', '25', '6', '7', '8', '9', '10', 'u2', '10', '11'],
-                 ['28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21']]
+time_to_wait = 10        # seconds
+v_max_1_2 = 0.095        # m/s
+v_max_3   = 0.095        # 0.245 m/s if craching        default: 0.205 m/s
 
 
 def calculate_final_time(bot_w_ts):
@@ -57,15 +28,65 @@ def main():
     rate = rospy.Rate(50)	# 50Hz
     rospy.sleep(10)
 
-    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
-                                                       map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
-                                                       time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_2.yaml',
-                                                       map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
-                                                       time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/robot_3_inv.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
-                                                       map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_real_amigobot/map.yaml',
-                                                       time_to_wait = time_to_wait, u_dist_max = v_max_3)
+
+    # CASE 2 INV LARGER
+    '''
+    prefixes = [['u1', 'u1', 'u1', '27', 'u1', 'u1', '27', '28', '28', '28'],
+                ['u2', '23', '24', '25', '26', '26', '25', '24'],
+                ['23', '22', '21', '28', '27', '26', '25']]
+    suffix_cycles = [['g4', '28', '27', 'u1', 'u1', 'u1', 'u1', 'u1', '27', '28', 'g4', '28', '27', 'u1', '27', '28', 'g4', '28', '27', 'u1', '27', '28', '28', '28', '28', '28', 'g4', '28', '27', 'u1', '27', '28'],
+                     ['g2', '24', '23', 'u2', '23', '24', '23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24'],
+                     ['24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25']]
+
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3)
+    '''
+    # CASE 3 INV LARGER
+    '''
+    prefixes = [['u1', 'u1'],
+                ['u2', 'u2'],
+                '23']]
+    suffix_cycles = [['27', '28', 'g4', '28', '27', 'u1', '27', '28', '28', '28', '28', '28', 'g4', '28', '27', 'u1', '27', '28', 'g4', '28', '27', 'u1', 'u1', 'u1', 'u1', 'u1', '27', '28', 'g4', '28', '27', 'u1'],
+                     ['23', '24', 'g2', '24', '23', 'u2', 'u2', 'u2', 'u2', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', '24', '24', '24', '24', 'g2', '24', '23', 'u2'],
+                     ['22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23']]
+
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3)
+    '''
+
+    # CASE 4 INV LARGER
+    # Check .yaml before launching
+    prefixes = [['u1', 'u1'],
+                ['u2', 'u2'],
+                ['23']]
+    suffix_cycles = [['27', '28', 'g4', '28', '27', 'u1', '27', '28', '28', '28', '28', '28', 'g4', '28', '27', 'u1', '27', '28', 'g4', '28', '27', 'u1', 'u1', 'u1', 'u1', 'u1', '27', '28', 'g4', '28', '27', 'u1'],
+                     ['23', '24', 'g2', '24', '23', 'u2', 'u2', 'u2', 'u2', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', '24', '24', '24', '24', 'g2', '24', '23', 'u2'],
+                     ['22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23']]
+    
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3)
+
     # robot_3_inv_larger.yaml
     # robot_3_inv.yaml
 

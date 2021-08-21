@@ -5,20 +5,20 @@
     <arg name="second_tb3" default="amigobot_2"/>
     <arg name="third_tb3"  default="amigobot_3"/>    
 
-    <arg name="first_tb3_x_pos" default=" 0.0"/>
+    <arg name="first_tb3_x_pos" default=" 1.5"/>
     <arg name="first_tb3_y_pos" default=" 4.2"/>
     <arg name="first_tb3_z_pos" default=" 0.0"/>
     <arg name="first_tb3_yaw"   default="-1.57"/>
 
-    <arg name="second_tb3_x_pos" default=" 2.4"/>
+    <arg name="second_tb3_x_pos" default=" 1.3"/>
     <arg name="second_tb3_y_pos" default="-0.6"/>
     <arg name="second_tb3_z_pos" default=" 0.0"/>
     <arg name="second_tb3_yaw"   default=" 1.57"/>
 
-    <arg name="third_tb3_x_pos"  default=" 1.8"/>
-    <arg name="third_tb3_y_pos"  default=" 1.2"/>
-    <arg name="third_tb3_z_pos"  default=" 0.0"/>
-    <arg name="third_tb3_yaw"    default=" 0.0"/>
+    <arg name="third_tb3_x_pos" default="  2.8"/>
+    <arg name="third_tb3_y_pos" default="  0.2"/>
+    <arg name="third_tb3_z_pos" default="  0.0"/>
+    <arg name="third_tb3_yaw"   default="  0.0"/>
 
     <arg name="robot_ip" default="10.0.126.32" />
     <node pkg="rosaria" 
@@ -48,7 +48,7 @@
         <param name="base_link_frame" value="/$(arg second_tb3)/base_link"/>
     </node>
 
-    <arg name="robot_ip_3" default="10.0.126.36" />
+    <arg name="robot_ip_3" default="10.0.126.11" />
     <node pkg="rosaria"
           type="RosAria"
           name="$(arg third_tb3)"

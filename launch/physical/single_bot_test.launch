@@ -3,12 +3,12 @@
 
     <arg name="first_tb3"  default="amigobot_1"/>
 
-    <arg name="first_tb3_x_pos" default=" 0.0"/>
+    <arg name="first_tb3_x_pos" default=" 1.5"/>
     <arg name="first_tb3_y_pos" default=" 4.2"/>
     <arg name="first_tb3_z_pos" default=" 0.0"/>
     <arg name="first_tb3_yaw"   default="-1.57"/>
 
-    <arg name="robot_ip" default="10.0.126.35" />
+    <arg name="robot_ip" default="10.0.126.32" />
     <node pkg="rosaria" 
           type="RosAria" 
           name="$(arg first_tb3)" 
@@ -30,6 +30,7 @@
     </node>
 
     <!-- x y z yaw roll pitch, should remain the SAME as map.yaml -->
-    <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster"  args="$(arg first_tb3_x_pos) $(arg first_tb3_y_pos) 0 $(arg first_tb3_yaw)$ 0 0 /map /$(arg first_tb3)/odom 5" />
+    <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster"  args="$(arg first_tb3_x_pos)  $(arg first_tb3_y_pos)  0 $(arg first_tb3_yaw)  0 0 /map /$(arg first_tb3)/odom  5" />
+ 
 
 </launch>
