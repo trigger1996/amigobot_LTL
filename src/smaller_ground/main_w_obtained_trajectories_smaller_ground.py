@@ -30,7 +30,6 @@ def main():
     rospy.sleep(10)
 
     # CASE 2 LARGER
-    '''
     prefixes = [['u1', '27', '28', '28', '21', '22', '23', 'u2'],
                 ['u2', '23', '24', '25', '26', '27', 'u1', 'u1'],
                 ['23', '24', '25', '26', '27', '28', '21']]
@@ -46,7 +45,7 @@ def main():
     bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/robot_3_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
-    '''
+
 
     # CASE 2 INV LARGER
     '''
@@ -67,7 +66,9 @@ def main():
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
     '''
+
     # CASE 3 INV LARGER
+    '''
     prefixes = [['u1', 'u1'],
                 ['u2', 'u2'],
                 ['23']]
@@ -84,7 +85,7 @@ def main():
     bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
-
+    '''
 
     # CASE 4 INV LARGER
     # Check .yaml before launching
@@ -105,9 +106,9 @@ def main():
     bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
                                                    map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
-    '''
     # robot_3_inv_larger.yaml
     # robot_3_inv.yaml
+    '''
 
     # add prefix
     for i in range(0, prefixes[0].__len__()):
