@@ -2,8 +2,8 @@
 #encoding=utf-8
 
 import sys
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/") 
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/") 
 
 import rospy
 from bot_libs.amigobot_ts import amigobot_TS
@@ -11,8 +11,8 @@ from bot_libs.amigobot_ts import amigobot_TS
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait, v_max
 time_to_wait = 10        # seconds
-v_max_1_2 = 0.095        # m/s
-v_max_3   = 0.095        # 0.245 m/s if craching        default: 0.205 m/s
+v_max_1_2 = 0.1425        # m/s
+v_max_3   = 0.1425        # 0.245 m/s if craching        default: 0.205 m/s
 
 
 def calculate_final_time(bot_w_ts):
@@ -29,8 +29,28 @@ def main():
     rospy.sleep(10)
 
 
-    # CASE 2 INV LARGER
+    # CASE 2 LARGER
     '''
+    v_max_1_2 = 0.140
+    v_max_3   = 0.140
+    prefixes = [['u1', '27', '28', '28', '21', '22', '23', 'u2'],
+                ['u2', '23', '24', '25', '26', '27', 'u1', 'u1'],
+                ['23', '24', '25', '26', '27', '28', '21']]
+    suffix_cycles = [['23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', '25', '26', 'g3', '26', '27', 'u1', '27', '28', '21', '22', 'g1', '22', '23', 'u2'],
+                     ['27', '28', 'g4', '28', '27', 'u1', '27', '28', 'g4', '28', '27', 'u1', '27', '28', '21', '22', 'g1', '22', '23', 'u2', '23', '24', '25', '26', 'g3', '26', '27', 'u1'],
+                     ['22', '23', '24', '25', '26', '27', '28', '21', '22', '23', '24', '25', '26', '27', '28', '21', '22', '23', '24', '25', '26', '27', '28', '21']]
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_3_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+                                                   time_to_wait = time_to_wait, u_dist_max = v_max_3)
+    '''
+
+    # CASE 2 INV LARGER
     prefixes = [['u1', 'u1', 'u1', '27', 'u1', 'u1', '27', '28', '28', '28'],
                 ['u2', '23', '24', '25', '26', '26', '25', '24'],
                 ['23', '22', '21', '28', '27', '26', '25']]
@@ -38,38 +58,40 @@ def main():
                      ['g2', '24', '23', 'u2', '23', '24', '23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24'],
                      ['24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25']]
 
-    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
-    '''
+
+
     # CASE 3 INV LARGER
     '''
     prefixes = [['u1', 'u1'],
                 ['u2', 'u2'],
-                '23']]
+                ['23']]
     suffix_cycles = [['27', '28', 'g4', '28', '27', 'u1', '27', '28', '28', '28', '28', '28', 'g4', '28', '27', 'u1', '27', '28', 'g4', '28', '27', 'u1', 'u1', 'u1', 'u1', 'u1', '27', '28', 'g4', '28', '27', 'u1'],
                      ['23', '24', 'g2', '24', '23', 'u2', 'u2', 'u2', 'u2', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', '24', '24', '24', '24', 'g2', '24', '23', 'u2'],
                      ['22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23']]
 
-    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
     '''
 
     # CASE 4 INV LARGER
     # Check .yaml before launching
+    '''
     prefixes = [['u1', 'u1'],
                 ['u2', 'u2'],
                 ['23']]
@@ -77,15 +99,16 @@ def main():
                      ['23', '24', 'g2', '24', '23', 'u2', 'u2', 'u2', 'u2', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', 'g2', '24', '23', 'u2', '23', '24', '24', '24', '24', '24', 'g2', '24', '23', 'u2'],
                      ['22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23', '22', '21', '28', '27', '26', '25', '24', '23']]
     
-    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_3_inv_larger.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3)
+    '''
 
     # robot_3_inv_larger.yaml
     # robot_3_inv.yaml

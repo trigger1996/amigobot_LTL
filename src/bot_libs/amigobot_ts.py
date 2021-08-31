@@ -40,25 +40,25 @@ class amigobot_TS(turtlebot_TS):
         self.yaw_setpoint = 0
         #self.dist_setpoint = 0
 
-        self.yaw_setpt_threshold  = 0.15                    # deg, ref: 5
-        self.dist_setpt_threshold = 0.15                    # meter
+        self.yaw_setpt_threshold  = 2.25                    # deg, ref: 0.075 for gazebo
+        self.dist_setpt_threshold = 0.075                   # meter
 
         # yaw PI controller
-        self.yaw_kp = 2.75
-        self.yaw_ki = 0.15
+        self.yaw_kp = 1.15                                  # should not larger than 1.0
+        self.yaw_ki = 0.2
         self.yaw_increment  = 0
-        self.yaw_inc_max = 0.25
-        self.u_yaw_max = 180                                # deg/s
+        self.yaw_inc_max = 90.0
+        self.u_yaw_max = 720                                # deg/s, 150 for case_4_inv
 
         # yaw nonlinear controller
-        self.yaw_c2 = 18.75
+        self.yaw_c2 = 64.75
         self.yaw_c3 = 6.25
 
         # dist PI controller
-        self.dist_kp = 0.85
+        self.dist_kp = 4.25
         self.dist_ki = 0.2
         self.dist_increment  = 0
-        self.dist_inc_max = 0.2
+        self.dist_inc_max = 0.05
         self.u_dist_max = u_dist_max                        # m/s, maximum speed with no slide in startup: 0.3 (about)
         self.u_dist_desired = self.u_dist_max               # added for go-back reducing speed
 

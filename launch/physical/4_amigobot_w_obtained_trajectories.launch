@@ -4,6 +4,7 @@
     <arg name="first_tb3"  default="amigobot_1"/>
     <arg name="second_tb3" default="amigobot_2"/>
     <arg name="third_tb3"  default="amigobot_3"/>
+    <arg name="fourth_tb3" default="amigobot_4"/>    
 
     <arg name="first_tb3_x_pos" default=" 2.6"/>
     <arg name="first_tb3_y_pos" default=" 6.8"/>
@@ -15,12 +16,17 @@
     <arg name="second_tb3_z_pos" default=" 0.0"/>
     <arg name="second_tb3_yaw"   default=" 1.57"/>
 
-    <arg name="third_tb3_x_pos" default="  4.4"/>
-    <arg name="third_tb3_y_pos" default="  1.2"/>
-    <arg name="third_tb3_z_pos" default="  0.0"/>
-    <arg name="third_tb3_yaw"   default="  0.0"/>
+    <arg name="third_tb3_x_pos"  default="  2.2"/>
+    <arg name="third_tb3_y_pos"  default="  4.0"/>
+    <arg name="third_tb3_z_pos"  default="  0.0"/>
+    <arg name="third_tb3_yaw"    default=" -1.57"/>
 
-    <arg name="robot_ip" default="10.0.126.35" />
+    <arg name="fourth_tb3_x_pos" default="  2.2"/> <!---->
+    <arg name="fourth_tb3_y_pos" default="  1.8"/>
+    <arg name="fourth_tb3_z_pos" default="  0.0"/>
+    <arg name="fourth_tb3_yaw"   default="  1.57"/> <!---->
+
+    <arg name="robot_ip" default="10.0.126.36" />
     <node pkg="rosaria" 
           type="RosAria" 
           name="$(arg first_tb3)" 
@@ -34,7 +40,7 @@
         <param name="base_link_frame" value="/$(arg first_tb3)/base_link"/>
     </node>
 
-    <arg name="robot_ip_2" default="10.0.126.36" />
+    <arg name="robot_ip_2" default="10.0.126.33" />
     <node pkg="rosaria"
           type="RosAria"
           name="$(arg second_tb3)"
@@ -48,7 +54,7 @@
         <param name="base_link_frame" value="/$(arg second_tb3)/base_link"/>
     </node>
 
-    <arg name="robot_ip_3" default="10.0.126.33" />
+    <arg name="robot_ip_3" default="10.0.126.35" />
     <node pkg="rosaria"
           type="RosAria"
           name="$(arg third_tb3)"
@@ -62,7 +68,21 @@
         <param name="base_link_frame" value="/$(arg third_tb3)/base_link"/>
     </node>
 
-    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories_physical.py" output="screen">
+    <arg name="robot_ip_4" default="10.0.126.32" />
+    <node pkg="rosaria"
+          type="RosAria"
+          name="$(arg fourth_tb3)"
+          args="_port:=$(arg robot_ip_4):8101"
+          output="log">
+        <remap from="/$(arg fourth_tb3)/pose" to="/$(arg fourth_tb3)/odom"/>          
+        <param name="DriftFactor" value="0"/>
+        <param name="TicksMM"     value="123"/>
+        <param name="RevCount"    value="11548"/>
+        <param name="odom_frame"      value="/$(arg fourth_tb3)/odom"/>
+        <param name="base_link_frame" value="/$(arg fourth_tb3)/base_link"/>
+    </node>
+
+    <node pkg="amigobot_LTL" name="amigobot_LTL" type="main_w_obtained_trajectories_physical_v4.py" output="screen">
     </node>
 
     <node pkg="rviz" name="rviz" type="rviz" output="screen" args="-d /home/ghost/catkin_ws_ros/src/amigobot_LTL/launch/physical/rviz/multi_turtlebot3.rviz">
@@ -72,7 +92,7 @@
     <node pkg="tf" type="static_transform_publisher" name="$(arg first_tb3)_map_odom_broadcaster"  args="$(arg first_tb3_x_pos)  $(arg first_tb3_y_pos)  0 $(arg first_tb3_yaw)  0 0 /map /$(arg first_tb3)/odom  5" />
     <node pkg="tf" type="static_transform_publisher" name="$(arg second_tb3)_map_odom_broadcaster" args="$(arg second_tb3_x_pos) $(arg second_tb3_y_pos) 0 $(arg second_tb3_yaw) 0 0 /map /$(arg second_tb3)/odom 5" />
     <node pkg="tf" type="static_transform_publisher" name="$(arg third_tb3)_map_odom_broadcaster"  args="$(arg third_tb3_x_pos)  $(arg third_tb3_y_pos)  0 $(arg third_tb3_yaw)  0 0 /map /$(arg third_tb3)/odom  5" />
-
+    <node pkg="tf" type="static_transform_publisher" name="$(arg fourth_tb3)_map_odom_broadcaster" args="$(arg fourth_tb3_x_pos) $(arg fourth_tb3_y_pos) 0 $(arg fourth_tb3_yaw) 0 0 /map /$(arg fourth_tb3)/odom 5" />
 
 
 </launch>

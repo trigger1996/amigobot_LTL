@@ -2,21 +2,19 @@
 #encoding=utf-8
 
 import sys
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/") 
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/") 
 
 import rospy
-import bot_libs.bot as bot
-import bot_libs.bot_ts as bot_ts
+from bot_libs.amigobot_ts import amigobot_TS
 
 # uncomment the correspongding case to represent run by amigobot
-global time_to_wait, v_max
+global time_to_wait
 time_to_wait = 10        # seconds
-v_max_1_2 = 0.195        # m/s
-v_max_3_4 = 0.195        # 0.245 m/s if craching        default: 0.205 m/s
+v_max_1_2 = 0.145        # m/s
+v_max_3_4 = 0.145        # 0.245 m/s if craching        default: 0.205 m/s
 
-# CASE 4 INV LARGER
-# Remember to change .yaml and .launch (initial position in Gazebo)
+# CASE 2
 prefixes = [['u1', '27'],
             ['u2', '23', '23'],
             ['g3', '26', 'g3', '26'],
@@ -25,6 +23,7 @@ suffix_cycles = [['28', '21', '21', '22', '23', '23', '24', 'g2', '24', '25', '2
                  ['23', '24', '25', '26', '27', '28', 'g4', '28', '21', '21', '22', '23', 'u2', '23'],
                  ['g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26', 'g3', '26'],
                  ['22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1', '22', 'g1']]
+
 
 def calculate_final_time(bot_w_ts):
     total_time = 0
@@ -39,17 +38,17 @@ def main():
     rate = rospy.Rate(50)	# 50Hz
     rospy.sleep(10)
 
-    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_2.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
+    bot_2 = amigobot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
-    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_3.yaml',        # robot_3.yaml  robot_3_inv_larger.yaml
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
+    bot_3 = amigobot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/robot_3.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
-    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/robot_4.yaml',               # robot_4.yaml  robot_4_inv.yaml
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr2013_smaller_ground/4_vehicles/map.yaml',
+    bot_4 = amigobot_TS(name='amigobot_4', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/robot_4.yaml',   # robot_3_inv_larger.yaml   robot_3_inv.yaml
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_3_4)
 
     # add prefix
@@ -73,10 +72,10 @@ def main():
         bot_4.add_waypoint_from_waypt_list(suffix_cycles[3][i])
 
     # print total cost
-    print('[total cost]' + bot_1.name + ' total cost: ' + str(calculate_final_time(bot_1)))
-    print('[total cost]' + bot_2.name + ' total cost: ' + str(calculate_final_time(bot_2)))
-    print('[total cost]' + bot_3.name + ' total cost: ' + str(calculate_final_time(bot_3)))
-    print('[total cost]' + bot_4.name + ' total cost: ' + str(calculate_final_time(bot_4)))
+    #print('[total cost]' + bot_1.name + 'total cost: ' + str(calculate_final_time(bot_1)))
+    #print('[total cost]' + bot_2.name + 'total cost: ' + str(calculate_final_time(bot_2)))
+    #print('[total cost]' + bot_3.name + 'total cost: ' + str(calculate_final_time(bot_3)))
+    #print('[total cost]' + bot_4.name + 'total cost: ' + str(calculate_final_time(bot_4)))
 
     while not rospy.is_shutdown():
         # add suffix-cycles

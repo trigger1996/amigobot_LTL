@@ -2,8 +2,8 @@
 #encoding=utf-8
 
 import sys
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/") 
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/") 
 
 import rospy
 from bot_libs.amigobot_ts import amigobot_TS
@@ -11,8 +11,8 @@ from bot_libs.amigobot_ts import amigobot_TS
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait, v_max
 time_to_wait = 10        # seconds
-v_max_1_2 = 0.155        # m/s
-v_max_3   = 0.155        # 0.245 m/s if craching        default: 0.095 m/s
+v_max_1_2 = 0.145        # m/s
+v_max_3   = 0.145        # 0.245 m/s if craching        default: 0.095 m/s
 
 
 def calculate_final_time(bot_w_ts):
@@ -40,8 +40,8 @@ def main():
     '''
     prefixes = [['u1', 'u1']]
     suffix_cycles = [['27', '28', 'g4', '28', '21', '22', 'g1', '22', '23', 'u2', 'u2', '23', '24', 'g2', '24', '25', '26', 'g3', '26', '27', '28', 'g4', '28', '27', 'u1']]
-    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
+    bot_1 = amigobot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/robot_1.yaml',      # /home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv/
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/physical/3_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait, u_dist_max = v_max_1_2)
 
     # robot_3_inv_larger.yaml

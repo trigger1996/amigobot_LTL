@@ -2,10 +2,11 @@
 #encoding=utf-8
 
 import sys
-sys.path.append("/home/ubuntu484/catkin_ws/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
+sys.path.append("/home/ghost/catkin_ws_ros/src/amigobot_LTL/src/LOMAP_Custom/")               # root path: amigobot_LTL/src
 
 import rospy
-import bot_libs.amigobot_ts as amigobot_TS
+import bot_libs.bot as bot
+import bot_libs.bot_ts as bot_ts
 
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait
@@ -35,17 +36,17 @@ def main():
     rate = rospy.Rate(50)	# 50Hz
     rospy.sleep(10)
 
-    bot_1 = amigobot_TS.amigobot_TS(name='amigobot_1', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_1.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_1 = bot_ts.turtlebot_TS(name='amigobot_1', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_1.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_2 = amigobot_TS.amigobot_TS(name='amigobot_2', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_2.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_2 = bot_ts.turtlebot_TS(name='amigobot_2', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_2.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_3 = amigobot_TS.amigobot_TS(name='amigobot_3', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_3.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_3 = bot_ts.turtlebot_TS(name='amigobot_3', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_3.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait)
-    bot_4 = amigobot_TS.amigobot_TS(name='amigobot_4', yaml_file='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_4.yaml',
-                                                   map_file ='/home/ubuntu484/catkin_ws/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
+    bot_4 = bot_ts.turtlebot_TS(name='amigobot_4', yaml_file='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/robot_4.yaml',
+                                                   map_file ='/home/ghost/catkin_ws_ros/src/amigobot_LTL/model/ijrr_2013_improv_4_vehicles/map.yaml',
                                                    time_to_wait = time_to_wait)
 
     # add prefix
