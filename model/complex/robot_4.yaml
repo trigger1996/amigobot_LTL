@@ -1,0 +1,16 @@
+!Ts
+name: robot_4
+multi: true
+directed: true
+init: ['26']
+final: []
+graph:
+  nodes:
+    '21': {}
+    '25': {}
+    '26': {}
+
+  edges:
+  - ['25', '21', {control: ufr, weight: 10}]
+  - ['21', '26', {control: rf,  weight: 30}]
+  - ['26', '25', {control: lf,  weight: 20}]

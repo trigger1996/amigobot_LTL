@@ -1,0 +1,71 @@
+!Ts
+name: robot_1
+multi: true
+directed: true
+init: [u1]
+final: []
+graph:
+  nodes:
+    '11': {}
+    '12': {}
+    '13': {}
+    '14': {}
+    '15': {}
+    '16': {}
+
+    '21': {}
+    '22': {}
+    '23': {}
+    '24': {}
+    '25': {}
+    '26': {}
+
+    g1:
+      prop: !!set {gather: null, gather1: null, r1gather: null, r1gather1: null}
+    g2:
+      prop: !!set {gather: null, gather2: null, r1gather: null, r1gather2: null}
+    g3:
+      prop: !!set {gather: null, gather3: null, r1gather: null, r1gather3: null}
+
+    u1:
+      prop: !!set {r1upload: null, r1upload1: null, upload: null, upload1: null}
+    u2:
+      prop: !!set {r1upload: null, r1upload2: null, upload: null, upload2: null}
+
+  edges:
+  - [ u1,  '21', {control: lfl, weight: 40}]
+  - ['21',  u1,  {control: rfl, weight: 40}]
+  - ['22',  u1,  {control: lfr, weight: 10}]
+  - [ u1,   u2,  {control: f,   weight: 20}]
+  - [ u2,   u1,  {control: f,   weight: 20}]
+
+  - [ u2,  '11', {control: rfr, weight: 40}]
+  - ['11',  u2,  {control: lfr, weight: 40}]
+  - ['16',  u2,  {control: rfl, weight: 10}]
+
+  - ['11', '12', {control: f,   weight: 10}]
+  - ['12', '11', {control: uf,  weight: 10}]
+  - ['12', '13', {control: lfr, weight: 20}]
+  - ['13', '11', {control: lfl, weight: 20}]
+  - ['13',  g1,  {control: f,   weight: 10}]
+  - [ g1,  '13', {control: ufu, weight: 20}]
+
+  - ['12', '14', {control: rf,  weight: 10}]
+  - ['14', '15', {control: rf,  weight: 10}]
+  - ['15', '16', {control: rf,  weight: 40}]
+  - ['16', '15', {control: ufu, weight: 40}]
+  - ['15',  g2,  {control: lf,  weight: 10}]
+  - [ g2,  '15', {control: ufl, weight: 20}]
+
+  - ['21', '25', {control: lf,  weight: 10}]
+  - ['25', '21', {control: ufr, weight: 10}]
+  - ['21', '26', {control: rf,  weight: 30}]
+  - ['26', '25', {control: lf,  weight: 20}]
+  - ['25', '24', {control: lf,  weight: 20}]
+  - ['24', '25', {control: rf,  weight: 20}]
+  - ['24', '23', {control: lf,  weight: 10}]
+  - ['23', '24', {control: rf,  weight: 10}]
+  - ['23', '22', {control: lf,  weight: 10}]
+  - ['22', '23', {control: f,   weight: 10}]
+  - ['24',  g3,  {control: rf,  weight: 10}]
+  - [ g3,  '24', {control: ufr, weight: 20}]

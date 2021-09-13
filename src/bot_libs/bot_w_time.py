@@ -275,18 +275,20 @@ class turtlebot(object):
 
                         # PI control w saturation
                         # dist
-                        #self.dist_increment += dist_err
-                        #self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
+                        '''                        
+                        self.dist_increment += dist_err
+                        self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
 
-                        #u_dist = self.dist_kp * dist_err + self.dist_ki * self.dist_increment
-                        #u_dist = data_saturation(u_dist, self.u_dist_max, -self.u_dist_max)
+                        u_dist = self.dist_kp * dist_err + self.dist_ki * self.dist_increment
+                        u_dist = data_saturation(u_dist, self.u_dist_max, -self.u_dist_max)
 
                         # yaw P controller
-                        #u_yaw = self.yaw_kp * yaw_err
-                        #u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
-
+                        u_yaw = self.yaw_kp * yaw_err
+                        u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
+                        '''
 
                         # controller from Yu 2015
+
                         vr = 0
                         wr = 0
 
