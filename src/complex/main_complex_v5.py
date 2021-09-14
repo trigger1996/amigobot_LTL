@@ -12,8 +12,8 @@ import bot_libs.bot_ts as bot_ts
 # uncomment the correspongding case to represent run by amigobot
 global time_to_wait, v_max
 time_to_wait = 10        # seconds
-v_max_1_2 = 0.605        # m/s
-v_max_3   = 0.605        # 0.245 m/s if craching        default: 0.205 m/s
+v_max_1_2 = 0.225        # m/s
+v_max_3   = 0.225        # 0.245 m/s if craching        default: 0.205 m/s
 
 
 def calculate_final_time(bot_w_ts):

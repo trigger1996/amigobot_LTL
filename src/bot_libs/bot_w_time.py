@@ -64,7 +64,7 @@ class turtlebot(object):
         #self.dist_setpoint = 0
 
         self.yaw_setpt_threshold  = 0.075                   # deg, ref: 5
-        self.dist_setpt_threshold = 0.075                   # meter
+        self.dist_setpt_threshold = 0.15                    # meter
 
         # yaw PI controller
         self.yaw_kp = 2.75
@@ -274,8 +274,7 @@ class turtlebot(object):
                     else:
 
                         # PI control w saturation
-                        # dist
-                        '''                        
+                        # dist                      
                         self.dist_increment += dist_err
                         self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
 
@@ -285,10 +284,10 @@ class turtlebot(object):
                         # yaw P controller
                         u_yaw = self.yaw_kp * yaw_err
                         u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
-                        '''
+
 
                         # controller from Yu 2015
-
+                        '''
                         vr = 0
                         wr = 0
 
@@ -298,12 +297,12 @@ class turtlebot(object):
                         self.dist_increment += xe
                         self.dist_increment = data_saturation(self.dist_increment, self.dist_inc_max, -self.dist_inc_max)
 
-                        u_dist = vr + self.dist_kp * xe #+ self.dist_ki * self.dist_increment
+                        u_dist = vr + self.dist_kp * xe + #self.dist_ki * self.dist_increment
                         u_yaw  = wr + self.yaw_c2 * (ye * cos(yaw_err / 2 * pi / 180) - xe * sin(yaw_err / 2 * pi / 180)) + self.yaw_c3 * sin(yaw_err / 2 * pi / 180)
 
                         u_dist = data_saturation(u_dist, self.u_dist_desired, -self.u_dist_desired)
                         u_yaw = data_saturation(u_yaw, self.u_yaw_max, -self.u_yaw_max)
-
+                        '''
                         #
                         self.update_target_vel(u_dist, u_yaw * pi / 180 * 0.066)
                         #self.update_target_vel(u_dist, 0)
