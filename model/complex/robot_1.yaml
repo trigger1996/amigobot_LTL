@@ -48,14 +48,14 @@ graph:
   - ['12', '13', {control: lfr, weight: 20}]
   - ['13', '11', {control: lfl, weight: 20}]
   - ['13',  g1,  {control: f,   weight: 10}]
-  - [ g1,  '13', {control: ufu, weight: 20}]
+  - [ g1,  '13', {control: ufu, weight: 10}]
 
   - ['12', '14', {control: rf,  weight: 10}]
   - ['14', '15', {control: rf,  weight: 10}]
   - ['15', '16', {control: rf,  weight: 40}]
   - ['16', '15', {control: ufu, weight: 40}]
   - ['15',  g2,  {control: lf,  weight: 10}]
-  - [ g2,  '15', {control: ufl, weight: 20}]
+  - [ g2,  '15', {control: ufl, weight: 10}]
 
   - ['21', '25', {control: lf,  weight: 10}]
   - ['25', '21', {control: ufr, weight: 10}]
@@ -68,4 +68,4 @@ graph:
   - ['23', '22', {control: lf,  weight: 10}]
   - ['22', '23', {control: f,   weight: 10}]
   - ['24',  g3,  {control: rf,  weight: 10}]
-  - [ g3,  '24', {control: ufr, weight: 20}]
+  - [ g3,  '24', {control: ufr, weight: 10}]

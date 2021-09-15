@@ -33,6 +33,9 @@ rosbag record /amigobot_1/odom /amigobot_1/path /amigobot_1/cmd_vel  /amigobot_2
 # for 4 vehicles
 rosbag record /amigobot_1/odom /amigobot_1/path /amigobot_1/cmd_vel  /amigobot_2/odom /amigobot_2/path /amigobot_2/cmd_vel /amigobot_3/odom /amigobot_3/path /amigobot_3/cmd_vel /amigobot_4/odom /amigobot_4/path /amigobot_4/cmd_vel
 
+# for complex
+rosbag record /amigobot_1/odom /amigobot_1/path /amigobot_1/cmd_vel  /amigobot_2/odom /amigobot_2/path /amigobot_2/cmd_vel /amigobot_3/odom /amigobot_3/path /amigobot_3/cmd_vel /amigobot_4/odom /amigobot_4/path /amigobot_4/cmd_vel /amigobot_5/odom /amigobot_5/path /amigobot_5/cmd_vel
+
 
 __________________
 #关于turtlebot_gazebo
